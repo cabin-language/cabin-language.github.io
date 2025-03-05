@@ -1,0 +1,1 @@
+import{t as p,a as r}from"../chunks/Do8b9Fsz.js";import"../chunks/BVgGkzlK.js";import{D as e}from"../chunks/Cj5kn2Hk.js";var s=p("<h1>Loops</h1>");function c(o){e(o,{page:"Loops",children:(t,m)=>{var a=s();r(t,a)},$$slots:{default:!0}})}export{c as component};
