@@ -1,0 +1,1 @@
+import{t as s,a}from"../chunks/Do8b9Fsz.js";import"../chunks/BVgGkzlK.js";import{D as e}from"../chunks/Cj5kn2Hk.js";var p=s("<h1>If Expressions</h1>");function l(o){e(o,{page:"If Expressions",children:(t,n)=>{var r=p();a(t,r)},$$slots:{default:!0}})}export{l as component};
