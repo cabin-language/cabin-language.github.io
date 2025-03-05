@@ -32,7 +32,7 @@
 	<p>Cabin can be installed through <code>cargo</code>:</p>
 	<Snippet>cargo install cabin-language</Snippet>
 
-	<h2>Testing</h2>
+	<h2 id="testing">Testing</h2>
 
 	<p>
 		Once Cabin is installed, you can test that it's working with the <code>cabin</code> command:
@@ -40,7 +40,7 @@
 
 	<Snippet>cabin</Snippet>
 
-	<h2>Troubleshooting</h2>
+	<h2 id="troubleshooting">Troubleshooting</h2>
 
 	<p>
 		If running <code>cabin</code> gives an error, make sure that the installation location is in

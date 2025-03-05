@@ -3,7 +3,7 @@
 </script>
 
 <Documentation page="Loops">
-	<h1>Loops</h1>
-	<h2 id="foreach">For-Each Loops</h2>
-	<h2 id="while">While Loops</h2>
+	<h1>Control Flow</h1>
+	<h2 id="labels">Labels &amp; is Statements</h2>
+	<h2 id="reserved-labels">Reserved Labels</h2>
 </Documentation>

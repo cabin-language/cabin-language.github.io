@@ -4,4 +4,6 @@
 
 <Documentation page="If Expressions">
 	<h1>If Expressions</h1>
+
+	<h2 id="otherwise">Otherwise Blocks</h2>
 </Documentation>
