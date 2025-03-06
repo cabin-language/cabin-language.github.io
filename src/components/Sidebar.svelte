@@ -56,6 +56,12 @@
 	<ul bind:this={list}>
 		<li>
 			<a href="/docs">Introduction</a>
+			<ul>
+				<li><a href="/docs#what-is-cabin">What is Cabin?</a></li>
+				<li><a href="/docs#navigating-these-docs">Navigating These Docs</a></li>
+				<li><a href="/docs#additional-support">Additional Support</a></li>
+				<li><a href="/docs#final-remarks">Final Remarks</a></li>
+			</ul>
 		</li>
 		<li>
 			<a href="/docs/installation">Installation</a>
@@ -74,48 +80,103 @@
 		<li>
 			<a href="/docs/if-expressions">If Expressions</a>
 			<ul>
-				<li><a href="/docs/if-expressions#otherwise"><code>otherwise</code> Blocks</a></li>
-				<li><a href="/docs/if-expressions#expressions"><code>if</code> as Expressions</a></li>
+				<li>
+					<a href="/docs/if-expressions#otherwise">
+						<code>otherwise</code>
+						Blocks
+					</a>
+				</li>
+				<li>
+					<a href="/docs/if-expressions#expressions">
+						<code>if</code>
+						as Expressions
+					</a>
+				</li>
 			</ul>
 		</li>
 		<li>
 			<a href="/docs/loops">Loops</a>
 			<ul>
-				<li><a href="/docs/loops#foreach"><code>foreach</code> Loops</a></li>
-				<li><a href="/docs/loops#while"><code>while</code> Loops</a></li>
+				<li>
+					<a href="/docs/loops#foreach">
+						<code>foreach</code>
+						Loops
+					</a>
+				</li>
+				<li>
+					<a href="/docs/loops#while">
+						<code>while</code>
+						Loops
+					</a>
+				</li>
 				<li><a href="/docs/loops#expressions">Loops as Expressions</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="/docs/control-flow">Control Flow</a>
 			<ul>
-				<li><a href="/docs/control-flow#labels">Labels & <code>is</code> Statements</a></li>
+				<li>
+					<a href="/docs/control-flow#labels">
+						Labels & <code>is</code>
+						Statements
+					</a>
+				</li>
 				<li>
 					<a href="/docs/control-flow#reserved-labels">Reserved labels</a>
 					<ul>
-						<li><a href="/docs/control-flow#it">The <code>it</code> Label</a></li>
-						<li><a href="/docs/control-flow#return">The <code>return</code> Label</a></li>
-						<li><a href="/docs/control-flow#loop">The <code>loop</code> Label</a></li>
-						<li><a href="/docs/control-flow#done">The <code>done</code> Value</a></li>
-						<li><a href="/docs/control-flow#iteration">The <code>iteration</code> Label</a></li>
+						<li>
+							<a href="/docs/control-flow#it">
+								The <code>it</code>
+								Label
+							</a>
+						</li>
+						<li>
+							<a href="/docs/control-flow#return">
+								The <code>return</code>
+								Label
+							</a>
+						</li>
+						<li>
+							<a href="/docs/control-flow#loop">
+								The <code>loop</code>
+								Label
+							</a>
+						</li>
+						<li>
+							<a href="/docs/control-flow#done">
+								The <code>done</code>
+								Value
+							</a>
+						</li>
+						<li>
+							<a href="/docs/control-flow#iteration">
+								The <code>iteration</code>
+								Label
+							</a>
+						</li>
 					</ul>
 				</li>
 			</ul>
 		</li>
 		<li>
-			Groups
+			<a href="/docs/groups">Groups</a>
 			<ul>
-				<li>Compile-Time Parameters</li>
+				<li><a href="/docs/groups#nominality">Nominality</a></li>
+				<li><a href="/docs/groups#mutability">Mutability</a></li>
+				<li><a href="/docs/groups#visibility">Visibility</a></li>
+				<li><a href="/docs/groups#compile-time-parameters">Compile-Time Parameters</a></li>
 			</ul>
 		</li>
 		<li>
-			Actions
+			<a href="/docs/actions">Actions</a>
 			<ul>
-				<li>Compile-Time Parameters</li>
+				<li><a href="/docs/actions#return-values">Return Values</a></li>
+				<li><a href="/docs/actions#parameters">Parameters</a></li>
+				<li><a href="/docs/actions#compile-time-parameters">Compile-Time Parameters</a></li>
 			</ul>
 		</li>
 		<li>
-			Eithers
+			<a href="/docs/eithers">Eithers</a>
 			<ul>
 				<li>Subtypes</li>
 			</ul>
@@ -124,7 +185,10 @@
 			Runtime Evaluation
 			<ul>
 				<li>Command-Line Arguments</li>
-				<li>The <code>run</code> Action</li>
+				<li>
+					The <code>run</code>
+					Action
+				</li>
 			</ul>
 		</li>
 		<li>
@@ -139,9 +203,20 @@
 		<li>
 			Optionals & Errors
 			<ul>
-				<li>The <code>Optional</code> either</li>
-				<li>The <code>Attempt</code> either</li>
-				<li>The <code>?</code> and <code>!</code> operators</li>
+				<li>
+					The <code>Optional</code>
+					either
+				</li>
+				<li>
+					The <code>Attempt</code>
+					either
+				</li>
+				<li>
+					The <code>?</code>
+					and
+					<code>!</code>
+					operators
+				</li>
 			</ul>
 		</li>
 		<li>
@@ -186,7 +261,7 @@
 	}
 
 	h1 {
-		padding-left: 2rem;
+		padding-left: 1rem;
 		padding-bottom: 1rem;
 	}
 
@@ -232,8 +307,9 @@
 		content: '';
 		display: block;
 		width: 0.5rem;
-		border-left: 1px solid #585b70;
-		border-bottom: 1px solid #585b70;
+		border-left: 2px solid #585b70;
+		border-bottom: 2px solid #585b70;
+		border-bottom-left-radius: 0.2rem;
 		height: 0.9rem;
 		position: absolute;
 		left: -1rem;
