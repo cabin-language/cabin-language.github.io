@@ -244,10 +244,16 @@
 </section>
 
 <style>
+	@media (max-width: 800px) {
+		section {
+			display: none;
+		}
+	}
+
 	section {
 		color: #cdd6f4;
 		overflow-y: auto;
-		width: 20%;
+		width: 18rem;
 		padding-top: 1rem;
 		padding-left: 1rem;
 

@@ -61,8 +61,25 @@
 		height: 100%;
 	}
 
+	@media (max-width: 800px) {
+		main {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 1080px) and (min-width: 800px) {
+		main {
+			width: calc(100% - 18rem);
+		}
+	}
+
+	@media (min-width: 1080px) {
+		main {
+			width: 60%;
+		}
+	}
+
 	main {
-		width: 60%;
 		background-color: #1e1e2e;
 		color: #cdd6f4;
 		display: flex;
