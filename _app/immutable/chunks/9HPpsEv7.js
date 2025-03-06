@@ -1,0 +1,1 @@
+import"./CWj6FrbW.js";import{p as t,o as p,q as s,r as i}from"./DXkR1yX0.js";import{t as m,a as c}from"./BldIr1EY.js";import{s as d}from"./D1kZ9tq7.js";var n=m('<code class="svelte-k1ubo9"><!></code>');function h(a,e){t(e,!0);var o=n(),r=s(o);d(r,()=>e.children),i(o),c(a,o),p()}export{h as S};
