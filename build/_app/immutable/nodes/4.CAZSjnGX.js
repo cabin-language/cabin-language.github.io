@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/DTuzj3NS.js";import{$ as i,n as o}from"../chunks/D2R92oOg.js";import{h as n}from"../chunks/ChMeJBU0.js";import{t as s,a as r}from"../chunks/hktnC11W.js";import{D as l}from"../chunks/waNSgNVq.js";var p=s(`<h1>Welcome</h1> <p>Welcome to Cabin! This documentation is designed for newcomers to the language. It'll walk you
+import"../chunks/CWj6FrbW.js";import"../chunks/DTuzj3NS.js";import{$ as i,n as o}from"../chunks/D2R92oOg.js";import{h as n}from"../chunks/ChMeJBU0.js";import{t as s,a as r}from"../chunks/hktnC11W.js";import{D as l}from"../chunks/DPlR9Xj5.js";var p=s(`<h1>Welcome</h1> <p>Welcome to Cabin! This documentation is designed for newcomers to the language. It'll walk you
 		through the basics of Cabin and how to get started with the language, all the way from your
 		first "Hello world" program to complex programs with external libraries.</p> <h2>What is Cabin?</h2> <p>Cabin is a programming language designed to be <b>safe</b>, <b>simple</b>, and <b>speedy</b>. To
 		be specific, it's a memory-safe, statically typed, compiled, multi-paradigm programming
