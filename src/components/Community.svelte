@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Navbar from './Navbar.svelte';
-	import Sidebar from './Sidebar.svelte';
+	import CommunitySidebar from './CommunitySidebar.svelte';
 
 	let { children, page } = $props();
 
-	let sidebar: Sidebar;
+	let sidebar: CommunitySidebar;
 
 	let next_label: string | null = $state(null);
 	let next_path: string | null = $state(null);
@@ -26,7 +26,7 @@
 <div class="wrapper">
 	<Navbar />
 	<div class="inner">
-		<Sidebar {page} bind:this={sidebar} />
+		<CommunitySidebar {page} bind:this={sidebar} />
 		<main>
 			{@render children()}
 			<span class="navigation-buttons">
