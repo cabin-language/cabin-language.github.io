@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as v,s as o,f as $,n as y}from"../chunks/DXkR1yX0.js";import{h as P}from"../chunks/CusXyDLi.js";import{t as r,a}from"../chunks/BldIr1EY.js";import{D as w}from"../chunks/uttUc3sb.js";import{S as i}from"../chunks/9HPpsEv7.js";var x=r(`<pre>let Person = group &lbrace;
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as v,s as o,f as $,n as y}from"../chunks/DXkR1yX0.js";import{h as P}from"../chunks/CusXyDLi.js";import{t as r,a}from"../chunks/BldIr1EY.js";import{D as w}from"../chunks/DrpqESHN.js";import{S as i}from"../chunks/9HPpsEv7.js";var x=r(`<pre>let Person = group &lbrace;
     first_name: Text,
     last_name: Text,
     age: Number

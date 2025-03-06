@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as m,s as n,f as u,n as b}from"../chunks/DXkR1yX0.js";import{h as y}from"../chunks/CusXyDLi.js";import{t,a}from"../chunks/BldIr1EY.js";import{D as w}from"../chunks/uttUc3sb.js";import{S as r}from"../chunks/9HPpsEv7.js";var $=t(`<pre>let name = "danny";
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as m,s as n,f as u,n as b}from"../chunks/DXkR1yX0.js";import{h as y}from"../chunks/CusXyDLi.js";import{t,a}from"../chunks/BldIr1EY.js";import{D as w}from"../chunks/DrpqESHN.js";import{S as r}from"../chunks/9HPpsEv7.js";var $=t(`<pre>let name = "danny";
 
 if name == "danny" &lbrace;
     print("hi danny");
