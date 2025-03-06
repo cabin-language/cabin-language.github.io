@@ -4,6 +4,10 @@
 	import Community from '../../components/Community.svelte';
 </script>
 
+<svelte:head>
+	<title>Community • Cabin</title>
+</svelte:head>
+
 <Community page="Community">
 	<h1>Community</h1>
 
@@ -23,7 +27,9 @@
 	<a href="https://discord.gg/ZcfC322pAb">https://discord.gg/ZcfC322pAb</a>
 
 	<p>
-		The Cabin Discord server is the largest and best place for interacting with the community.
+		The Cabin Discord server is the best place for interacting with the community! Feel free to stop
+		by and chat! The Discord server has channels for help with the language, general discussion,
+		suggestions, updates, and more. It's a welcoming and friendly place for all campers!
 	</p>
 
 	<h2 id="github"><img src={githubIcon} />GitHub</h2>
@@ -114,7 +120,13 @@
 		<li>Language Suggestions</li>
 	</ul>
 
-	<p> ...and anything else you have to offer! </p>
+	<p>
+		...and anything else you have to offer! If you're interested in contributing, you can start
+		immediately, depending on how you want to contribute. Bug reports can be filed immediately on
+		the Cabin GitHub. Documentation contributions are welcome as pull requests in the Cabin GitHub
+		as well. For branding contributions, such as creating a logo for Cabin, get in touch with me,
+		Cabin's creator, Vi. You can find me in the Cabin Discord.
+	</p>
 </Community>
 
 <style>

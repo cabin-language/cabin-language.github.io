@@ -2,6 +2,10 @@
 	import Documentation from '../../../components/Documentation.svelte';
 </script>
 
+<svelte:head>
+	<title>Conclusion • Cabin Docs</title>
+</svelte:head>
+
 <Documentation page="Conclusion">
 	<h1>Conclusion</h1>
 

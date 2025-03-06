@@ -14,6 +14,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Installation • Cabin Docs</title>
+</svelte:head>
+
 <Documentation page="Installation">
 	<h1>Installation</h1>
 

@@ -75,6 +75,7 @@
 			<a href="/docs/if-expressions">If Expressions</a>
 			<ul>
 				<li><a href="/docs/if-expressions#otherwise"><code>otherwise</code> Blocks</a></li>
+				<li><a href="/docs/if-expressions#expressions"><code>if</code> as Expressions</a></li>
 			</ul>
 		</li>
 		<li>
@@ -82,13 +83,23 @@
 			<ul>
 				<li><a href="/docs/loops#foreach"><code>foreach</code> Loops</a></li>
 				<li><a href="/docs/loops#while"><code>while</code> Loops</a></li>
+				<li><a href="/docs/loops#expressions">Loops as Expressions</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="/docs/control-flow">Control Flow</a>
 			<ul>
 				<li><a href="/docs/control-flow#labels">Labels & <code>is</code> Statements</a></li>
-				<li><a href="/docs/control-flow#reserved-labels">Reserved labels</a></li>
+				<li>
+					<a href="/docs/control-flow#reserved-labels">Reserved labels</a>
+					<ul>
+						<li><a href="/docs/control-flow#it">The <code>it</code> Label</a></li>
+						<li><a href="/docs/control-flow#return">The <code>return</code> Label</a></li>
+						<li><a href="/docs/control-flow#loop">The <code>loop</code> Label</a></li>
+						<li><a href="/docs/control-flow#done">The <code>done</code> Value</a></li>
+						<li><a href="/docs/control-flow#iteration">The <code>iteration</code> Label</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>
@@ -163,6 +174,15 @@
 		overflow-y: auto;
 		width: 20%;
 		padding-top: 1rem;
+		padding-left: 1rem;
+
+		> ul > li > ul {
+			display: none;
+		}
+
+		> ul > li > ul > li > ul {
+			font-size: 0.75rem;
+		}
 	}
 
 	h1 {
@@ -171,17 +191,13 @@
 	}
 
 	li {
-		margin-left: 2rem;
+		margin-left: 1.2rem;
 		padding-top: 0.25rem;
 		padding-bottom: 0.25rem;
 	}
 
 	*::marker {
 		content: '';
-	}
-
-	ul ul {
-		display: none;
 	}
 
 	ul ul li {
@@ -218,7 +234,7 @@
 		width: 0.5rem;
 		border-left: 1px solid #585b70;
 		border-bottom: 1px solid #585b70;
-		height: 50%;
+		height: 0.9rem;
 		position: absolute;
 		left: -1rem;
 		top: 0rem;

@@ -3,6 +3,10 @@
 	import Snippet from '../../../components/Snippet.svelte';
 </script>
 
+<svelte:head>
+	<title>Declarations • Cabin Docs</title>
+</svelte:head>
+
 <Documentation page="Declarations">
 	<h1>Declarations</h1>
 

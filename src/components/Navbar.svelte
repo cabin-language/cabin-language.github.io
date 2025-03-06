@@ -1,5 +1,9 @@
+<script lang="ts">
+	import logo from '../assets/images/logo.png';
+</script>
+
 <nav>
-	<a href="/">Cabin</a>
+	<a href="/"><img src={logo} alt="Cabin" />Cabin</a>
 	<a href="/docs">Documentation</a>
 	<a href="/libraries">Libraries</a>
 	<a href="/community">Community</a>
@@ -22,6 +26,11 @@
 			align-items: center;
 			justify-content: center;
 			text-align: center;
+			gap: 0.5rem;
+
+			img {
+				width: 2rem;
+			}
 		}
 
 		> *:first-child {
