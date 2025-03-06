@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/DTuzj3NS.js";import{$ as n,n as a}from"../chunks/D2R92oOg.js";import{h as i}from"../chunks/ChMeJBU0.js";import{t as r,a as s}from"../chunks/hktnC11W.js";import{D as u}from"../chunks/waNSgNVq.js";var p=r(`<h1>Conclusion</h1> <p>Congratulations, you've finished the Cabin documentation! 🎉🎉 Celebrate! Order a pizza! Have a
+import"../chunks/CWj6FrbW.js";import"../chunks/DTuzj3NS.js";import{$ as n,n as a}from"../chunks/D2R92oOg.js";import{h as i}from"../chunks/ChMeJBU0.js";import{t as r,a as s}from"../chunks/hktnC11W.js";import{D as u}from"../chunks/DPlR9Xj5.js";var p=r(`<h1>Conclusion</h1> <p>Congratulations, you've finished the Cabin documentation! 🎉🎉 Celebrate! Order a pizza! Have a
 		Dr. Pepper!</p> <h2>Next Steps</h2> <p>I have nothing left to teach you, young pupil. It's time to have confidence in yourself and your
 		abilities, and be the extraordinary programmer that I know you are. Go out there and make some
 		awesome shit. When you do, show us in the community Discord! We're always happy to see what cool
