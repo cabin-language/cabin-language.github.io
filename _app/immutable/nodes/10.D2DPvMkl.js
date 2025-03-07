@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as T,q as o,o as V,z as P}from"../chunks/DneM_Zg5.js";import{h as N}from"../chunks/DhpMl-z_.js";import{t as r,a as t}from"../chunks/Ke2h0E31.js";import{D as S}from"../chunks/CbiU2ppx.js";import{S as i}from"../chunks/Dfsqygma.js";var E=r(`<pre>let TextExtension = extensionof Text &lbrace;
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as T,q as o,o as V,z as P}from"../chunks/DneM_Zg5.js";import{h as N}from"../chunks/DhpMl-z_.js";import{t as r,a as t}from"../chunks/Ke2h0E31.js";import{D as S}from"../chunks/CbiU2ppx.js";import{S as i}from"../chunks/DU3z__Ac.js";var E=r(`<pre>let TextExtension = extensionof Text &lbrace;
     is_danny = action(this: Text): Boolean &lbrace;
         is_danny is this == "danny";
     &rbrace;
