@@ -11,7 +11,7 @@ bun run build
 # fudging everything up
 touch build/.nojekyll
 
-# CNAME
+# CNAME for domains
 touch build/CNAME
 echo "cabin-language.org" >> build/CNAME
 
@@ -20,5 +20,5 @@ git add .
 git commit -m "New build deployment"
 git push
 
-# Push the build to the `gh-pages` branch
+# Force push the build to the `gh-pages` branch
 git push origin `git subtree split --prefix build main`:gh-pages --force

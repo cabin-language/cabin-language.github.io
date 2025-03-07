@@ -1,4 +1,5 @@
 <script>
+	import Code from '../../../components/Code.svelte';
 	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
 </script>
@@ -340,6 +341,90 @@ let AddVectors = extensionof Vector tobe Addable &lbrace;
 			) cannot be marked
 			<code>#[default]</code>
 			; Only at most one.
+		</li>
+	</ul>
+
+	<h2 id="getters">Extension Getters</h2>
+
+	<p>
+		Extensions support a feature called <b>getters</b>
+		. Getters can cause confusion, so use them sparingly.
+	</p>
+
+	<p>
+		So here's the situation: Let's say we have the following <code>Coordinate</code>
+		group:
+	</p>
+
+	<Code
+		code={`
+		let Coordinate = group {
+			x: Number,
+			y: Number,
+		};
+	`}
+	/>
+
+	<p>Now, maybe we want to make another way to represent coordinates:</p>
+
+	<Code
+		code={`
+		let Coordinate = group {
+			x: Number,
+			y: Number,
+		};
+
+		let Polar = group {
+			r: Number,
+			theta: Number,
+		};
+	`}
+	/>
+
+	<p>
+		Now, what happens if we want to make an <code>extensionof Polar tobe Coordinate</code>
+		? There's nothing we can use for the
+		<code>x</code>
+		and
+		<code>y</code>
+		properties. This is where
+		<b>getters</b>
+		come in. Getters allow using an
+		<code>action</code>
+		instead of the property directly:
+	</p>
+
+	<Code
+		code={`
+		let PolarToCoordinate = extensionof Polar tobe Coordinate {
+			x = action(this: This): Number {
+				x is this.r * this.theta.cos();
+			},
+			y = action(this: This): Number {
+				y is this.r * this.theta.sin();
+			}
+		};
+	`}
+	/>
+
+	<p>
+		It's important to note that from the outside, these properties are opaque, meaning the caller
+		doesn't <i>know</i>
+		they're actions, they're simply referenced as a property and automatically called.
+	</p>
+
+	<p>Some important points about extension getters:</p>
+
+	<ul>
+		<li>
+			The signature of the getter must exactly match <code>action(this: This): PropertyType</code>
+		</li>
+		<li>
+			All getters are automatically marked with <code>#[no_side_effects]</code>
+			. This means you cannot interact with the system in any way from getters, such as printing to the
+			console, taking user input, writing files, etc. While this helps avoid hidden behavior, note that
+			there's no way for the compiler to prevent getters from entering an infinite loop or recursing
+			indefinitely.
 		</li>
 	</ul>
 </Documentation>

@@ -1,38 +1,25 @@
-# sv
+# Cabin Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+The official website for the Cabin programming language, hosted at [cabin-language.org](cabin-language.org).
 
-## Creating a project
+## Contributor Notes
 
-If you're seeing this, you've probably already done this step. Congrats!
+The Cabin website is written with [Svelte](https://svelte.dev/), [SvelteKit](https://svelte.dev/docs/kit/introduction), and [TypeScript](https://www.typescriptlang.org/), and built with [bun](https://bun.sh).
 
-```bash
-# create a new project in the current directory
-npx sv create
+To be able to build the website, you need to [install bun](https://bun.sh/).
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To develop the project on your local machine, run the following:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/cabin-language/cabin-language.github.io.git
+bun install
+bun run dev --open
 ```
 
-## Building
-
-To create a production version of your app:
+The website can be automatically published and deployed with the `deploy` script:
 
 ```bash
-npm run build
+./scripts/deploy
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+This will automatically build the project, push the changes, and update the `gh-pages` branch. Obviously, you can only do this if you have the permissions.

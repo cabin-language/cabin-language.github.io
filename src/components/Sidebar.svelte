@@ -240,6 +240,7 @@
 				<li><a href="/docs/extensions#polymorphic-extensions">Polymorphic extensions</a></li>
 				<li><a href="/docs/extensions#operator-overloading">Operator Overloading</a></li>
 				<li><a href="/docs/extensions#default-extensions">Default Extensions</a></li>
+				<li><a href="/docs/extensions#getters">Extension Getters</a></li>
 			</ul>
 		</li>
 		<li>
