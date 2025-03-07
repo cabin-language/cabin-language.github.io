@@ -13,7 +13,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		font-size: clamp(1vw, 0.75rem, 1rem);
+		font-size: 0.75rem;
 		text-wrap: nowrap;
 
 		:global(> *) {
