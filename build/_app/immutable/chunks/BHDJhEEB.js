@@ -1,0 +1,1 @@
+import"./CWj6FrbW.js";import{v as a,w as s}from"./DneM_Zg5.js";import{t as p,a as i}from"./Ke2h0E31.js";import{s as m}from"./BJJSfSGq.js";var c=p('<code class="svelte-10k0vxs"><!></code>');function f(o,r){var e=c(),t=a(e);m(t,()=>r.children),s(e),i(o,e)}export{f as S};
