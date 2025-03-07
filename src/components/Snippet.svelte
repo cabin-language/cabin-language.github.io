@@ -9,11 +9,11 @@
 		background-color: #28283d;
 		color: white;
 		border-radius: 0.5rem;
-		padding: 1rem;
+		padding: clamp(1vw, 0.75rem, 1rem);
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		font-size: 1rem;
+		font-size: clamp(1vw, 0.75rem, 1rem);
 		text-wrap: nowrap;
 
 		:global(> *) {
