@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as v,q as i,o as w}from"../chunks/DneM_Zg5.js";import{h as _}from"../chunks/DhpMl-z_.js";import{t,a as r}from"../chunks/Ke2h0E31.js";import{D as y}from"../chunks/CbiU2ppx.js";import{S as n}from"../chunks/DU3z__Ac.js";var $=t(`<pre>let length_in_cm = if units == "inches" &lbrace;
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as v,q as i,o as w}from"../chunks/DneM_Zg5.js";import{h as _}from"../chunks/DhpMl-z_.js";import{t,a as r}from"../chunks/Ke2h0E31.js";import{D as y}from"../chunks/CbiU2ppx.js";import{S as n}from"../chunks/BHDJhEEB.js";var $=t(`<pre>let length_in_cm = if units == "inches" &lbrace;
     length_in_cm is length * 2.54;
 &rbrace; otherwise &lbrace;
     length_in_cm is length;
