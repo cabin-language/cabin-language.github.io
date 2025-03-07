@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as f,q as a,o as b,z as u}from"../chunks/DneM_Zg5.js";import{h as y}from"../chunks/DhpMl-z_.js";import{t,a as r}from"../chunks/Ke2h0E31.js";import{D as v}from"../chunks/CbiU2ppx.js";import{S as s}from"../chunks/BHDJhEEB.js";var g=t(`<pre>foreach ghost in ["skulker", "johnny", "ember"] &lbrace;
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as f,q as a,o as b,z as u}from"../chunks/DneM_Zg5.js";import{h as y}from"../chunks/DhpMl-z_.js";import{t,a as r}from"../chunks/Ke2h0E31.js";import{D as v}from"../chunks/CbiU2ppx.js";import{S as s}from"../chunks/DU3z__Ac.js";var g=t(`<pre>foreach ghost in ["skulker", "johnny", "ember"] &lbrace;
     print(ghost);
 &rbrace;;
 </pre>`),w=t(`<pre>foreach number in 1.to(10) &lbrace;
