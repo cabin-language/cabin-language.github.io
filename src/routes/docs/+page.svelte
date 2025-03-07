@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Docs | Cabin</title>
+	<title>Docs&nbsp;&nbsp;•&nbsp;&nbsp;Cabin</title>
 </svelte:head>
 
 <Documentation page="Introduction">

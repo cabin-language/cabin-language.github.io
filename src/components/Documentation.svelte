@@ -21,13 +21,24 @@
 		previous_label = previous?.label ?? null;
 		previous_path = previous?.path ?? null;
 	});
+
+	let main: HTMLElement;
+
+	function toggleMain() {
+		main.style.display = main.style.display === 'none' ? 'flex' : 'none';
+	}
 </script>
 
 <div class="wrapper">
-	<Navbar />
+	<Navbar
+		sidebar={() => {
+			sidebar.toggle();
+			toggleMain();
+		}}
+	/>
 	<div class="inner">
 		<Sidebar {page} bind:this={sidebar} />
-		<main>
+		<main bind:this={main}>
 			{@render children()}
 			<span class="navigation-buttons">
 				{#if previous_label}
@@ -85,7 +96,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
-		padding: 3rem;
+		padding: min(8vw, 3rem);
 		padding-top: 1rem;
 		padding-bottom: 7rem;
 		overflow-y: auto;
@@ -95,11 +106,19 @@
 			padding-top: 1rem;
 		}
 
+		:global(hr) {
+			background-image: linear-gradient(to right, #89dceb, #b4befe);
+			border-radius: 100vmax;
+			min-height: 2px;
+			width: 100%;
+		}
+
 		.navigation-buttons {
 			margin-left: auto;
 			margin-right: auto;
 			display: flex;
-			gap: 5rem;
+			width: fit-content;
+			gap: min(10vw, 5rem);
 			margin-top: 3rem;
 
 			> a {
@@ -107,7 +126,7 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				width: 10rem;
+				width: min(32vw, 10rem);
 				border-radius: 0.5rem;
 				box-shadow: 0px 0px 0.75rem black;
 				padding-top: 0.5rem;

@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Home • Cabin</title>
+	<title>Home&nbsp;&nbsp;•&nbsp;&nbsp;Cabin</title>
 </svelte:head>
 
 <Navbar />
@@ -11,7 +11,9 @@
 	<div>
 		<h1>Cabin</h1>
 		<p>A dead simple, super fast, and completely safe programming language.</p>
-		<p>For the developer that wants to <span>Get Stuff Done&trade;</span></p>
+		<p>
+			For the developer that wants to <span>Get Stuff Done&trade;</span>
+		</p>
 	</div>
 	<a class="get-started" href="/docs">Get Started</a>
 </main>
@@ -27,6 +29,9 @@
 		justify-content: center;
 		color: #cdd6f4;
 		gap: 3rem;
+		text-align: center;
+		padding-left: 2rem;
+		padding-right: 2rem;
 
 		p > span {
 			color: white;

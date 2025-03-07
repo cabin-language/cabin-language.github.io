@@ -15,6 +15,33 @@
 				(element.firstElementChild as HTMLElement).style.color = 'white';
 			}
 		});
+
+		// Highlight headers as the user scrolls
+		const headers = document.querySelectorAll('h2, h3');
+		const headerLinks = document.querySelectorAll('.sidebar ul > li > ul > li > a');
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						headerLinks.forEach((link) => {
+							const linkElement = link as HTMLElement;
+							linkElement.style.color = '#9399b2';
+							linkElement.parentElement!.style.setProperty('--diamond-border', '#585b70');
+							linkElement.parentElement!.style.setProperty('--diamond-background', '#181825');
+							let href = link.getAttribute('href')!;
+							if (href.substring(href.indexOf('#') + 1) === entry.target.id) {
+								linkElement.style.color = 'white';
+								linkElement.parentElement!.style.setProperty('--diamond-border', 'white');
+								linkElement.parentElement!.style.setProperty('--diamond-background', '#b4befe');
+							}
+						});
+					}
+				});
+			},
+			{ threshold: 0.9 } // Trigger when 50% of the section is visible
+		);
+
+		headers.forEach((header) => observer.observe(header));
 	});
 
 	export function next(): { path: string; label: string } | null {
@@ -48,9 +75,23 @@
 
 		return null;
 	}
+
+	let sidebar: HTMLElement;
+
+	export function show() {
+		sidebar.style.display = 'block';
+	}
+
+	export function hide() {
+		sidebar.style.display = 'none';
+	}
+
+	export function toggle() {
+		sidebar.style.display = ['', 'none'].includes(sidebar.style.display) ? 'block' : 'none';
+	}
 </script>
 
-<section>
+<section class="sidebar" bind:this={sidebar}>
 	<h1>Contents</h1>
 
 	<ul bind:this={list}>
@@ -161,6 +202,7 @@
 		<li>
 			<a href="/docs/groups">Groups</a>
 			<ul>
+				<li><a href="/docs/groups#introduction">Introduction</a></li>
 				<li><a href="/docs/groups#nominality">Nominality</a></li>
 				<li><a href="/docs/groups#mutability">Mutability</a></li>
 				<li><a href="/docs/groups#visibility">Visibility</a></li>
@@ -182,7 +224,7 @@
 			</ul>
 		</li>
 		<li>
-			Runtime Evaluation
+			<a href="/docs/runtime-evaluation">Runtime Evaluation</a>
 			<ul>
 				<li>Command-Line Arguments</li>
 				<li>
@@ -192,16 +234,23 @@
 			</ul>
 		</li>
 		<li>
-			Extensions
+			<a href="/docs/extensions">Extensions</a>
 			<ul>
-				<li>Basic extensions</li>
-				<li>Polymorphic extensions</li>
-				<li>Operator Overloading</li>
+				<li><a href="/docs/extensions#basic-extensions">Basic extensions</a></li>
+				<li><a href="/docs/extensions#polymorphic-extensions">Polymorphic extensions</a></li>
+				<li><a href="/docs/extensions#operator-overloading">Operator Overloading</a></li>
+				<li><a href="/docs/extensions#default-extensions">Default Extensions</a></li>
 			</ul>
 		</li>
-		<li>Tags</li>
 		<li>
-			Optionals & Errors
+			<a href="/docs/tags">Tags</a>
+			<ul>
+				<li><a href="/docs/tags#introduction">Introduction</a></li>
+				<li><a href="/docs/tags#mutation">Mutation</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="/docs/optionals-and-errors">Optionals &amp; Errors</a>
 			<ul>
 				<li>
 					The <code>Optional</code>
@@ -219,25 +268,6 @@
 				</li>
 			</ul>
 		</li>
-		<li>
-			Standard Library
-			<ul>
-				<li>Text</li>
-				<li>Boolean</li>
-				<li>Number</li>
-				<li>List</li>
-				<li>Map</li>
-				<li>system</li>
-				<li>Operators</li>
-				<ul>
-					<li><code>Addable</code></li>
-					<li><code>Subtractable</code></li>
-					<li><code>Multpliable</code></li>
-					<li><code>Dividable</code></li>
-					<li><code>Fallible</code></li>
-				</ul>
-			</ul>
-		</li>
 		<li><a href="/docs/external-libraries">External Libraries</a></li>
 		<li><a href="/docs/conclusion">Conclusion</a></li>
 	</ul>
@@ -247,15 +277,24 @@
 	@media (max-width: 800px) {
 		section {
 			display: none;
+			width: 100%;
+		}
+	}
+
+	@media (min-width: 800px) {
+		section {
+			display: block;
+			width: 18rem;
 		}
 	}
 
 	section {
 		color: #cdd6f4;
 		overflow-y: auto;
-		width: 18rem;
 		padding-top: 1rem;
 		padding-left: 1rem;
+		height: calc(100% - 5rem);
+		overflow-y: auto;
 
 		> ul > li > ul {
 			display: none;
@@ -286,6 +325,20 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		--diamond-border: #585b70;
+		--diamond-background: #181825;
+	}
+
+	ul ul li:not(:has(ul))::after {
+		content: '';
+		background-color: var(--diamond-background);
+		border: 1px solid var(--diamond-border);
+		box-sizing: border-box;
+		width: 0.5rem;
+		height: 0.5rem;
+		position: absolute;
+		left: -1.2rem;
+		rotate: 45deg;
 	}
 
 	ul ul li:first-child::before {
@@ -315,8 +368,7 @@
 		width: 0.5rem;
 		border-left: 2px solid #585b70;
 		border-bottom: 2px solid #585b70;
-		border-bottom-left-radius: 0.2rem;
-		height: 0.9rem;
+		height: 0.95rem;
 		position: absolute;
 		left: -1rem;
 		top: 0rem;

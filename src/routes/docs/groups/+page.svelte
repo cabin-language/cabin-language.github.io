@@ -11,6 +11,13 @@
 	<h1>Groups</h1>
 
 	<p>
+		In this section you'll learn about <b>groups</b>
+		, a core part of Cabin programming.
+	</p>
+
+	<h2 id="introduction">Introduction</h2>
+
+	<p>
 		Groups are a foundational part of Cabin's type system. A <code>group</code>
 		is analagous to a
 		<code>struct</code>
