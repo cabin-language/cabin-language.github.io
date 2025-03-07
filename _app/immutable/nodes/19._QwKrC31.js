@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as h,q as o,o as b,z as g}from"../chunks/DneM_Zg5.js";import{h as u}from"../chunks/DhpMl-z_.js";import{t as r,a as t}from"../chunks/Ke2h0E31.js";import{D as f}from"../chunks/CbiU2ppx.js";import{S as i}from"../chunks/BHDJhEEB.js";var _=r(`<pre>let friend = new Object &lbrace;&rbrace;
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as h,q as o,o as b,z as g}from"../chunks/DneM_Zg5.js";import{h as u}from"../chunks/DhpMl-z_.js";import{t as r,a as t}from"../chunks/Ke2h0E31.js";import{D as f}from"../chunks/7eKlL1Ym.js";import{S as i}from"../chunks/BHDJhEEB.js";var _=r(`<pre>let friend = new Object &lbrace;&rbrace;
 
 #[friend]
 let tucker = new Person &lbrace;

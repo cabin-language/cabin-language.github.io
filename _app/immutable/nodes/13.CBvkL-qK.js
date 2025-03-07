@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as f,q as t,o as b,z as u}from"../chunks/DneM_Zg5.js";import{h as y}from"../chunks/DhpMl-z_.js";import{t as n,a}from"../chunks/Ke2h0E31.js";import{D as w}from"../chunks/CbiU2ppx.js";import{S as i}from"../chunks/BHDJhEEB.js";var v=n(`<pre>let name = "danny";
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as f,q as t,o as b,z as u}from"../chunks/DneM_Zg5.js";import{h as y}from"../chunks/DhpMl-z_.js";import{t as n,a}from"../chunks/Ke2h0E31.js";import{D as w}from"../chunks/7eKlL1Ym.js";import{S as i}from"../chunks/BHDJhEEB.js";var v=n(`<pre>let name = "danny";
 
 if name == "danny" &lbrace;
     print("hi danny");
