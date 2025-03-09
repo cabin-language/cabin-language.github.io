@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Experimental from '../../components/Experimental.svelte';
+	import Experimental from '../../components/notes/Experimental.svelte';
 	import PlayIcon from '../../components/icons/PlayIcon.svelte';
 	import StopIcon from '../../components/icons/StopIcon.svelte';
 	import Navbar from '../../components/Navbar.svelte';

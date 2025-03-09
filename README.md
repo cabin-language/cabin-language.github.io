@@ -16,6 +16,8 @@ bun install
 bun run dev --open
 ```
 
+Note that there's currently a strange bug involving Vite and TreeStter that makes it so that if you manually fully reload a page that has a highlighted `<Snippet />` component, the dev server will crash.
+
 The website can be automatically published and deployed with the `deploy` script:
 
 ```bash

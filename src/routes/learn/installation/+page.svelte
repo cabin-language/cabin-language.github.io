@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Snippet from '../../../components/Snippet.svelte';
 	import WarningIcon from '../../../components/icons/WarningIcon.svelte';
-	import Tip from '../../../components/Tip.svelte';
+	import Tip from '../../../components/notes/Tip.svelte';
 	import ExternalLink from '../../../components/icons/ExternalLink.svelte';
 	import TutorialDocument from '../TutorialDocument.svelte';
 	import windowsIcon from '../../../assets/images/windows.png';

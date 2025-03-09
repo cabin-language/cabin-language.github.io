@@ -1,8 +1,8 @@
 <script>
 	import Snippet from '../../../../components/Snippet.svelte';
-	import PreviewFeatureWarning from '../../../../components/PreviewFeatureWarning.svelte';
 	import WarningIcon from '../../../../components/icons/WarningIcon.svelte';
 	import StandardLibraryDocument from '../StandardLibraryDocument.svelte';
+	import Preview from '../../../../components/notes/Preview.svelte';
 
 	const features = [
 		{
@@ -172,7 +172,7 @@
 		</span>
 
 		{#if property.expanded && property.preview}
-			<PreviewFeatureWarning />
+			<Preview />
 		{/if}
 
 		<p>
