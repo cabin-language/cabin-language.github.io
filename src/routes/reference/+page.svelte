@@ -8,7 +8,7 @@
 	<p>
 		On this page you'll find a few quick references relating to the Cabin language. These are more
 		like records and data than pages worth reading through in their entirety. For learning the
-		language, it's recommended to read through <a href="/docs">the tutorial</a>
+		language, it's recommended to read through <a href="/learn">the tutorial</a>
 		instead.
 	</p>
 

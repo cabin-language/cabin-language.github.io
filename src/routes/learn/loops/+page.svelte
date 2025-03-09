@@ -98,7 +98,7 @@
 
 	<p>
 		Once again, this syntax might look a little strange, but it'll be explained in the next section
-		on <a href="/docs/control-flow">Control Flow</a>
+		on <a href="/learn/control-flow">Control Flow</a>
 		. The takeaway from this example is that loops can be used as expressions. In this case, we iterate
 		over a list of people, and if we find one with the first name
 		<code>"danny"</code>

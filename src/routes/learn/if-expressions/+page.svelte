@@ -123,7 +123,7 @@
 
 	<p>
 		This syntax may look a lttle strange; We'll explain it more soon in the section on <a
-			href="/docs/control-flow"
+			href="/learn/control-flow"
 		>
 			Control Flow
 		</a>
