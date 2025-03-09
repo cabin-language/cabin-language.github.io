@@ -1,8 +1,8 @@
 <script lang="ts">
-	let { type, Icon, children } = $props();
+	let { type, Icon, children, color, color2 } = $props();
 </script>
 
-<p>
+<p style:background-image={`linear-gradient(to bottom right, ${color}, ${color2})`}>
 	<Icon stroke="#11111b" style="width: 1rem;" />
 	<span>
 		<b>{type}:</b>
@@ -13,7 +13,6 @@
 <style>
 	p {
 		color: #11111b;
-		background-color: #94e2d5;
 		padding-left: 0.5rem;
 		padding-bottom: 0.5rem;
 		padding-top: 0.5rem;
@@ -22,7 +21,6 @@
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
-		border: 3px solid rgba(255, 255, 255, 50%);
 
 		span {
 			display: flex;

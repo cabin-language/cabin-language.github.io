@@ -5,4 +5,4 @@
 	let { children } = $props();
 </script>
 
-<Note Icon={LightbulbIcon} {children} type="Tip" />
+<Note Icon={LightbulbIcon} {children} type="Tip" color="#89dceb" color2="#89b4fa" />

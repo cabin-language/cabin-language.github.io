@@ -3,6 +3,7 @@
 	import WarningIcon from '../../../../components/icons/WarningIcon.svelte';
 	import StandardLibraryDocument from '../StandardLibraryDocument.svelte';
 	import Preview from '../../../../components/notes/Preview.svelte';
+	import ClockIcon from '../../../../components/icons/ClockIcon.svelte';
 
 	const features = [
 		{
@@ -158,7 +159,7 @@
 		<hr />
 
 		<span>
-			<WarningIcon stroke="#f9e2af" style="width: 1rem; height: 1rem;" />
+			<ClockIcon stroke="#cba6f7" style="width: 1rem; height: 1rem;" />
 			<h2 id={property.id}>
 				<code>{property.signature}</code>
 			</h2>

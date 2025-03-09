@@ -220,17 +220,6 @@ code in `<pre>`.
 		width: 100%;
 	}
 
-	.cursor {
-		position: absolute;
-		width: 2px;
-		padding: 0px;
-		border-radius: 100vmax;
-		height: 1lh;
-		background-color: white;
-		border-radius: 0px;
-		top: 1rem;
-	}
-
 	code {
 		position: relative;
 		background-color: #28283d;
