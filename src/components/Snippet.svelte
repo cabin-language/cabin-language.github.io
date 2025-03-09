@@ -1,3 +1,7 @@
+<!--
+    @component
+    @deprecated Use <Code />
+-->
 <script lang="ts">
 	let { children } = $props();
 </script>

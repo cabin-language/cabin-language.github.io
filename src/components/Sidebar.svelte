@@ -109,6 +109,7 @@
 			<ul>
 				<li><a href="/docs/installation#testing">Testing</a></li>
 				<li><a href="/docs/installation#troubleshooting">Troubleshooting</a></li>
+				<li><a href="/docs/installation#editor-setup">Editor Setup</a></li>
 			</ul>
 		</li>
 		<li>

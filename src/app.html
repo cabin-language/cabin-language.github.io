@@ -46,6 +46,11 @@
 				overflow: hidden;
 			}
 
+			li:has(> input[type="checkbox"]:first-child)::marker {
+				display: none;
+				content: '';
+			}
+
 			body {
 				width: 100%;
 				height: 100%;

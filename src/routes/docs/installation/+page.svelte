@@ -1,9 +1,18 @@
 <script lang="ts">
 	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import Code from '../../../components/Code.svelte';
+	import WarningIcon from '../../../components/icons/WarningIcon.svelte';
 	import windowsIcon from '../../../assets/images/windows.png';
 	import macIcon from '../../../assets/images/mac.png';
 	import linuxIcon from '../../../assets/images/linux.png';
+	import visualStudioCodeIcon from '../../../assets/images/visual_studio_code.png';
+	import neovimIcon from '../../../assets/images/neovim.png';
+	import vimIcon from '../../../assets/images/vim.png';
+	import zedIcon from '../../../assets/images/zed.png';
+	import unknownIcon from '../../../assets/images/unknown.png';
+	import Tip from '../../../components/Tip.svelte';
+	import ExternalLink from '../../../components/icons/ExternalLink.svelte';
 
 	let os = $state('windows');
 
@@ -11,6 +20,12 @@
 		return function () {
 			os = newOs;
 		};
+	}
+
+	function expandEditor(event: MouseEvent) {
+		let header = event.target as HTMLElement;
+		let style = (header.nextElementSibling as HTMLElement).style;
+		style.display = style.display === 'flex' ? 'none' : 'flex';
 	}
 </script>
 
@@ -47,6 +62,14 @@
 			<span style:color="#f38ba8">cabin-language</span>
 		</div>
 	</Snippet>
+
+	<Tip>
+		Don't have cargo? Install Rust with <a href="https://www.rust-lang.org/tools/install">
+			the instructions on the official Rust website
+		</a>
+		.
+		<ExternalLink stroke="#11111b" />
+	</Tip>
 
 	<h2 id="testing">Testing</h2>
 
@@ -216,7 +239,182 @@ The Cabin compiler.
 		you've received, and what you're confused on or struggling with.
 	</p>
 
-	<p>Good luck!</p>
+	<h2 id="editor-setup">Editor Setup</h2>
+
+	<p>
+		Cabin is supported in many popular text editors with extensions and plugins. Choose your editor
+		below to get set up.
+	</p>
+
+	<h2 class="editor">
+		<img src={visualStudioCodeIcon} alt="Visual Studio Code" />
+		Visual Studio Code
+	</h2>
+
+	<h2 class="editor">
+		<img src={vimIcon} alt="Vim" />
+		Vim
+	</h2>
+
+	<h2 class="editor" onclick={expandEditor}>
+		<img src={neovimIcon} alt="Neovim" />
+		Neovim
+	</h2>
+
+	<div>
+		<p>
+			Currently, the best support for Cabin in Neovim is provided through the <a
+				href="https://github.com/cabin-language/cabin.nvim"
+			>
+				cabin.nvim
+			</a>
+			plugin. The plugin will automatically set up filetype detection, nerd font icons, install and set
+			up the
+			<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+				cabin language server
+			</a>
+			, as well as the
+			<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+				cabin tree-sitter parser
+			</a>
+			for semantic highlighting.
+		</p>
+
+		<h3>Installation</h3>
+
+		<b>💤 lazy.nvim</b>
+
+		<Code
+			language="lua"
+			code={`
+			{
+				"cabin-language/cabin.nvim",
+				dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional
+				opts = {}
+			}
+		`}
+		/>
+
+		<h3>
+			<WarningIcon stroke="#f9e2af" style="width: 1.25rem;" />
+			Future Deprecation Warning
+		</h3>
+
+		<p>This plugin may be deprecated in the future if the following criteria are met:</p>
+
+		<ul>
+			<li>
+				<input type="checkbox" disabled />
+				Cabin is registered as a
+				<a
+					href="https://neovim.io/doc/user/filetype.html#_3.-docs-for-the-default-filetype-plugins."
+				>
+					default filetype
+				</a>
+			</li>
+			<li>
+				<input type="checkbox" disabled />
+				Cabin has an icon registered in
+				<a href="https://github.com/nvim-tree/nvim-web-devicons">nvim-web-devicons</a>
+			</li>
+			<li>
+				<input type="checkbox" disabled />
+				The
+				<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+					cabin language server
+				</a>
+				is available through
+				<a href="https://github.com/williamboman/mason.nvim">mason.nvim</a>
+			</li>
+			<li>
+				<input type="checkbox" disabled />
+				The cabin tree-sitter parser is available through
+				<a href="https://github.com/nvim-tree-sitter/nvim-tree-sitter">nvim-tree-sitter</a>
+			</li>
+		</ul>
+	</div>
+
+	<h2 class="editor" onclick={expandEditor}>
+		<img src={zedIcon} alt="Neovim" />
+		Zed
+	</h2>
+
+	<h2 class="editor" onclick={expandEditor}>
+		<img src={unknownIcon} alt="Other" />
+		Other
+	</h2>
+
+	<div>
+		<p>
+			If you're using an editor that isn't listed here, you can use the tools Cabin provides with
+			your editor-specific setup.
+		</p>
+
+		<h3>Highlighting</h3>
+
+		<p>Cabin offers a number of highlighting solutions depending on what your editor supports:</p>
+
+		<ul>
+			<li>
+				<b>Tree-Sitter:</b>
+				The Cabin Tree-Sitter grammar and parser, along with its accompanying highlight queries, can
+				be used to highlight code in an editor that supports Tree-Sitter highlighting.
+			</li>
+			<li>
+				<b>TextMate:</b>
+				There also exists a Cabin TextMate grammar that can be used by editors that utilize TextMate
+				grammars for syntax highlighting.
+			</li>
+		</ul>
+
+		<h3>Diagnostics</h3>
+
+		<p>
+			There are multiple ways to get live diagnostics for your Cabin code in real-time in an editor:
+		</p>
+
+		<ul>
+			<li>
+				<b>Language Server Protocol:</b>
+				Cabin has a language server that provides a server-side implementation of Microsoft's language
+				server protocol. Many editors use this as a unified way to communicate with languages about diagnostics,
+				among other features.
+			</li>
+			<li style:margin-top="1rem">
+				<b>Compiler Invocation:</b>
+				The Cabin compiler can check a program and output diagnostics in a number of formats; If you
+				can invoke the compiler and parse the result from your editor, you can convert them into your
+				editor-specific diagnostic format:
+			</li>
+		</ul>
+
+		<Snippet>
+			<pre>
+Checks for diagnostics in a Cabin project.
+
+<b>Usage:</b> <span style:color="#89b4fa">cabin check</span> <span
+					style:color="#9399b2">[OPTIONS]</span>
+
+<b>Options:</b>
+
+    <span
+					style:color="#9399b2"
+					style:font-weight="bold">--format</span>: "readable" | "json" = "readable"
+
+        The output format for the diagnostics. If the value is set to "readable" the outputs will 
+        be pretty-printed with a code snippet showing the location of the diagnostic. If the value
+        set to "json", a JSON array of diagnostics will be returned with the structure:
+
+        &lbrace; diagnostics: &lbrace; file: string, line: int, column: int, message: string, severity: string &rbrace;[] &rbrace;
+
+        For example, an example output is:
+
+        &lbrace;"diagnostics":[&lbrace;"file":"/home/jazz/projects/example/src/main.cabin","line":10,"column":4,"message":"Type Mismatch: This value cannot be assigned to this type.","severity","error"&rbrace;]&rbrace;
+
+        "severity" will always be either "error", "warning", "info", or "hint".
+		</pre>
+		</Snippet>
+	</div>
 </Documentation>
 
 <style>
@@ -247,6 +445,31 @@ The Cabin compiler.
 		> img {
 			width: 1rem;
 			height: 1rem;
+		}
+	}
+
+	.editor {
+		padding: 0px;
+		align-items: center;
+		cursor: pointer;
+
+		img {
+			height: 1.5rem;
+		}
+
+		&::after {
+			content: '';
+			width: 0.25rem;
+			height: 0.25rem;
+			rotate: 45deg;
+			border-right: 2px solid white;
+			border-top: 2px solid white;
+		}
+
+		& + div {
+			display: none;
+			flex-direction: column;
+			gap: 1.5rem;
 		}
 	}
 </style>

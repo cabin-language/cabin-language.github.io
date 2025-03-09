@@ -51,7 +51,7 @@
 			<LearnIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
 		{/if}
 	</a>
-	<a href="/standard-library">
+	<a href="/reference">
 		{#if desktop}
 			Reference
 		{:else}

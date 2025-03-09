@@ -102,6 +102,19 @@
 		overflow-y: auto;
 		height: 100%;
 
+		:global(h1, h2, h3) {
+			display: flex;
+			gap: 0.5em;
+		}
+
+		:global(ul:not(:has(> li:has(> input[type='checkbox']:first-child)::marker))) {
+			margin-left: 2rem;
+		}
+
+		:global(li:has(> input[type='checkbox']:first-child) > *:first-child) {
+			margin-right: 0.5rem;
+		}
+
 		:global(h2) {
 			padding-top: 1rem;
 		}

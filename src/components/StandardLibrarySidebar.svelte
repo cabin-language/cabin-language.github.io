@@ -96,110 +96,112 @@
 
 	<ul bind:this={list}>
 		<li>
-			<a href="/standard-library/list">Action</a>
+			<a href="/reference/standard-library/list">Action</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Addable</a>
+			<a href="/reference/standard-library/list">Addable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Anything</a>
+			<a href="/reference/standard-library/list">Anything</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Attempt</a>
+			<a href="/reference/standard-library/list">Attempt</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Boolean</a>
+			<a href="/reference/standard-library/list">Boolean</a>
 		</li>
 		<li>
-			<a href="/standard-library/map">Compareable</a>
+			<a href="/reference/standard-library/map">Compareable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">default</a>
+			<a href="/reference/standard-library/list">default</a>
 		</li>
 		<li>
-			<a href="/standard-library/map">Divideable</a>
+			<a href="/reference/standard-library/map">Divideable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">editable</a>
+			<a href="/reference/standard-library/list">editable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Either</a>
+			<a href="/reference/standard-library/list">Either</a>
 		</li>
 		<li>
-			<a href="/standard-library/map">Exponentiable</a>
+			<a href="/reference/standard-library/map">Exponentiable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Extension</a>
+			<a href="/reference/standard-library/list">Extension</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Group</a>
+			<a href="/reference/standard-library/list">Group</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">input</a>
+			<a href="/reference/standard-library/list">input</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">List</a>
+			<a href="/reference/standard-library/list">List</a>
 		</li>
 		<li>
-			<a href="/standard-library/map">Map</a>
+			<a href="/reference/standard-library/map">Map</a>
 		</li>
 		<li>
-			<a href="/standard-library/map">Multipliable</a>
+			<a href="/reference/standard-library/map">Multipliable</a>
 		</li>
 		<li>
-			<a href="/standard-library/number">Number</a>
+			<a href="/reference/standard-library/number">Number</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Object</a>
+			<a href="/reference/standard-library/list">Object</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Optional</a>
+			<a href="/reference/standard-library/list">Optional</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">print</a>
+			<a href="/reference/standard-library/list">print</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">Subtractable</a>
+			<a href="/reference/standard-library/list">Subtractable</a>
 		</li>
 		<li>
-			<a href="/standard-library/list">system</a>
+			<a href="/reference/standard-library/list">system</a>
 		</li>
 		<li>
-			<a href="/standard-library/text">Text</a>
+			<a href="/reference/standard-library/text">Text</a>
 			<ul>
 				<li>
-					<a href="/standard-library/text#properties">Properties</a>
+					<a href="/reference/standard-library/text#properties">Properties</a>
 					<ul>
-						<li><a href="/standard-library/text#bytes">bytes</a></li>
-						<li><a href="/standard-library/text#ends_with">ends_with</a></li>
-						<li><a href="/standard-library/text#length">length</a></li>
-						<li><a href="/standard-library/text#lines">lines</a></li>
-						<li><a href="/standard-library/text#replace">replace</a></li>
-						<li><a href="/standard-library/text#split">split</a></li>
-						<li><a href="/standard-library/text#split_any">split_any</a></li>
-						<li><a href="/standard-library/text#starts_with">starts_with</a></li>
-						<li><a href="/standard-library/text#trim">trim</a></li>
-						<li><a href="/standard-library/text#trim_end">trim_end</a></li>
-						<li><a href="/standard-library/text#trim_start">trim_start</a></li>
+						<li><a href="/reference/standard-library/text#bytes">bytes</a></li>
+						<li><a href="/reference/standard-library/text#ends_with">ends_with</a></li>
+						<li><a href="/reference/standard-library/text#length">length</a></li>
+						<li><a href="/reference/standard-library/text#lines">lines</a></li>
+						<li><a href="/reference/standard-library/text#replace">replace</a></li>
+						<li><a href="/reference/standard-library/text#split">split</a></li>
+						<li><a href="/reference/standard-library/text#split_any">split_any</a></li>
+						<li><a href="/reference/standard-library/text#starts_with">starts_with</a></li>
+						<li><a href="/reference/standard-library/text#trim">trim</a></li>
+						<li><a href="/reference/standard-library/text#trim_end">trim_end</a></li>
+						<li><a href="/reference/standard-library/text#trim_start">trim_start</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="/standard-library/text#extensions">Extensions</a>
+					<a href="/reference/standard-library/text#extensions">Extensions</a>
 					<ul>
 						<li>
-							<a href="/standard-library/text#extensions">
+							<a href="/reference/standard-library/text#extensions">
 								extensionof Text tobe List&lt;Letter&gt;
 							</a>
 						</li>
 						<li>
-							<a href="/standard-library/text#extensions">extensionof Text tobe Addable</a>
+							<a href="/reference/standard-library/text#extensions">
+								extensionof Text tobe Addable
+							</a>
 						</li>
 					</ul>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="/standard-library/list">visible</a>
+			<a href="/reference/standard-library/list">visible</a>
 		</li>
 	</ul>
 </section>
