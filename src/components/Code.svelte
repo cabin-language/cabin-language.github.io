@@ -43,7 +43,9 @@
 		if (parserLanguage) {
 			await Parser.init({
 				locateFile() {
-					return treeSitterWasm;
+					return VITE_MODE === 'dev'
+						? treeSitterWasm
+						: `${import.meta.url.substring(0, import.meta.url.lastIndexOf('/')).replace('.svelte-kit/output/server/chunks', 'build')}${treeSitterWasm}`;
 				}
 			});
 
