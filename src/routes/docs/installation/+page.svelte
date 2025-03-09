@@ -1,18 +1,17 @@
 <script lang="ts">
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
-	import Code from '../../../components/Code.svelte';
 	import WarningIcon from '../../../components/icons/WarningIcon.svelte';
+	import Tip from '../../../components/Tip.svelte';
+	import ExternalLink from '../../../components/icons/ExternalLink.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 	import windowsIcon from '../../../assets/images/windows.png';
 	import macIcon from '../../../assets/images/mac.png';
 	import linuxIcon from '../../../assets/images/linux.png';
-	import visualStudioCodeIcon from '../../../assets/images/visual_studio_code.png';
+	import visualStudioSnippetIcon from '../../../assets/images/visual_studio_code.png';
 	import neovimIcon from '../../../assets/images/neovim.png';
 	import vimIcon from '../../../assets/images/vim.png';
 	import zedIcon from '../../../assets/images/zed.png';
 	import unknownIcon from '../../../assets/images/unknown.png';
-	import Tip from '../../../components/Tip.svelte';
-	import ExternalLink from '../../../components/icons/ExternalLink.svelte';
 
 	let os = $state('windows');
 
@@ -33,20 +32,20 @@
 	<title>Installation • Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Installation">
+<TutorialDocument page="Installation">
 	<h1>Installation</h1>
 
 	<span class="os-buttons">
 		<button style:background={os === 'windows' ? '#28283d' : '#181825'} onclick={setOs('windows')}>
-			<img src={windowsIcon} />
+			<img src={windowsIcon} alt="Windows" />
 			Windows
 		</button>
 		<button style:background={os === 'mac' ? '#28283d' : '#181825'} onclick={setOs('mac')}>
-			<img src={macIcon} />
+			<img src={macIcon} alt="MacOS" />
 			Mac
 		</button>
 		<button style:background={os === 'linux' ? '#28283d' : '#181825'} onclick={setOs('linux')}>
-			<img src={linuxIcon} />
+			<img src={linuxIcon} alt="Linux" />
 			Linux
 		</button>
 	</span>
@@ -55,13 +54,7 @@
 		Cabin can be installed through <code>cargo</code>
 		:
 	</p>
-	<Snippet>
-		<div>
-			<span style:color="#89b4fa">cargo</span>
-			<span style:color="#89b4fa">install</span>
-			<span style:color="#f38ba8">cabin-language</span>
-		</div>
-	</Snippet>
+	<Snippet code={`cargo install cabin-language`} />
 
 	<Tip>
 		Don't have cargo? Install Rust with <a href="https://www.rust-lang.org/tools/install">
@@ -78,9 +71,7 @@
 		command:
 	</p>
 
-	<Snippet>
-		<span style:color="#89b4fa">cabin</span>
-	</Snippet>
+	<Snippet code="cabin" />
 
 	<p>If all goes well, you should see an output like this:</p>
 
@@ -156,7 +147,7 @@ The Cabin compiler.
 		, you'd add:
 	</p>
 
-	<Snippet><pre>export PATH="$PATH:/home/user/.programs"</pre></Snippet>
+	<Snippet code={`export PATH="$PATH:/home/user/.programs"`} />
 
 	<p>
 		Alternatively, if you're not sure whether the compiler is on your system, or you think it might
@@ -247,8 +238,8 @@ The Cabin compiler.
 	</p>
 
 	<h2 class="editor">
-		<img src={visualStudioCodeIcon} alt="Visual Studio Code" />
-		Visual Studio Code
+		<img src={visualStudioSnippetIcon} alt="Visual StudSnippetode" />
+		Visual Studio Snippet
 	</h2>
 
 	<h2 class="editor">
@@ -284,7 +275,7 @@ The Cabin compiler.
 
 		<b>💤 lazy.nvim</b>
 
-		<Code
+		<Snippet
 			language="lua"
 			code={`
 			{
@@ -415,7 +406,7 @@ Checks for diagnostics in a Cabin project.
 		</pre>
 		</Snippet>
 	</div>
-</Documentation>
+</TutorialDocument>
 
 <style>
 	.os-buttons {

@@ -1,9 +1,8 @@
 <script>
-	import Code from '../../../../components/Code.svelte';
-	import PreviewFeatureWarning from '../../../../components/PreviewFeatureWarning.svelte';
 	import Snippet from '../../../../components/Snippet.svelte';
-	import StandardLibraryPage from '../../../../components/StandardLibraryPage.svelte';
+	import PreviewFeatureWarning from '../../../../components/PreviewFeatureWarning.svelte';
 	import WarningIcon from '../../../../components/icons/WarningIcon.svelte';
+	import StandardLibraryDocument from '../StandardLibraryDocument.svelte';
 
 	const features = [
 		{
@@ -132,7 +131,7 @@
 	<title>Standard Library&nbsp;&nbsp;•&nbsp;&nbsp;Cabin Docs</title>
 </svelte:head>
 
-<StandardLibraryPage page="Text">
+<StandardLibraryDocument page="Text">
 	<h1 id="text"><code>Text</code></h1>
 
 	<p>
@@ -146,11 +145,12 @@
 		syntax; Instead, quoted text literals are used to instantiate it:
 	</p>
 
-	<Snippet>
-		<pre>
-let text = "hello!"; # instance of Text
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let text = "hello!"; # instance of Text
+		`}
+	/>
 
 	<h2 id="properties">Properties</h2>
 
@@ -186,7 +186,7 @@ let text = "hello!"; # instance of Text
 		{#if property.expanded}
 			<h3>Example:</h3>
 
-			<Code language="cabin" code={property.example} />
+			<Snippet language="cabin" code={property.example} />
 		{/if}
 	{/each}
 
@@ -200,7 +200,7 @@ let text = "hello!"; # instance of Text
 	{/each}
 
 	<hr />
-</StandardLibraryPage>
+</StandardLibraryDocument>
 
 <style>
 	span {

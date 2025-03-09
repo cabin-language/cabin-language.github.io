@@ -24,6 +24,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
+		border: 3px solid rgba(255, 255, 255, 50%);
 
 		span {
 			display: flex;

@@ -1,13 +1,13 @@
 <script>
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Tags&nbsp;&nbsp;•&nbsp;&nbsp;Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Tags">
+<TutorialDocument page="Tags">
 	<h1>Tags</h1>
 
 	<p>
@@ -23,17 +23,18 @@
 		syntax:
 	</p>
 
-	<Snippet>
-		<pre>
-let friend = new Object &lbrace;&rbrace;
+	<Snippet
+		language="cabin"
+		code={`
+			let friend = new Object {};
 
-#[friend]
-let tucker = new Person &lbrace;
-    first_name = "tucker",
-    last_name = "foley"
-&rbrace;;
-</pre>
-	</Snippet>
+			#[friend]
+			let tucker = new Person {
+				first_name = "tucker",
+				last_name = "foley"
+			};
+		`}
+	/>
 
 	<p>
 		The only purpose of tagging an object is to later check if an object <i>has</i>
@@ -42,11 +43,12 @@ let tucker = new Person &lbrace;
 		action on them:
 	</p>
 
-	<Snippet>
-		<pre>
-let is_friend = tucker.has_tag(friend);
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let is_friend = tucker.has_tag(friend);
+		`}
+	/>
 
 	<p>
 		Some tags, such as <code>#[editable]</code>
@@ -66,26 +68,27 @@ let is_friend = tucker.has_tag(friend);
 		keep its tags. For example:
 	</p>
 
-	<Snippet>
-		<pre>
-let friend = new Object &lbrace;&rbrace;
+	<Snippet
+		language="cabin"
+		code={`
+			let friend = new Object {};
 
-#[editable, friend]
-let person = new Person &lbrace;
-    first_name = "tucker",
-    last_name = "foley"
-&rbrace;;
+			#[editable, friend]
+			let person = new Person {
+				first_name = "tucker",
+				last_name = "foley"
+			};
 
-print(person.has_tag(friend)) # true
+			print(person.has_tag(friend)); # true
 
-person = new Person &lbrace;
-    first_name = "dash",
-    last_name = "baxter"
-&rbrace;;
+			person = new Person {
+				first_name = "dash",
+				last_name = "baxter"
+			};
 
-print(person.has_tag(friend)) # false
-</pre>
-	</Snippet>
+			print(person.has_tag(friend)); # false
+		`}
+	/>
 
 	<p>
 		This is <i>almost</i>
@@ -98,4 +101,4 @@ print(person.has_tag(friend)) # false
 		<code>#[editable]</code>
 		will not remove those tags.
 	</p>
-</Documentation>
+</TutorialDocument>

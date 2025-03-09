@@ -1,14 +1,14 @@
 <script>
 	import discordIcon from '../../assets/images/discord.png';
 	import githubIcon from '../../assets/images/github.jpg';
-	import Community from '../../components/Community.svelte';
+	import CommunityDocument from './CommunityDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Community • Cabin</title>
 </svelte:head>
 
-<Community page="Community">
+<CommunityDocument page="Community">
 	<h1>Community</h1>
 
 	<p>
@@ -22,7 +22,10 @@
 		the Cabin Discord server.
 	</p>
 
-	<h2 id="discord"><img src={discordIcon} />Discord</h2>
+	<h2 id="discord">
+		<img src={discordIcon} alt="Discord" />
+		Discord
+	</h2>
 
 	<a href="https://discord.gg/ZcfC322pAb">https://discord.gg/ZcfC322pAb</a>
 
@@ -32,7 +35,10 @@
 		suggestions, updates, and more. It's a welcoming and friendly place for all campers!
 	</p>
 
-	<h2 id="github"><img src={githubIcon} />GitHub</h2>
+	<h2 id="github">
+		<img src={githubIcon} alt="GitHub" />
+		GitHub
+	</h2>
 
 	<a href="https://github.com/cabin-language">https://github.com/cabin-language</a>
 
@@ -43,67 +49,78 @@
 	</p>
 
 	<ul>
-		<li
-			><a
+		<li>
+			<a
 				target="_blank"
 				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin">The Cabin API</a
-			></li
-		>
-		<li
-			><a
+				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin"
+			>
+				The Cabin API
+			</a>
+		</li>
+		<li>
+			<a
 				target="_blank"
 				rel="noopener noreferrer"
 				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-bin"
-				>The Cabin compiler executable</a
-			></li
-		>
-		<li
-			><a
+			>
+				The Cabin compiler executable
+			</a>
+		</li>
+		<li>
+			<a
 				target="_blank"
 				rel="noopener noreferrer"
 				href="https://github.com/cabin-language/cabin/tree/main/crates/tree-sitter-cabin"
-				>The Cabin Tree-Sitter parser</a
-			></li
-		>
-		<li
-			><a
+			>
+				The Cabin Tree-Sitter parser
+			</a>
+		</li>
+		<li>
+			<a
 				target="_blank"
 				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin-language.github.io">The Cabin website</a
-			></li
-		>
-		<li
-			><a
+				href="https://github.com/cabin-language/cabin-language.github.io"
+			>
+				The Cabin website
+			</a>
+		</li>
+		<li>
+			<a
 				target="_blank"
 				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin.nvim">The Cabin Neovim plugin</a
-			></li
-		>
-		<li
-			><a
+				href="https://github.com/cabin-language/cabin.nvim"
+			>
+				The Cabin Neovim plugin
+			</a>
+		</li>
+		<li>
+			<a
 				href="https://github.com/cabin-language/vscode-cabin"
 				target="_blank"
-				rel="noopener noreferrer">The Cabin Visual Studio Code plugin</a
-			></li
-		>
+				rel="noopener noreferrer"
+			>
+				The Cabin Visual Studio Snippet plugin
+			</a>
+		</li>
 	</ul>
 
-	<p> The GitHub is a good place if you want to: </p>
+	<p>The GitHub is a good place if you want to:</p>
 
 	<ul>
-		<li><a href="https://github.com/cabin-language/cabin/issues">File an issue or bug report</a></li
-		>
-		<li
-			><a href="https://github.com/cabin-language/cabin/discussions"
-				>Discuss potential changes or new features to the language</a
-			></li
-		>
-		<li
-			><a href="https://github.com/orgs/cabin-language/repositories"
-				>View the source code for Cabin projects</a
-			></li
-		>
+		<li>
+			<a href="https://github.com/cabin-language/cabin/issues">File an issue or bug report</a>
+		</li>
+		<li>
+			<a href="https://github.com/cabin-language/cabin/discussions">
+				Discuss potential changes or new features to the language
+			</a>
+		</li>
+		<li>
+			<a href="https://github.com/orgs/cabin-language/repositories">
+				View the source code for Cabin projects
+			</a>
+		</li>
 	</ul>
 
 	<h2 id="help-wanted">Help Wanted!</h2>
@@ -127,7 +144,7 @@
 		as well. For branding contributions, such as creating a logo for Cabin, get in touch with me,
 		Cabin's creator, Vi. You can find me in the Cabin Discord.
 	</p>
-</Community>
+</CommunityDocument>
 
 <style>
 	a {

@@ -1,13 +1,12 @@
 <script>
-	import Documentation from '../../../components/Documentation.svelte';
-	import StandardLibraryPage from '../../../components/StandardLibraryPage.svelte';
+	import StandardLibraryDocument from './StandardLibraryDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Docs&nbsp;&nbsp;•&nbsp;&nbsp;Cabin</title>
 </svelte:head>
 
-<StandardLibraryPage page="Introduction">
+<StandardLibraryDocument page="Introduction">
 	<h1>Introduction</h1>
 
 	<p>
@@ -59,7 +58,7 @@
 	<h2 id="final-remarks">Final Remarks</h2>
 
 	<p>Good luck, have fun, and stay cozy!</p>
-</StandardLibraryPage>
+</StandardLibraryDocument>
 
 <style>
 	a {

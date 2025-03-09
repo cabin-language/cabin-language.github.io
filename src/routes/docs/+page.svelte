@@ -1,12 +1,12 @@
 <script>
-	import Documentation from '../../components/Documentation.svelte';
+	import TutorialDocument from './TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Docs&nbsp;&nbsp;•&nbsp;&nbsp;Cabin</title>
 </svelte:head>
 
-<Documentation page="Introduction">
+<TutorialDocument page="Introduction">
 	<h1>Introduction</h1>
 
 	<p>
@@ -58,7 +58,7 @@
 	<h2 id="final-remarks">Final Remarks</h2>
 
 	<p>Good luck, have fun, and stay cozy!</p>
-</Documentation>
+</TutorialDocument>
 
 <style>
 	a {

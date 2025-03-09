@@ -1,13 +1,13 @@
 <script>
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Groups&nbsp;&nbsp;•&nbsp;&nbsp;Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Groups">
+<TutorialDocument page="Groups">
 	<h1>Groups</h1>
 
 	<p>
@@ -26,15 +26,16 @@
 		just like any other top-level binding:
 	</p>
 
-	<Snippet>
-		<pre>
-let Person = group &lbrace;
-    first_name: Text,
-    last_name: Text,
-    age: Number
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Person = group {
+				first_name: Text,
+				last_name: Text,
+				age: Number
+			};
+		`}
+	/>
 
 	<p>
 		<code>groups</code>
@@ -43,15 +44,16 @@ let Person = group &lbrace;
 		keyword:
 	</p>
 
-	<Snippet>
-		<pre>
-let tucker = new Person &lbrace;
-    first_name = "tucker",
-    last_name = "foley",
-    age = 14
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let tucker = new Person {
+				first_name = "tucker",
+				last_name = "foley",
+				age = 14
+			};
+		`}
+	/>
 
 	<p>
 		The bindings inside a group (in this case <code>first_name</code>
@@ -63,23 +65,25 @@ let tucker = new Person &lbrace;
 		<b>properties</b>
 		. Properties can have default values specified in the group definition:
 	</p>
-	<Snippet>
-		<pre>
-let Person = group &lbrace;
-    first_name: Text,
-    middle_name: Optional&lt;Text&gt; = nothing,
-    last_name: Text,
-    age: Number
-&rbrace;;
 
-# no need to specify middle name
-let tucker = new Person &lbrace;
-    first_name = "tucker",
-    last_name = "foley",
-    age = 14
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Person = group {
+				first_name: Text,
+				middle_name: Optional<Text> = nothing,
+				last_name: Text,
+				age: Number
+			};
+
+			# no need to specify middle name
+			let tucker = new Person {
+				first_name = "tucker",
+				last_name = "foley",
+				age = 14
+			};
+		`}
+	/>
 
 	<h2 id="nominality">Nominality</h2>
 
@@ -88,15 +92,16 @@ let tucker = new Person &lbrace;
 		, which means that even if two groups have the same structure, you can't use them interchangeably:
 	</p>
 
-	<Snippet>
-		<pre>
-let Point = group &lbrace; x: Number, y: Number &rbrace;;
-let Position = group &lbrace; x: Number, y: Number &rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let Point = group { x: Number, y: Number };
+			let Position = group { x: Number, y: Number };
 
-# this isn't allowed!
-let point: Point = Position &lbrace; x = 10, y = 10 &rbrace;
-</pre>
-	</Snippet>
+			# this isn't allowed!
+			let point: Point = new Position { x = 10, y = 10 };
+		`}
+	/>
 
 	<h2 id="mutability">Mutability</h2>
 
@@ -107,23 +112,24 @@ let point: Point = Position &lbrace; x = 10, y = 10 &rbrace;
 		tag:
 	</p>
 
-	<Snippet>
-		<pre>
-let Person = group &lbrace;
-    #[editable] first_name: Text,
-    last_name: Text,
-    age: Number
-&rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let Person = group {
+				#[editable] first_name: Text,
+				last_name: Text,
+				age: Number
+			};
 
-let tucker = new Person &lbrace;
-    first_name = "tucker",
-    last_name = "foley",
-    age = 14
-&rbrace;;
+			let tucker = new Person {
+				first_name = "tucker",
+				last_name = "foley",
+				age = 14
+			};
 
-tucker.first_name = "tuck";
-</pre>
-	</Snippet>
+			tucker.first_name = "tuck";
+		`}
+	/>
 
 	<h2 id="visibility">Visibility</h2>
 
@@ -133,17 +139,18 @@ tucker.first_name = "tuck";
 		tag:
 	</p>
 
-	<Snippet>
-		<pre>
-let Person = group &lbrace;
-    #[visible] first_name: Text,
+	<Snippet
+		language="cabin"
+		code={`
+			let Person = group {
+				#[visible] first_name: Text,
 
-    middle_name: Optional&lt;Text&gt; = nothing,
-    last_name: Text,
-    age: Number
-&rbrace;;
-</pre>
-	</Snippet>
+				middle_name: Optional<Text> = nothing,
+				last_name: Text,
+				age: Number
+			};
+		`}
+	/>
 
 	<h2 id="compile-time-parameters">Compile-Time Parameters</h2>
 
@@ -154,25 +161,27 @@ let Person = group &lbrace;
 		, but the idea is that they're parameters on the group definition, similar to a function.
 	</p>
 
-	<Snippet>
-		<pre>
-let Node = group&lt;Data: Anything&gt; &lbrace;
-    data: Data,
-    children: List&lt;Node&lt;Data&gt;&gt;
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Node = group<Data: Anything> {
+				data: Data,
+				children: List<Node<Data>>
+			};
+		`}
+	/>
 
 	<p>Then, when using this group, we want to pass a value to this parameter:</p>
 
-	<Snippet>
-		<pre>
-let node = new Node&lt;Text&gt; &lbrace;
-    data = "node",
-    children: []
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let node = new Node<Text> {
+				data = "node",
+				children: []
+			};
+		`}
+	/>
 
 	<p>
 		The important thing to understand about these parameters is that the value of the parameter must
@@ -198,14 +207,15 @@ let node = new Node&lt;Text&gt; &lbrace;
 		With that in mind, compile-time parameters have a nice shorthand where we can omit their type:
 	</p>
 
-	<Snippet>
-		<pre>
-let Node = group&lt;Data&gt; &lbrace;
-    data: Data,
-    children: List&lt;Node&lt;Data&gt;&gt;
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Node = group<Data> {
+				data: Data,
+				children: List<Node<Data>>
+			};
+		`}
+	/>
 
 	<p>
 		When ommitting the type of a compile-time parameter, it is automatically inferred as <code>
@@ -213,4 +223,4 @@ let Node = group&lt;Data&gt; &lbrace;
 		</code>
 		.
 	</p>
-</Documentation>
+</TutorialDocument>

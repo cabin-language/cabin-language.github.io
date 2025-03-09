@@ -1,14 +1,13 @@
 <script>
-	import Code from '../../../components/Code.svelte';
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Extensions&nbsp;&nbsp;•&nbsp;&nbsp;Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Extensions">
+<TutorialDocument page="Extensions">
 	<h1>Extensions</h1>
 
 	<p>
@@ -24,27 +23,29 @@
 		keyword with the type we want to extend.
 	</p>
 
-	<Snippet>
-		<pre>
-let TextExtension = extensionof Text &lbrace;
-    is_danny = action(this: Text): Boolean &lbrace;
-        is_danny is this == "danny";
-    &rbrace;
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let TextExtension = extensionof Text {
+				is_danny = action(this: Text): Boolean {
+					is_danny is this == "danny";
+				}
+			};
+		`}
+	/>
 
 	<p>
 		Once an extension is created, the properties of the extension are available on the type being
 		extended:
 	</p>
 
-	<Snippet>
-		<pre>
-let danny_is_danny = "danny".is_danny(); # true
-let sam_is_danny = "sam".is_danny(); # false
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let danny_is_danny = "danny".is_danny(); # true
+			let sam_is_danny = "sam".is_danny(); # false
+		`}
+	/>
 
 	<p>
 		<b>
@@ -56,13 +57,14 @@ let sam_is_danny = "sam".is_danny(); # false
 		, then to use it in another file, the extension needs to be brought into scope:
 	</p>
 
-	<Snippet>
-		<pre>
-let DannyExtension = text.TextExtension; # required
+	<Snippet
+		language="cabin"
+		code={`
+			let DannyExtension = text.TextExtension; # required
 
-let danny_is_danny = "danny".is_danny(); # true
-</pre>
-	</Snippet>
+			let danny_is_danny = "danny".is_danny(); # true
+		`}
+	/>
 
 	<h2 id="polymorphic-extensions">Polymorphic Extensions</h2>
 
@@ -72,26 +74,27 @@ let danny_is_danny = "danny".is_danny(); # true
 		Consider the following groups:
 	</p>
 
-	<Snippet>
-		<pre>
-let Rectangle = group &lbrace;
-    width: Number,
-    height: Number,
+	<Snippet
+		language="cabin"
+		code={`
+			let Rectangle = group {
+				width: Number,
+				height: Number,
 
-    area: action(this: This): Number &lbrace;
-        area is this.width * this.height;
-    &rbrace;
-&rbrace;;
+				area: action(this: This): Number {
+					area is this.width * this.height;
+				}
+			};
 
-let Circle = group &lbrace;
-    radius: Number,
+			let Circle = group {
+				radius: Number,
 
-    area: action(this: This): Number &lbrace;
-        area is pi * this.radius ^ 2;
-    &rbrace;
-&rbrace;;
-</pre>
-	</Snippet>
+				area: action(this: This): Number {
+					area is pi * this.radius ^ 2;
+				}
+			};
+		`}
+	/>
 
 	<p>
 		Now, lets say we want an action that takes parameters that could be any shape, and just needs to
@@ -101,32 +104,33 @@ let Circle = group &lbrace;
 		, but it ends up being a bit verbose:
 	</p>
 
-	<Snippet>
-		<pre>
-let Shape = either &lbrace;
-    rectangle: Rectangle,
-    circle: Circle
-&rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let Shape = either {
+				rectangle: Rectangle,
+				circle: Circle
+			};
 
-let surface_area = action(faces: Shape[]) &lbrace;
-    #[editable] let total = 0;
-    foreach shape in faces &lbrace;
-        total = total + match shape &lbrace;
-            rectangle: Rectangle &lbrace; it is rectangle.area(); &rbrace;
-            circle: Circle &lbrace; it is circle.area(); &rbrace;
-        &rbrace;;
-    &rbrace;;
-    surface_area is total;
-&rbrace;
+			let surface_area = action(faces: List<Shape>) {
+				#[editable] let total = 0;
+				foreach shape in faces {
+					total = total + match shape {
+						rectangle: Rectangle { it is rectangle.area(); }
+						circle: Circle { it is circle.area(); }
+					};
+				};
+				surface_area is total;
+			}
 
-let rectangle = new Rectangle &lbrace;
-    width = 10,
-    height = 10
-&rbrace;;
+			let rectangle = new Rectangle {
+				width = 10,
+				height = 10
+			};
 
-let area = surface_area(Shape.rectangle(rectangle));
-</pre>
-	</Snippet>
+			let area = surface_area(Shape.rectangle(rectangle));
+		`}
+	/>
 
 	<p>
 		Gross! What's more, if we ever want to add new shapes, it's gonna be a pain. Thankfully,
@@ -138,13 +142,14 @@ let area = surface_area(Shape.rectangle(rectangle));
 		:
 	</p>
 
-	<Snippet>
-		<pre>
-let Shape = group &lbrace;
-    area: action(this: This): Number
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Shape = group {
+				area: action(this: This): Number
+			};
+		`}
+	/>
 
 	<p>
 		Now, we can <b>extend</b>
@@ -155,21 +160,21 @@ let Shape = group &lbrace;
 		:
 	</p>
 
-	<Snippet>
-		<pre>
-let RectangleIsShape = extensionof Rectangle tobe Shape &lbrace;
-    area = action(this: This): Number &lbrace;
-        area is this.width * this.height;
-    &rbrace;
-&rbrace;;
+	<Snippet
+		code={`
+			let RectangleIsShape = extensionof Rectangle tobe Shape {
+				area = action(this: This): Number {
+					area is this.width * this.height;
+				}
+			};
 
-let CircleIsShape = extensionof Circle tobe Shape &lbrace;
-    area = action(this: This): Number &lbrace;
-        area is pi * this.radius ^ 2;
-    &rbrace;
-&rbrace;;
-</pre>
-	</Snippet>
+			let CircleIsShape = extensionof Circle tobe Shape {
+				area = action(this: This): Number {
+					area is pi * this.radius ^ 2;
+				}
+			};
+		`}
+	/>
 
 	<p>
 		This also allows removing the <code>area</code>
@@ -182,24 +187,25 @@ let CircleIsShape = extensionof Circle tobe Shape &lbrace;
 		as-is:
 	</p>
 
-	<Snippet>
-		<pre>
-let surface_area = action(faces: Shape[]) &lbrace;
-    #[editable] let total = 0;
-    foreach shape in faces &lbrace;
-        total = total + shape.area();
-    &rbrace;;
-    surface_area is total;
-&rbrace;
+	<Snippet
+		language="cabin"
+		code={`
+			let surface_area = action(faces: Shape[]) {
+				#[editable] let total = 0;
+				foreach shape in faces {
+					total = total + shape.area();
+				};
+				surface_area is total;
+			}
 
-let rectangle = new Rectangle &lbrace;
-    width = 10,
-    height = 10
-&rbrace;;
+			let rectangle = new Rectangle {
+				width = 10,
+				height = 10
+			};
 
-let area = surface_area(rectangle);
-</pre>
-	</Snippet>
+			let area = surface_area(rectangle);
+		`}
+	/>
 
 	<h2 id="operator-overloading">Operator Overloading</h2>
 
@@ -209,26 +215,28 @@ let area = surface_area(rectangle);
 		group:
 	</p>
 
-	<Snippet>
-		<pre>
-let Addable = group &lbrace;
-    plus: action(this: This, other: This): This
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Addable = group {
+				plus: action(this: This, other: This): This
+			};
+		`}
+	/>
 
 	<p>
 		Let's say we have some type that's reasonable to add, such as a <code>Vector</code>
 	</p>
 
-	<Snippet>
-		<pre>
-let Vector = group &lbrace;
-    x: Number,
-    y: Number
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let Vector = group {
+				x: Number,
+				y: Number
+			};
+		`}
+	/>
 
 	<p>
 		We can implement <code>Addable</code>
@@ -237,40 +245,43 @@ let Vector = group &lbrace;
 		with an extension:
 	</p>
 
-	<Snippet>
-		<pre>
-let AddVectors = extensionof Vector tobe Addable &lbrace;
-    plus = action(this: This, other: This): This &lbrace;
-        it is new Vector &lbrace; x = this.x + other.x, y = this.y + other.y &rbrace;;
-    &rbrace;
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let AddVectors = extensionof Vector tobe Addable {
+				plus = action(this: This, other: This): This {
+					it is new Vector { x = this.x + other.x, y = this.y + other.y };
+				}
+			};
+		`}
+	/>
 
 	<p>
 		Now, we can add vectors with the <code>+</code>
 		operator:
 	</p>
 
-	<Snippet>
-		<pre>
-let a = new Vector &lbrace; x = 10, y = 20 &rbrace;;
-let b = new Vector &lbrace; x = 15, y = 5 &rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let a = new Vector { x = 10, y = 20 };
+			let b = new Vector { x = 15, y = 5 };
 
-let sum = a + b;
-</pre>
-	</Snippet>
+			let sum = a + b;
+		`}
+	/>
 
 	<p>This desugars exactly to:</p>
 
-	<Snippet>
-		<pre>
-let a = new Vector &lbrace; x = 10, y = 20 &rbrace;;
-let b = new Vector &lbrace; x = 15, y = 5 &rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let a = new Vector { x = 10, y = 20 };
+			let b = new Vector { x = 15, y = 5 };
 
-let sum = a.plus(b);
-</pre>
-	</Snippet>
+			let sum = a.plus(b);
+		`}
+	/>
 
 	<p>
 		The <code>.plus()</code>
@@ -288,16 +299,17 @@ let sum = a.plus(b);
 		tag comes in:
 	</p>
 
-	<Snippet>
-		<pre>
-#[default]
-let AddVectors = extensionof Vector tobe Addable &lbrace;
-    plus = action(this: This, other: This): This &lbrace;
-        it is new Vector &lbrace; x = this.x + other.x, y = this.y + other.y &rbrace;;
-    &rbrace;
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			#[default]
+			let AddVectors = extensionof Vector tobe Addable {
+				plus = action(this: This, other: This): This {
+					it is new Vector { x = this.x + other.x, y = this.y + other.y };
+				}
+			};
+		`}
+	/>
 
 	<p>
 		Tagging this extension as <code>#[default]</code>
@@ -356,29 +368,31 @@ let AddVectors = extensionof Vector tobe Addable &lbrace;
 		group:
 	</p>
 
-	<Code
+	<Snippet
+		language="cabin"
 		code={`
-		let Coordinate = group {
-			x: Number,
-			y: Number,
-		};
-	`}
+			let Coordinate = group {
+				x: Number,
+				y: Number,
+			};
+		`}
 	/>
 
 	<p>Now, maybe we want to make another way to represent coordinates:</p>
 
-	<Code
+	<Snippet
+		language="cabin"
 		code={`
-		let Coordinate = group {
-			x: Number,
-			y: Number,
-		};
+			let Coordinate = group {
+				x: Number,
+				y: Number,
+			};
 
-		let Polar = group {
-			r: Number,
-			theta: Number,
-		};
-	`}
+			let Polar = group {
+				r: Number,
+				theta: Number,
+			};
+		`}
 	/>
 
 	<p>
@@ -394,17 +408,18 @@ let AddVectors = extensionof Vector tobe Addable &lbrace;
 		instead of the property directly:
 	</p>
 
-	<Code
+	<Snippet
+		language="cabin"
 		code={`
-		let PolarToCoordinate = extensionof Polar tobe Coordinate {
-			x = action(this: This): Number {
-				x is this.r * this.theta.cos();
-			},
-			y = action(this: This): Number {
-				y is this.r * this.theta.sin();
-			}
-		};
-	`}
+			let PolarToCoordinate = extensionof Polar tobe Coordinate {
+				x = action(this: This): Number {
+					x is this.r * this.theta.cos();
+				},
+				y = action(this: This): Number {
+					y is this.r * this.theta.sin();
+				}
+			};
+		`}
 	/>
 
 	<p>
@@ -427,4 +442,4 @@ let AddVectors = extensionof Vector tobe Addable &lbrace;
 			indefinitely.
 		</li>
 	</ul>
-</Documentation>
+</TutorialDocument>

@@ -1,13 +1,13 @@
 <script>
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Actions&nbsp;&nbsp;•&nbsp;&nbsp;Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Actions">
+<TutorialDocument page="Actions">
 	<h1>Actions</h1>
 
 	<p>
@@ -16,13 +16,14 @@
 		in other languages:
 	</p>
 
-	<Snippet>
-		<pre>
-let say_hello = action &lbrace;
-    print("hello");
-&rbrace;;
-</pre>
-	</Snippet>
+	<Snippet
+		language="cabin"
+		code={`
+			let say_hello = action {
+				print("hello");
+			};
+		`}
+	/>
 
 	<p>
 		This code will <b>not</b>
@@ -35,15 +36,16 @@ let say_hello = action &lbrace;
 
 	<p>To run the code in an action, we use parentheses after the action name:</p>
 
-	<Snippet>
-		<pre>
-let say_hello = action &lbrace;
-    print("hello");
-&rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let say_hello = action {
+				print("hello");
+			};
 
-say_hello(); # prints "hello"
-</pre>
-	</Snippet>
+			say_hello(); # prints "hello"
+		`}
+	/>
 
 	<h2 id="return-values">Return Values</h2>
 
@@ -51,17 +53,18 @@ say_hello(); # prints "hello"
 		Actions can specify a "return value". This is a value that the action "returns" to the caller.
 	</p>
 
-	<Snippet>
-		<pre>
-let get_hello = action: Text &lbrace;
-    return is "hello";
-&rbrace;;
+	<Snippet
+		language="cabin"
+		code={`
+			let get_hello = action: Text {
+				return is "hello";
+			};
 
-let hello = get_hello();
-print(hello);
-</pre>
-	</Snippet>
+			let hello = get_hello();
+			print(hello);
+		`}
+	/>
 
 	<h2 id="parameters">Parameters</h2>
 	<h2 id="compile-time-parameters">Compile-Time Parameters</h2>
-</Documentation>
+</TutorialDocument>

@@ -1,14 +1,13 @@
 <script>
-	import Code from '../../../components/Code.svelte';
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Declarations • Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Declarations">
+<TutorialDocument page="Declarations">
 	<h1>Declarations</h1>
 
 	<p>
@@ -17,7 +16,7 @@
 		keyword:
 	</p>
 
-	<Code language="cabin" code={`let x = 10;`} />
+	<Snippet language="cabin" code={`let x = 10;`} />
 
 	<p>
 		Declarations&nbsp;
@@ -25,7 +24,7 @@
 		be assigned an initial value. This isn't ever allowed:
 	</p>
 
-	<Code language="cabin" code={`let x;`} />
+	<Snippet language="cabin" code={`let x;`} />
 
 	<h2 id="mutability">Mutability</h2>
 
@@ -37,7 +36,7 @@
 		tag:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 		#[editable]
@@ -62,7 +61,7 @@
 		tag is used:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 		#[visible]
@@ -75,4 +74,4 @@
 		isn't valid for local variables, only top-level declarations and group fields, which we'll talk about
 		later.
 	</p>
-</Documentation>
+</TutorialDocument>

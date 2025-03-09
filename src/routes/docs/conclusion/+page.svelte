@@ -1,12 +1,12 @@
 <script>
-	import Documentation from '../../../components/Documentation.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>Conclusion • Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="Conclusion">
+<TutorialDocument page="Conclusion">
 	<h1>Conclusion</h1>
 
 	<p>
@@ -27,8 +27,9 @@
 
 	<p>
 		For additional support on using Cabin and specfic errors you're getting in your Cabin code,
-		check out <a href="/community">the community</a>. We're a friendly and accepting bunch, and are
-		happy to help out beginners with their struggles learning the language.
+		check out <a href="/community">the community</a>
+		. We're a friendly and accepting bunch, and are happy to help out beginners with their struggles
+		learning the language.
 	</p>
 
 	<h2>Contributing</h2>
@@ -40,4 +41,4 @@
 		leave it at that. Cabin will never use your creations (be it code, designs, etc.) without your
 		explicit permission. You can read more about contributing in the community tab.
 	</p>
-</Documentation>
+</TutorialDocument>

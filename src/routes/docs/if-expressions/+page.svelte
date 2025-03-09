@@ -1,14 +1,13 @@
 <script lang="ts">
-	import Code from '../../../components/Code.svelte';
-	import Documentation from '../../../components/Documentation.svelte';
 	import Snippet from '../../../components/Snippet.svelte';
+	import TutorialDocument from '../TutorialDocument.svelte';
 </script>
 
 <svelte:head>
 	<title>If Expressions • Cabin Docs</title>
 </svelte:head>
 
-<Documentation page="If Expressions">
+<TutorialDocument page="If Expressions">
 	<h1>If Expressions</h1>
 
 	<p>
@@ -16,7 +15,7 @@
 		keyword is used to declare a conditional block that is only evaluated if a condition is true:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 			let name = "danny";
@@ -60,7 +59,7 @@
 		:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 			let name = "danny";
@@ -82,7 +81,7 @@
 		condition:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 			let name = "danny";
@@ -109,7 +108,7 @@
 		Here's an example of what that looks like:
 	</p>
 
-	<Code
+	<Snippet
 		language="cabin"
 		code={`
 			let name = "danny";
@@ -147,7 +146,7 @@
 		<code>otherwise</code>
 		block.
 	</p>
-</Documentation>
+</TutorialDocument>
 
 <style>
 	a {
