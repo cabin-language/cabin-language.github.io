@@ -56,7 +56,10 @@
 					locateFile() {
 						return VITE_MODE === 'dev'
 							? treeSitterWasm
-							: `${import.meta.url.substring(0, import.meta.url.lastIndexOf('/')).replace('.svelte-kit/output/server/chunks', 'build')}${treeSitterWasm}`;
+							: `${import.meta.url.substring(0, import.meta.url.lastIndexOf('/')).replace('.svelte-kit/output/server/chunks', 'build')}${treeSitterWasm}`.replace(
+									/.*chunkshttp/,
+									'http'
+								);
 					}
 				});
 
@@ -104,7 +107,6 @@
 					}
 				}
 
-				console.log(result);
 				return result;
 			} catch (error) {
 				console.error(error);
