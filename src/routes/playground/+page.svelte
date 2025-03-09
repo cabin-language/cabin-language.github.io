@@ -42,7 +42,7 @@
 				Run
 			{/if}
 		</button>
-		<Snippet input height="30rem" code={`run(print("Hello world!"));`} language="cabin" />
+		<Snippet input height="20rem" code={`run(print("Hello world!"));`} language="cabin" />
 
 		<h2>Output</h2>
 
@@ -53,16 +53,18 @@
 <style>
 	main {
 		color: #cdd6f4;
-		padding-left: 4rem;
-		padding-right: 4rem;
-		padding-top: 2rem;
-		padding-bottom: 2rem;
-		overflow-y: auto;
 
 		section {
 			display: flex;
+			justify-content: center;
+			overflow-y: auto;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			display: flex;
 			flex-direction: column;
 			gap: 1rem;
+			padding-left: 20%;
+			padding-right: 20%;
 		}
 
 		button {
