@@ -41,60 +41,75 @@
 
 		const parserLanguage = languages[language];
 		if (parserLanguage) {
-			await Parser.init({
-				locateFile() {
-					return VITE_MODE === 'dev'
-						? treeSitterWasm
-						: `${import.meta.url.substring(0, import.meta.url.lastIndexOf('/')).replace('.svelte-kit/output/server/chunks', 'build')}${treeSitterWasm}`;
-				}
-			});
-
-			const parser = new Parser();
-			const language = await Language.load(parserLanguage.wasm);
-			parser.setLanguage(language);
-			let ast = parser.parse(text, null)!;
-
-			let highlights: { name: string; start: number; end: number; child?: number }[] = [];
-
-			let query = new Query(language, parserLanguage.highlights);
-			query.matches(ast.rootNode).forEach((queryMatch) => {
-				queryMatch.captures.forEach((capture) => {
-					let start = capture.node.startIndex;
-					let name = capture.name;
-					let info = highlightGroups[name];
-					if (info) {
-						let { highlight, child } = info;
-						let end =
-							child !== undefined
-								? capture.node.children[child]!.endIndex - 1
-								: capture.node.endIndex - 1;
-						highlights.push({ name: highlight, start, end });
-					} else {
-						console.warn(`No highlight group for ${name}`);
+			try {
+				// treesitter is so dumb and seemingly struggles so much to find the location of this WASM file; this is the only
+				// solution ive found to work with both `bun run dev` and `bun run build`. its unbelievably hacky but seems to get
+				// the job done.
+				//
+				// the issue here is actually more with vite than treesitter (i think). when vite does a URL import, it makes it
+				// relative to the project root, so the wasm file url becomes something like /app/whatever, and so treesitter looks
+				// for it at my system root instead of the project root (only in build mode for some reason; this doesn't cause issues
+				// in dev mode). so, in build mode, we just be very explicit by feeding it the absolute file path.
+				//
+				// hours_wasted_here = too many
+				await Parser.init({
+					locateFile() {
+						return VITE_MODE === 'dev'
+							? treeSitterWasm
+							: `${import.meta.url.substring(0, import.meta.url.lastIndexOf('/')).replace('.svelte-kit/output/server/chunks', 'build')}${treeSitterWasm}`;
 					}
 				});
-			});
 
-			let result = '';
-			let end = null;
-			for (let index = 0; index < text.length; index++) {
-				let highlight = highlights.find((highlight) => highlight.start == index);
+				const parser = new Parser();
+				const language = await Language.load(parserLanguage.wasm);
+				parser.setLanguage(language);
+				let ast = parser.parse(text, null)!;
 
-				if (highlight) {
-					highlights.shift();
-					result += `<span style="color: ${highlight.name};">`;
-					end = highlight.end;
+				let highlights: { name: string; start: number; end: number; child?: number }[] = [];
+
+				let query = new Query(language, parserLanguage.highlights);
+				query.matches(ast.rootNode).forEach((queryMatch) => {
+					queryMatch.captures.forEach((capture) => {
+						let start = capture.node.startIndex;
+						let name = capture.name;
+						let info = highlightGroups[name];
+						if (info) {
+							let { highlight, child } = info;
+							let end =
+								child !== undefined
+									? capture.node.children[child]!.endIndex - 1
+									: capture.node.endIndex - 1;
+							highlights.push({ name: highlight, start, end });
+						} else {
+							console.warn(`No highlight group for ${name}`);
+						}
+					});
+				});
+
+				let result = '';
+				let end = null;
+				for (let index = 0; index < text.length; index++) {
+					let highlight = highlights.find((highlight) => highlight.start == index);
+
+					if (highlight) {
+						highlights.shift();
+						result += `<span style="color: ${highlight.name};">`;
+						end = highlight.end;
+					}
+
+					result += text.charAt(index);
+
+					if (end !== null && index == end) {
+						result += `</span>`;
+					}
 				}
 
-				result += text.charAt(index);
-
-				if (end !== null && index == end) {
-					result += `</span>`;
-				}
+				console.log(result);
+				return result;
+			} catch (error) {
+				console.error(error);
+				return text;
 			}
-
-			console.log(result);
-			return result;
 		}
 
 		return text;
