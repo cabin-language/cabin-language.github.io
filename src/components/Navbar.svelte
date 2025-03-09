@@ -7,6 +7,7 @@
 	import MenuIcon from './icons/MenuIcon.svelte';
 	import CloseIcon from './icons/CloseIcon.svelte';
 	import LearnIcon from './icons/LearnIcon.svelte';
+	import TestIcon from './icons/TestIcon.svelte';
 
 	let desktop = $state(true);
 
@@ -44,7 +45,7 @@
 			{/if}
 		</button>
 	{/if}
-	<a href="/docs">
+	<a href="/learn">
 		{#if desktop}
 			Learn
 		{:else}
@@ -56,6 +57,13 @@
 			Reference
 		{:else}
 			<DocumentIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
+		{/if}
+	</a>
+	<a href="/playground">
+		{#if desktop}
+			Playground
+		{:else}
+			<TestIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
 		{/if}
 	</a>
 	<a href="/libraries">

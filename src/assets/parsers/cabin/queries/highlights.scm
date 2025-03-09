@@ -8,6 +8,8 @@
 (extend ["tobe" "extensionof"] @keyword)
 (goto ["is"] @keyword)
 (foreach ["foreach" "in"] @keyword)
+(while_loop ["while"] @keyword)
+(binary ["and" "or"] @keyword)
 
 ; Semantics
 (type (expression (literal (identifier))) @type)

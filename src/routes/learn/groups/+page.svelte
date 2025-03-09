@@ -103,6 +103,20 @@
 		`}
 	/>
 
+	<p>
+		That being said, if the type is known, the type name can be omitted when the group is
+		instantiated, and it will be inferred:
+	</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+			let Point = group { x: Number, y: Number };
+
+			let point: Point = new { x = 10, y = 10 };
+		`}
+	/>
+
 	<h2 id="mutability">Mutability</h2>
 
 	<p>
@@ -178,7 +192,7 @@
 		code={`
 			let node = new Node<Text> {
 				data = "node",
-				children: []
+				children = []
 			};
 		`}
 	/>

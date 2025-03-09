@@ -18,17 +18,20 @@ code in `<pre>`.
 -->
 <script lang="ts">
 	import { Parser, Language, Query } from 'web-tree-sitter';
-	import treeSitterLua from '../assets/parsers/lua/tree-sitter-lua.wasm?url';
-	import treeSitterLuaHighlights from '../assets/parsers/lua/queries/lua/highlights.scm?raw';
 	import treeSitterWasm from '../assets/parsers/tree-sitter.wasm?url';
 	import treeSitterCabin from '../assets/parsers/cabin/tree-sitter-cabin.wasm?url';
 	import treeSitterCabinHighlights from '../assets/parsers/cabin/queries/highlights.scm?raw';
+	import treeSitterLua from '../assets/parsers/lua/tree-sitter-lua.wasm?url';
+	import treeSitterLuaHighlights from '../assets/parsers/lua/queries/lua/highlights.scm?raw';
+	import treeSitterBash from '../assets/parsers/bash/tree-sitter-bash.wasm?url';
+	import treeSitterBashHighlights from '../assets/parsers/bash/queries/highlights.scm?raw';
 	import CopyIcon from './icons/CopyIcon.svelte';
 	import CheckIcon from './icons/CheckIcon.svelte';
 
 	const languages = {
 		lua: { wasm: treeSitterLua, highlights: treeSitterLuaHighlights },
-		cabin: { wasm: treeSitterCabin, highlights: treeSitterCabinHighlights }
+		cabin: { wasm: treeSitterCabin, highlights: treeSitterCabinHighlights },
+		bash: { wasm: treeSitterBash, highlights: treeSitterBashHighlights }
 	} as const satisfies { [key: string]: { wasm: string; highlights: string } };
 
 	type Language = keyof typeof languages;
@@ -42,11 +45,22 @@ code in `<pre>`.
 		code: string;
 	};
 
-	let props: (RawCode | HighlightedCode) & { inline?: boolean } = $props();
+	let props: (RawCode | HighlightedCode) & {
+		inline?: boolean;
+		lineNumbers?: boolean;
+		onclick?: (event: MouseEvent) => void;
+		height?: string;
+		cursor?: number;
+		input?: boolean;
+		copyable?: boolean;
+	} = $props();
 	let inline = props.inline;
 	let children = (props as any).children;
-	let code = (props as any).code;
+	let code = $state((props as any).code);
 	let language = (props as any).language;
+	let height = (props as any).height;
+	let input = $derived((props as any).input);
+	let copyable = (props as any).copyable ?? !!code;
 
 	async function highlight(text: string, language: Language): Promise<string> {
 		const highlightGroups: { [key: string]: { highlight: string; child?: number } } = {
@@ -55,12 +69,15 @@ code in `<pre>`.
 			'keyword.function': { highlight: '#cba6f7' },
 			keyword: { highlight: '#cba6f7' },
 			number: { highlight: '#fab387' },
+			'lsp.type.enumMember': { highlight: '#fab387' },
 			string: { highlight: '#a6e3a1' },
 			variable: { highlight: '#b4befe' },
 			'variable.member': { highlight: '#b4befe' },
 			'variable.parameter': { highlight: '#eba0ac' },
 			'function.call': { highlight: '#89b4fa' },
+			'function.call.lua': { highlight: '#89b4fa' },
 			function: { highlight: '#89b4fa' },
+			property: { highlight: '#b4befe' },
 			'punctuation.bracket': { highlight: '#9399b2' },
 			punctuation: { highlight: '#9399b2' },
 			'punctuation.delimiter': { highlight: '#9399b2' },
@@ -123,6 +140,8 @@ code in `<pre>`.
 
 				let result = '';
 				let end = null;
+				let line = 1;
+				let column = 1;
 				for (let index = 0; index < text.length; index++) {
 					let highlight = highlights.find((highlight) => highlight.start == index);
 
@@ -133,8 +152,11 @@ code in `<pre>`.
 					}
 
 					result += text.charAt(index);
+					if (text.charAt(index) === '\n' && input) {
+						line++;
+					}
 
-					if (end !== null && index == end) {
+					if (end !== null && index === end) {
 						result += `</span>`;
 					}
 				}
@@ -158,10 +180,11 @@ code in `<pre>`.
 		return text.replace(new RegExp(`^ {${indent}}`, 'gm'), '');
 	}
 
-	let unindented = code ? unindent(code) : null;
-	let highlighted = language && unindented ? highlight(unindented, language) : null;
+	let unindented = $derived(code ? unindent(code) : null);
+	let highlighted = $derived(language && unindented ? highlight(unindented, language) : null);
 
 	function copy() {
+		if (!copyable) return;
 		window.navigator.clipboard.writeText(unindented!);
 		didCopy = true;
 		setTimeout(() => (didCopy = false), 1500);
@@ -170,7 +193,9 @@ code in `<pre>`.
 	let didCopy = $state(false);
 </script>
 
-<code class:block={!inline}>
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<code class:block={!inline} style:height>
 	{#if code}
 		<pre>{#if highlighted}{#await highlighted then highlighted}{@html highlighted}{/await}{:else}{unindented}{/if}</pre>
 	{:else}
@@ -180,10 +205,12 @@ code in `<pre>`.
 		style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;"
 		onclick={copy}
 	>
-		{#if didCopy}
-			<CheckIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
-		{:else}
-			<CopyIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+		{#if copyable}
+			{#if didCopy}
+				<CheckIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+			{:else}
+				<CopyIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+			{/if}
 		{/if}
 	</button>
 </code>
@@ -191,6 +218,17 @@ code in `<pre>`.
 <style>
 	.block {
 		width: 100%;
+	}
+
+	.cursor {
+		position: absolute;
+		width: 2px;
+		padding: 0px;
+		border-radius: 100vmax;
+		height: 1lh;
+		background-color: white;
+		border-radius: 0px;
+		top: 1rem;
 	}
 
 	code {
@@ -204,7 +242,7 @@ code in `<pre>`.
 		font-size: 0.85rem;
 		text-wrap: nowrap;
 
-		pre {
+		:global(pre) {
 			padding: 0px;
 			overflow-x: auto;
 			width: 100%;

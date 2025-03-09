@@ -15,7 +15,7 @@
 			For the developer that wants to <span>Get Stuff Done&trade;</span>
 		</p>
 	</div>
-	<a class="get-started" href="/docs">Get Started</a>
+	<a class="get-started" href="/learn">Get Started</a>
 </main>
 
 <style>

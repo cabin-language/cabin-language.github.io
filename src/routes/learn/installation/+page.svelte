@@ -54,13 +54,19 @@
 		Cabin can be installed through <code>cargo</code>
 		:
 	</p>
-	<Snippet code={`cargo install cabin-language`} />
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">install</span> <span
+				style:color="#f38ba8">cabin-language</span></pre>
+	</Snippet>
 
 	<Tip>
-		Don't have cargo? Install Rust with <a href="https://www.rust-lang.org/tools/install">
+		Don't have cargo? Install Rust with <a
+			href="https://www.rust-lang.org/tools/install"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
 			the instructions on the official Rust website
 		</a>
-		.
 		<ExternalLink stroke="#11111b" />
 	</Tip>
 
@@ -71,7 +77,9 @@
 		command:
 	</p>
 
-	<Snippet code="cabin" />
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">cabin</span></pre>
+	</Snippet>
 
 	<p>If all goes well, you should see an output like this:</p>
 
@@ -122,16 +130,24 @@ The Cabin compiler.
 		your system if it exists, and if it doesn't, will let you know*:
 	</p>
 
-	<Snippet>
-		<pre>
-(PATHS=($&lbrace;PATH//:/ &rbrace;) ; IFS=$'\n' ; echo "$&lbrace;PATHS[*]&rbrace;") | grep &bsol;&bsol;bcabin&bsol;&bsol;b || echo "Cabin is not in PATH!"
-</pre>
-	</Snippet>
+	<Snippet
+		language="bash"
+		code={`(PATHS=($\{PATH//:/ }) ; IFS=$'\\n' ; echo "$\{PATHS[*]}") | grep \\\\bcabin\\\\b || echo "Cabin is not in PATH!"`}
+	/>
 
-	<p class="note">
-		*Note: requires <a href="https://www.gnu.org/software/coreutils/">GNU Coreutils</a>
+	<Tip>
+		Requires <a
+			href="https://www.gnu.org/software/coreutils/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			GNU Coreutils
+		</a>
+		<ExternalLink stroke="#11111b" />
 		(present on most Unix systems by default)
-	</p>
+	</Tip>
+
+	<p class="note"></p>
 
 	<p>
 		If you get an error here, it means that the Cabin compiler either doesn't exist on your
@@ -147,7 +163,7 @@ The Cabin compiler.
 		, you'd add:
 	</p>
 
-	<Snippet code={`export PATH="$PATH:/home/user/.programs"`} />
+	<Snippet language="bash" code={`export PATH="$PATH:/home/user/.programs"`} />
 
 	<p>
 		Alternatively, if you're not sure whether the compiler is on your system, or you think it might
@@ -172,12 +188,9 @@ The Cabin compiler.
 		like so:
 	</p>
 
-	<Snippet>
-		<div>
-			<span style:color="#89b4fa">cargo</span>
-			<span style:color="#89b4fa">install</span>
-			<span style:color="#f38ba8">cabin-language</span>
-		</div>
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">install</span> <span
+				style:color="#f38ba8">cabin-language</span></pre>
 	</Snippet>
 
 	<p>
@@ -185,22 +198,12 @@ The Cabin compiler.
 		That'd look something like this:
 	</p>
 
-	<Snippet>
-		<div>
-			<span style:color="#89b4fa">git</span>
-			<span style:color="#89b4fa">clone</span>
-			<span style:color="#f38ba8">https://github.com/cabin-language/cabin.git</span>
-		</div>
-
-		<div>
-			<span style:color="#89b4fa">cd</span>
-			<span style:color="#f38ba8">cabin/crates/cabin-bin</span>
-		</div>
-		<div>
-			<span style:color="#89b4fa">cargo</span>
-			<span style:color="#89b4fa">build</span>
-			<span style:color="#9399b2">--release</span>
-		</div>
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">git</span> <span style:color="#89b4fa">clone</span> <span
+				style:color="#f38ba8">https://github.com/cabin-language/cabin.git</span>
+<span style:color="#89b4fa">cd</span> <span style:color="#f38ba8">cabin/crates/cabin-bin</span>
+<span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">build</span> <span
+				style:color="#9399b2">--release</span></pre>
 	</Snippet>
 
 	<p>
@@ -239,7 +242,7 @@ The Cabin compiler.
 
 	<h2 class="editor">
 		<img src={visualStudioSnippetIcon} alt="Visual StudSnippetode" />
-		Visual Studio Snippet
+		Visual Studio Code
 	</h2>
 
 	<h2 class="editor">
