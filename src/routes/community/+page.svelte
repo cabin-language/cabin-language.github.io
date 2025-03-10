@@ -1,6 +1,7 @@
 <script>
 	import discordIcon from '../../assets/images/discord.png';
 	import githubIcon from '../../assets/images/github.jpg';
+	import ExternalLink from '../../components/ExternalLink.svelte';
 	import CommunityDocument from './CommunityDocument.svelte';
 </script>
 
@@ -50,58 +51,36 @@
 
 	<ul>
 		<li>
-			<a
-				target="_blank"
-				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin"
-			>
+			<ExternalLink href="https://github.com/cabin-language/cabin/tree/main/crates/cabin">
 				The Cabin API
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a
-				target="_blank"
-				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-bin"
-			>
+			<ExternalLink href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-bin">
 				The Cabin compiler executable
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a
-				target="_blank"
-				rel="noopener noreferrer"
+			<ExternalLink
 				href="https://github.com/cabin-language/cabin/tree/main/crates/tree-sitter-cabin"
 			>
 				The Cabin Tree-Sitter parser
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a
-				target="_blank"
-				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin-language.github.io"
-			>
+			<ExternalLink href="https://github.com/cabin-language/cabin-language.github.io">
 				The Cabin website
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a
-				target="_blank"
-				rel="noopener noreferrer"
-				href="https://github.com/cabin-language/cabin.nvim"
-			>
+			<ExternalLink href="https://github.com/cabin-language/cabin.nvim">
 				The Cabin Neovim plugin
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a
-				href="https://github.com/cabin-language/vscode-cabin"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
+			<ExternalLink href="https://github.com/cabin-language/vscode-cabin">
 				The Cabin Visual Studio Snippet plugin
-			</a>
+			</ExternalLink>
 		</li>
 	</ul>
 

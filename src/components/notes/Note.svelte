@@ -2,30 +2,35 @@
 	let { type, Icon, children, color, color2 } = $props();
 </script>
 
-<p style:background-image={`linear-gradient(to bottom right, ${color}, ${color2})`}>
-	<Icon stroke="#11111b" style="width: 1rem;" />
-	<span>
-		<b>{type}:</b>
-		<span class="content">{@render children()}</span>
-	</span>
-</p>
+<div style:background-image={`linear-gradient(to bottom right, ${color}, ${color2})`}>
+	<span><Icon stroke="#11111b" style="width: 1rem;" /></span>
+	<b>{type}:</b>
+	<span class="content">{@render children()}</span>
+</div>
 
 <style>
-	p {
+	div {
 		color: #11111b;
 		padding-left: 0.5rem;
 		padding-bottom: 0.5rem;
 		padding-top: 0.5rem;
 		border-radius: 0.5rem;
 		font-size: 0.75rem;
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
 
-		span {
-			display: flex;
+		> span:not(.content) {
+			display: inline-flex;
 			align-items: center;
-			gap: 0.25rem;
+			justify-content: center;
+			width: fit-content;
+			height: 1lh;
+			position: relative;
+			top: 2px;
+		}
+
+		.content,
+		b {
+			position: relative;
+			top: -2px;
 		}
 
 		.content :global(svg) {
@@ -35,7 +40,6 @@
 
 		.content :global(a) {
 			text-decoration: underline;
-			color: #11111b;
 		}
 	}
 </style>

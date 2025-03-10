@@ -63,8 +63,9 @@
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
-			padding-left: 20%;
-			padding-right: 20%;
+			width: max(20rem, 60%);
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		button {

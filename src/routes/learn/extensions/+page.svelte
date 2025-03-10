@@ -161,6 +161,7 @@
 	</p>
 
 	<Snippet
+		language="cabin"
 		code={`
 			let RectangleIsShape = extensionof Rectangle tobe Shape {
 				area = action(this: This): Number {
@@ -190,7 +191,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let surface_area = action(faces: Shape[]) {
+			let surface_area = action(faces: List<Shape>) {
 				#[editable] let total = 0;
 				foreach shape in faces {
 					total = total + shape.area();

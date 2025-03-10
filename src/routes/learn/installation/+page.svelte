@@ -2,7 +2,6 @@
 	import Snippet from '../../../components/Snippet.svelte';
 	import WarningIcon from '../../../components/icons/WarningIcon.svelte';
 	import Tip from '../../../components/notes/Tip.svelte';
-	import ExternalLink from '../../../components/icons/ExternalLink.svelte';
 	import TutorialDocument from '../TutorialDocument.svelte';
 	import windowsIcon from '../../../assets/images/windows.png';
 	import macIcon from '../../../assets/images/mac.png';
@@ -12,6 +11,9 @@
 	import vimIcon from '../../../assets/images/vim.png';
 	import zedIcon from '../../../assets/images/zed.png';
 	import unknownIcon from '../../../assets/images/unknown.png';
+	import Preview from '../../../components/notes/Preview.svelte';
+	import ExternalLink from '../../../components/ExternalLink.svelte';
+	import ExternalLinkIcon from '../../../components/icons/ExternalLinkIcon.svelte';
 
 	let os = $state('windows');
 
@@ -35,7 +37,7 @@
 <TutorialDocument page="Installation">
 	<h1>Installation</h1>
 
-	<span class="os-buttons">
+	<div class="os-buttons">
 		<button style:background={os === 'windows' ? '#28283d' : '#181825'} onclick={setOs('windows')}>
 			<img src={windowsIcon} alt="Windows" />
 			Windows
@@ -48,7 +50,7 @@
 			<img src={linuxIcon} alt="Linux" />
 			Linux
 		</button>
-	</span>
+	</div>
 
 	<p>
 		Cabin can be installed through <code>cargo</code>
@@ -60,14 +62,12 @@
 	</Snippet>
 
 	<Tip>
-		Don't have cargo? Install Rust with <a
+		Don't have cargo? Install Rust with <ExternalLink
 			href="https://www.rust-lang.org/tools/install"
-			target="_blank"
-			rel="noopener noreferrer"
+			color="#11111b"
 		>
 			the instructions on the official Rust website
-		</a>
-		<ExternalLink stroke="#11111b" />
+		</ExternalLink>
 	</Tip>
 
 	<h2 id="testing">Testing</h2>
@@ -111,126 +111,8 @@ The Cabin compiler.
 	</Snippet>
 
 	<p>
-		If you got an error instead, read on for troubleshooting tips. Otherwise, continue on to the
-		documentation!
-	</p>
-
-	<h2 id="troubleshooting">Troubleshooting</h2>
-
-	<p>
-		So you got an error&mdash;Oh no! It's not your fault, and these cases are rare, but occasionally
-		bugs in build scripts or installation scripts slip through the cracks. Let's work through it.
-	</p>
-
-	<p>
-		If running <code>cabin</code>
-		gives an error, make sure that the installation location is in your
-		<code>PATH</code>
-		environment variable. The following bash code will print the location of the Cabin executable on
-		your system if it exists, and if it doesn't, will let you know*:
-	</p>
-
-	<Snippet
-		language="bash"
-		code={`(PATHS=($\{PATH//:/ }) ; IFS=$'\\n' ; echo "$\{PATHS[*]}") | grep \\\\bcabin\\\\b || echo "Cabin is not in PATH!"`}
-	/>
-
-	<Tip>
-		Requires <a
-			href="https://www.gnu.org/software/coreutils/"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			GNU Coreutils
-		</a>
-		<ExternalLink stroke="#11111b" />
-		(present on most Unix systems by default)
-	</Tip>
-
-	<p class="note"></p>
-
-	<p>
-		If you get an error here, it means that the Cabin compiler either doesn't exist on your
-		computer, or it does but it's in a location somewhere that isnt in your <code>PATH</code>
-		variable. If you know that you have the compiler and where it is (it'll just be a file called
-		<code>cabin</code>
-		), then add its parent directory to your
-		<code>PATH</code>
-		; i.e., if your Cabin compiler is located at
-		<code>/home/user/.programs/cabin</code>
-		, then in your
-		<code>~/.bashrc</code>
-		, you'd add:
-	</p>
-
-	<Snippet language="bash" code={`export PATH="$PATH:/home/user/.programs"`} />
-
-	<p>
-		Alternatively, if you're not sure whether the compiler is on your system, or you think it might
-		be but you don't know where, consider trying the installation for your operating system above.
-		Make sure the operating system selected matches your machine; The website will try to
-		auto-detect it, but it doesn't hurt to double check, especially when it comes to Linux distros.
-	</p>
-
-	<p>
-		If you're <i>still</i>
-		having trouble with your installation, fear not! Two more options remain. For both, you need to have
-		Rust installed. Check if Rust is installed by running
-		<code>cargo</code>
-		, and if it's not, install it with the instructions
-		<a href="https://www.rust-lang.org/tools/install" style:color="dodgerblue">here</a>
-		.
-	</p>
-
-	<p>
-		The first option is to install the compiler through it's cargo crate. This may have already been
-		the instructions for your operating system if no native solution exists. If not, you can try it
-		like so:
-	</p>
-
-	<Snippet copyable>
-		<pre><span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">install</span> <span
-				style:color="#f38ba8">cabin-language</span></pre>
-	</Snippet>
-
-	<p>
-		If that's causing you trouble, the last thing you can try is building the compiler from source.
-		That'd look something like this:
-	</p>
-
-	<Snippet copyable>
-		<pre><span style:color="#89b4fa">git</span> <span style:color="#89b4fa">clone</span> <span
-				style:color="#f38ba8">https://github.com/cabin-language/cabin.git</span>
-<span style:color="#89b4fa">cd</span> <span style:color="#f38ba8">cabin/crates/cabin-bin</span>
-<span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">build</span> <span
-				style:color="#9399b2">--release</span></pre>
-	</Snippet>
-
-	<p>
-		The compiler executable will be placed at <code>
-			cabin/crates/cabin-bin/target/release/cabin
-		</code>
-		when the project finishes compiling. Place the file anywhere in your
-		<code>PATH</code>
-		, using the
-		<code>PATH</code>
-		instructions and debugging tips above if necessary.
-	</p>
-
-	<p>
-		If you've gotten this far and are <i>still</i>
-		having trouble getting the compiler working on your machine, first of all, congratulations for being
-		the most incredibly unlucky person alive, and secondly, feel free to reach out to the Cabin community
-		to get advice on your situation. You can
-		<a href="https://github.com/cabin-language/cabin/issues">
-			submit an issue on the Cabin GitHub repository
-		</a>
-		, ask questions in
-		<a href="/community">the Cabin Discord server</a>
-		, or
-		<a href="/community">reach out to the community in other ways</a>
-		. Try to be descriptive about what you've tried that hasn't worked, what error messages (if any)
-		you've received, and what you're confused on or struggling with.
+		If you got an error instead, refer to the bottom of this page for troubleshooting tips.
+		Otherwise, continue on to the documentation!
 	</p>
 
 	<h2 id="editor-setup">Editor Setup</h2>
@@ -240,15 +122,48 @@ The Cabin compiler.
 		below to get set up.
 	</p>
 
-	<h2 class="editor">
-		<img src={visualStudioSnippetIcon} alt="Visual StudSnippetode" />
+	<h2 class="editor" onclick={expandEditor}>
+		<img src={visualStudioSnippetIcon} alt="Visual Studio Code" />
 		Visual Studio Code
 	</h2>
 
-	<h2 class="editor">
+	<div>
+		<Preview />
+		<p>
+			To use Cabin in Visual Studio Code, install <ExternalLink
+				href="https://github.com/cabin-language/vscode-cabin"
+			>
+				the Cabin Language Support extension
+			</ExternalLink>
+			from
+			<ExternalLink href="https://marketplace.visualstudio.com/vscode">
+				the Visual Studio Code extension marketplace
+			</ExternalLink>
+			.
+		</p>
+	</div>
+
+	<h2 class="editor" onclick={expandEditor}>
 		<img src={vimIcon} alt="Vim" />
 		Vim
 	</h2>
+
+	<div>
+		<Preview />
+		<p>
+			To use Cabin in Vim, install <a href="https://github.com/cabin-language/vim-cabin">
+				the Cabin Vim plugin.
+			</a>
+		</p>
+
+		<h3>🔌 Vim-Plug</h3>
+
+		<Snippet>Plug 'cabin-language/vim-cabin'</Snippet>
+
+		<h3>📦 Vundle</h3>
+
+		<Snippet>Plugin 'cabin-language/vim-cabin'</Snippet>
+	</div>
 
 	<h2 class="editor" onclick={expandEditor}>
 		<img src={neovimIcon} alt="Neovim" />
@@ -257,20 +172,24 @@ The Cabin compiler.
 
 	<div>
 		<p>
-			Currently, the best support for Cabin in Neovim is provided through the <a
+			Currently, the best support for Cabin in Neovim is provided through the <ExternalLink
 				href="https://github.com/cabin-language/cabin.nvim"
 			>
 				cabin.nvim
-			</a>
+			</ExternalLink>
 			plugin. The plugin will automatically set up filetype detection, nerd font icons, install and set
 			up the
-			<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+			<ExternalLink
+				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server"
+			>
 				cabin language server
-			</a>
+			</ExternalLink>
 			, as well as the
-			<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+			<ExternalLink
+				href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server"
+			>
 				cabin tree-sitter parser
-			</a>
+			</ExternalLink>
 			for semantic highlighting.
 		</p>
 
@@ -289,6 +208,18 @@ The Cabin compiler.
 		`}
 		/>
 
+		<b>🔹mini.deps</b>
+
+		<Snippet
+			language="lua"
+			code={`
+				MiniDeps.add({
+					source = "cabin-language/cabin.nvim",
+					depends = { "nvim-tree/nvim-web-devicons" }, -- optional
+				})
+			`}
+		/>
+
 		<h3>
 			<WarningIcon stroke="#f9e2af" style="width: 1.25rem;" />
 			Future Deprecation Warning
@@ -300,38 +231,54 @@ The Cabin compiler.
 			<li>
 				<input type="checkbox" disabled />
 				Cabin is registered as a
-				<a
+				<ExternalLink
 					href="https://neovim.io/doc/user/filetype.html#_3.-docs-for-the-default-filetype-plugins."
 				>
 					default filetype
-				</a>
+				</ExternalLink>
 			</li>
 			<li>
 				<input type="checkbox" disabled />
 				Cabin has an icon registered in
-				<a href="https://github.com/nvim-tree/nvim-web-devicons">nvim-web-devicons</a>
+				<ExternalLink href="https://github.com/nvim-tree/nvim-web-devicons">
+					nvim-web-devicons
+				</ExternalLink>
 			</li>
 			<li>
 				<input type="checkbox" disabled />
 				The
-				<a href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server">
+				<ExternalLink
+					href="https://github.com/cabin-language/cabin/tree/main/crates/cabin-language-server"
+				>
 					cabin language server
-				</a>
+				</ExternalLink>
 				is available through
-				<a href="https://github.com/williamboman/mason.nvim">mason.nvim</a>
+				<ExternalLink href="https://github.com/williamboman/mason.nvim">mason.nvim</ExternalLink>
 			</li>
 			<li>
 				<input type="checkbox" disabled />
-				The cabin tree-sitter parser is available through
-				<a href="https://github.com/nvim-tree-sitter/nvim-tree-sitter">nvim-tree-sitter</a>
+				The
+				<ExternalLink
+					href="https://github.com/cabin-language/cabin/tree/main/crates/tree-sitter-cabin"
+				>
+					cabin tree-sitter parser
+				</ExternalLink>
+				is available through
+				<ExternalLink href="https://github.com/nvim-tree-sitter/nvim-tree-sitter">
+					nvim-tree-sitter
+				</ExternalLink>
 			</li>
 		</ul>
 	</div>
 
 	<h2 class="editor" onclick={expandEditor}>
-		<img src={zedIcon} alt="Neovim" />
+		<img src={zedIcon} alt="Zed" />
 		Zed
 	</h2>
+
+	<div>
+		<Preview />
+	</div>
 
 	<h2 class="editor" onclick={expandEditor}>
 		<img src={unknownIcon} alt="Other" />
@@ -409,27 +356,132 @@ Checks for diagnostics in a Cabin project.
 		</pre>
 		</Snippet>
 	</div>
+
+	<h2 id="troubleshooting">Troubleshooting</h2>
+
+	<p>
+		So you got an error&mdash;Oh no! It's not your fault, and these cases are rare, but occasionally
+		bugs in build scripts or installation scripts slip through the cracks. Let's work through it.
+	</p>
+
+	<p>
+		If running <code>cabin</code>
+		gives an error, make sure that the installation location is in your
+		<code>PATH</code>
+		environment variable. The following bash code will print the location of the Cabin executable on
+		your system if it exists, and if it doesn't, will let you know*:
+	</p>
+
+	<Snippet
+		language="bash"
+		code={`(PATHS=($\{PATH//:/ }) ; IFS=$'\\n' ; echo "$\{PATHS[*]}") | grep \\\\bcabin\\\\b || echo "Cabin is not in PATH!"`}
+	/>
+
+	<Tip>
+		Requires <ExternalLink href="https://www.gnu.org/software/coreutils/" color="#11111b">
+			GNU Coreutils
+		</ExternalLink>
+		(present on most Unix systems by default)
+	</Tip>
+
+	<p class="note"></p>
+
+	<p>
+		If you get an error here, it means that the Cabin compiler either doesn't exist on your
+		computer, or it does but it's in a location somewhere that isnt in your <code>PATH</code>
+		variable. If you know that you have the compiler and where it is (it'll just be a file called
+		<code>cabin</code>
+		), then add its parent directory to your
+		<code>PATH</code>
+		; i.e., if your Cabin compiler is located at
+		<code>/home/user/.programs/cabin</code>
+		, then in your
+		<code>~/.bashrc</code>
+		, you'd add:
+	</p>
+
+	<Snippet language="bash" code={`export PATH="$PATH:/home/user/.programs"`} />
+
+	<p>
+		Alternatively, if you're not sure whether the compiler is on your system, or you think it might
+		be but you don't know where, consider trying the installation for your operating system above.
+		Make sure the operating system selected matches your machine; The website will try to
+		auto-detect it, but it doesn't hurt to double check, especially when it comes to Linux distros.
+	</p>
+
+	<p>
+		If you're <i>still</i>
+		having trouble with your installation, fear not! Two more options remain. For both, you need to have
+		Rust installed. Check if Rust is installed by running
+		<code>cargo</code>
+		, and if it's not, install it with the instructions
+		<a href="https://www.rust-lang.org/tools/install" style:color="cornflowerblue">here</a>
+		.
+	</p>
+
+	<p>
+		The first option is to install the compiler through it's cargo crate. This may have already been
+		the instructions for your operating system if no native solution exists. If not, you can try it
+		like so:
+	</p>
+
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">install</span> <span
+				style:color="#f38ba8">cabin-language</span></pre>
+	</Snippet>
+
+	<p>
+		If that's causing you trouble, the last thing you can try is building the compiler from source.
+		That'd look something like this:
+	</p>
+
+	<Snippet copyable>
+		<pre><span style:color="#89b4fa">git</span> <span style:color="#89b4fa">clone</span> <span
+				style:color="#f38ba8">https://github.com/cabin-language/cabin.git</span>
+<span style:color="#89b4fa">cd</span> <span style:color="#f38ba8">cabin/crates/cabin-bin</span>
+<span style:color="#89b4fa">cargo</span> <span style:color="#89b4fa">build</span> <span
+				style:color="#9399b2">--release</span></pre>
+	</Snippet>
+
+	<p>
+		The compiler executable will be placed at <code>
+			cabin/crates/cabin-bin/target/release/cabin
+		</code>
+		when the project finishes compiling. Place the file anywhere in your
+		<code>PATH</code>
+		, using the
+		<code>PATH</code>
+		instructions and debugging tips above if necessary.
+	</p>
+
+	<p>
+		If you've gotten this far and are <i>still</i>
+		having trouble getting the compiler working on your machine, first of all, congratulations for being
+		the most incredibly unlucky person alive, and secondly, feel free to reach out to the Cabin community
+		to get advice on your situation. You can
+		<ExternalLink href="https://github.com/cabin-language/cabin/issues">
+			submit an issue on the Cabin GitHub repository
+		</ExternalLink>
+		, ask questions in
+		<a href="/community">the Cabin Discord server</a>
+		, or
+		<a href="/community">reach out to the community in other ways</a>
+		. Try to be descriptive about what you've tried that hasn't worked, what error messages (if any)
+		you've received, and what you're confused on or struggling with.
+	</p>
 </TutorialDocument>
 
 <style>
 	.os-buttons {
 		display: flex;
-	}
-
-	a {
-		color: dodgerblue;
-	}
-
-	.note {
-		color: #f9e2af;
-		font-size: 0.85rem;
-		margin-top: -0.75rem;
+		border-radius: 1rem;
+		width: fit-content;
 	}
 
 	.os-buttons > * {
-		width: 10rem;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
+		width: 10rem;
 		color: white;
 		display: flex;
 		align-items: center;
@@ -440,6 +492,27 @@ Checks for diagnostics in a Cabin project.
 			width: 1rem;
 			height: 1rem;
 		}
+	}
+
+	a {
+		color: cornflowerblue;
+	}
+
+	.note {
+		color: #f9e2af;
+		font-size: 0.85rem;
+		margin-top: -0.75rem;
+	}
+
+	li {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	li a {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
 	}
 
 	.editor {

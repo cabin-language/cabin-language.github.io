@@ -12,6 +12,10 @@
 	export function previous() {
 		return sidebar.previous();
 	}
+
+	export function toggle() {
+		return sidebar.toggle();
+	}
 </script>
 
 <Sidebar {page} bind:this={sidebar}>
@@ -28,8 +32,8 @@
 		<a href="/learn/installation">Installation</a>
 		<ul>
 			<li><a href="/learn/installation#testing">Testing</a></li>
-			<li><a href="/learn/installation#troubleshooting">Troubleshooting</a></li>
 			<li><a href="/learn/installation#editor-setup">Editor Setup</a></li>
+			<li><a href="/learn/installation#troubleshooting">Troubleshooting</a></li>
 		</ul>
 	</li>
 	<li>
