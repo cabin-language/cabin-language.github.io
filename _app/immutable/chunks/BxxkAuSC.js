@@ -1,0 +1,1 @@
+import{L as S,M as h,t as k,N as L,S as M}from"./CLrxCXow.js";function t(r,i){return r===i||(r==null?void 0:r[M])===i}function q(r={},i,a,T){return S(()=>{var f,s;return h(()=>{f=s,s=[],L(()=>{r!==a(...s)&&(i(r,...s),f&&t(a(...f),r)&&i(null,...f))})}),()=>{k(()=>{s&&t(a(...s),r)&&i(null,...s)})}}),r}export{q as b};
