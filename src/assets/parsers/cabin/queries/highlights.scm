@@ -10,6 +10,8 @@
 (foreach ["foreach" "in"] @keyword)
 (while_loop ["while"] @keyword)
 (binary ["and" "or"] @keyword)
+(match ["match" "otherwise"] @keyword)
+(function_call ["let"] @keyword)
 
 ; Semantics
 (type (expression (literal (identifier))) @type)
@@ -54,10 +56,11 @@
 	value: (expression (literal (function)))
 )
 (either_variant name: (identifier) @lsp.type.enumMember)
+(expression (literal (identifier (other_identifier))) @variable)
 
 ; Brackets
 ["(" ")" "[" "]" "{" "}" "<" ">"] @punctuation.bracket
-[";" ":" "," "."] @punctuation.delimiter
+[";" ":" "," "." "=>"] @punctuation.delimiter
 ["+" "-" "*" "/" "^" "==" "!=" "<=" ">=" "< " " >" "="] @operator
 (tag ["#"] @punctuation.special)
 
@@ -65,3 +68,4 @@
 (number) @number
 (string) @string
 (comment) @comment
+(pascal_case_identifier) @type

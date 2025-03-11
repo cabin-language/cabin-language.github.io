@@ -150,6 +150,29 @@
 		</ul>
 	</li>
 	<li>
+		<a href="/learn/pattern-matching">Pattern Matching</a>
+		<ul>
+			<li>
+				<a href="/learn/pattern-matching#is-variant">
+					The <code>is_variant</code>
+					Action
+				</a>
+			</li>
+			<li>
+				<a href="/learn/pattern-matching#conditional-let-bindings">
+					Conditonal <code>let</code>
+					Bindings
+				</a>
+			</li>
+			<li>
+				<a href="/learn/pattern-matching#match-blocks">
+					<code>match</code>
+					Blocks
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li>
 		<a href="/learn/runtime-evaluation">Runtime Evaluation</a>
 		<ul>
 			<li>Command-Line Arguments</li>

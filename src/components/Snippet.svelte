@@ -71,7 +71,7 @@ code in `<pre>`.
 			number: { highlight: '#fab387' },
 			'lsp.type.enumMember': { highlight: '#fab387' },
 			string: { highlight: '#a6e3a1' },
-			variable: { highlight: '#b4befe' },
+			variable: { highlight: '#cdd6f4' },
 			'variable.member': { highlight: '#b4befe' },
 			'variable.parameter': { highlight: '#eba0ac' },
 			'function.call': { highlight: '#89b4fa' },
@@ -116,6 +116,7 @@ code in `<pre>`.
 				const language = await Language.load(parserLanguage.wasm);
 				parser.setLanguage(language);
 				let ast = parser.parse(text, null)!;
+				console.log(ast.rootNode.toString());
 
 				let highlights: { name: string; start: number; end: number; child?: number }[] = [];
 
