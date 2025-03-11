@@ -1,0 +1,8 @@
+import"../chunks/CWj6FrbW.js";import"../chunks/69_IOA4Y.js";import{$ as r,s as e,f as c,n as p}from"../chunks/CLrxCXow.js";import{h as b}from"../chunks/DR8CSxid.js";import{t as h,a as m}from"../chunks/DB0DeKnA.js";import{S as a}from"../chunks/C-fuNUsz.js";import{T as u}from"../chunks/DDh1FhEA.js";var g=h(`<h1>Declarations</h1> <p>In Cabin, bindings are declared with the&nbsp; <code>let</code> keyword:</p> <!> <p>Declarations&nbsp; <i>must</i> be assigned an initial value. This isn't ever allowed:</p> <!> <h2 id="mutability">Mutability</h2> <p>By default, declarations create an&nbsp; <b>immutable binding</b> . This means the value cannot be changed. To declare a value as mutable, use the&nbsp; <code>#[editable]</code> tag:</p> <!> <p>We'll talk more about tags later. For now, just note the syntax.</p> <p>Values marked as <code>#[editable]</code> cannot be used as types.</p> <h2 id="visibility">Visibility</h2> <p>By default, declarations are hidden from other files. Similarly to <code>editable</code> , we do this with tags. In this case, the <code>#[visible]</code> tag is used:</p> <!> <p>Note that <code>#[visible]</code> isn't valid for local variables, only top-level declarations and group fields, which we'll talk about
+		later.</p>`,1);function T(s){b(t=>{r.title="Declarations • Cabin Docs"}),u(s,{page:"Declarations",children:(t,v)=>{var i=g(),o=e(c(i),4);a(o,{language:"cabin",code:"let x = 10;"});var l=e(o,4);a(l,{language:"cabin",code:"let x;"});var n=e(l,6);a(n,{language:"cabin",code:`
+		#[editable]
+		let x = 10;
+	`});var d=e(n,10);a(d,{language:"cabin",code:`
+		#[visible]
+		let x = 10;
+	`}),p(2),m(t,i)}})}export{T as component};
