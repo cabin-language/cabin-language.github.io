@@ -44,6 +44,66 @@
 		</ul>
 	</li>
 	<li>
+		<a href="/learn/basic-types-and-operations">Basic Types &amp; Operations</a>
+		<ul>
+			<li>
+				<a href="/learn/basic-types-and-operations#basic-types">Basic Types</a>
+
+				<ul>
+					<li>
+						<a href="/learn/basic-types-and-operations#boolean-combinators">Text</a>
+					</li>
+					<li>
+						<a href="/learn/basic-types-and-operations#numbers">Numeric Types</a>
+					</li>
+					<li><a href="/learn/basic-types-and-operations#boolean">Boolean</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/learn/basic-types-and-operations#basic-operations">Basic Operations</a>
+				<ul>
+					<li>
+						<a href="/learn/basic-types-and-operations#boolean-combinators">Boolean Combinators</a>
+					</li>
+					<li>
+						<a href="/learn/basic-types-and-operations#double-colon">The Double-Colon Operator</a>
+					</li>
+					<li><a href="/learn/basic-types-and-operations#dot">The Dot Operator</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="/learn/system-interaction">System Interaction</a>
+		<ul>
+			<li>
+				<a href="/learn/system-interaction#terminal-input-output">Terminal Input &amp; Output</a>
+			</li>
+			<li><a href="/learn/system-interaction#file-input-output">File Input &amp; Output</a></li>
+			<li>
+				<a href="/learn/system-interaction#other-system-interactions">Other System Interactions</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="/learn/compile-time-evaluation">Compile-Time Evaluation</a>
+		<ul>
+			<li>
+				<a href="/learn/compile-time-evaluation#compile-time-vs-runtime">
+					Compile-Time vs Run-Time
+				</a>
+			</li>
+			<li>
+				<a href="/learn/compile-time-evaluation#compile-time-as-the-default">
+					Compile-Time as the Default
+				</a>
+			</li>
+			<li>
+				<a href="/learn/compile-time-evaluation#runtime-evaluation">Runtime Evaluation</a>
+			</li>
+		</ul>
+	</li>
+	<li>
 		<a href="/learn/if-expressions">If Expressions</a>
 		<ul>
 			<li>
@@ -175,11 +235,16 @@
 	<li>
 		<a href="/learn/runtime-evaluation">Runtime Evaluation</a>
 		<ul>
-			<li>Command-Line Arguments</li>
 			<li>
-				The <code>run</code>
-				Action
+				<a href="/learn/runtime-evaluation#run-expressions">
+					<code>run</code>
+					expressions
+				</a>
 			</li>
+			<li>
+				<a href="/learn/runtime-evalutaion#runtime-evaluation-tree">The Runtime-Evaluation Tree</a>
+			</li>
+			<li><a href="/learn/runtime-evaluation#command-line-arguments">Command-Line Arguments</a></li>
 		</ul>
 	</li>
 	<li>

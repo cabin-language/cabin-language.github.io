@@ -4,13 +4,32 @@
 	import StopIcon from '../../components/icons/StopIcon.svelte';
 	import Navbar from '../../components/Navbar.svelte';
 	import Snippet from '../../components/Snippet.svelte';
+	import init, { runCode, StyledString } from '../../wasm/cabin/cabin_web';
+	import cabinWasm from '../../wasm/cabin/cabin_web_bg.wasm?url';
 
 	let output = $state('Hello world!');
-
 	let isRunning = $state(false);
+	let initialized = false;
 
-	function run() {
+	async function run() {
 		isRunning = !isRunning;
+
+		if (isRunning) {
+			if (!initialized) {
+				console.log('initializing wasm');
+				await init(cabinWasm);
+				console.log('wasm initiaized');
+				initialized = true;
+			}
+			console.log('Running');
+			runCode(
+				`print("Hello world")`,
+				() => 'hello',
+				(text: StyledString) => console.log(text.value),
+				(text: StyledString) => console.log(text.value)
+			);
+			console.log('Done');
+		}
 	}
 </script>
 

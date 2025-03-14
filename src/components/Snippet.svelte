@@ -25,13 +25,25 @@ code in `<pre>`.
 	import treeSitterLuaHighlights from '../assets/parsers/lua/queries/lua/highlights.scm?raw';
 	import treeSitterBash from '../assets/parsers/bash/tree-sitter-bash.wasm?url';
 	import treeSitterBashHighlights from '../assets/parsers/bash/queries/highlights.scm?raw';
+	import treeSitterEbnf from '../assets/parsers/ebnf/tree-sitter-ebnf.wasm?url';
+	import treeSitterEbnfHighlights from '../assets/parsers/ebnf/queries/ebnf/highlights.scm?raw';
+	import treeSitterJs from '../assets/parsers/javascript/tree-sitter-javascript.wasm?url';
+	import treeSitterJsHighlights from '../assets/parsers/javascript/queries/highlights.scm?raw';
+	import treeSitterBnf from '../assets/parsers/bnf/tree-sitter-bnf.wasm?url';
+	import treeSitterBnfHighlights from '../assets/parsers/bnf/queries/highlights.scm?raw';
 	import CopyIcon from './icons/CopyIcon.svelte';
 	import CheckIcon from './icons/CheckIcon.svelte';
+	import PlayOutlineIcon from './icons/PlayOutlineIcon.svelte';
+	import CloseIcon from './icons/CloseIcon.svelte';
 
 	const languages = {
 		lua: { wasm: treeSitterLua, highlights: treeSitterLuaHighlights },
 		cabin: { wasm: treeSitterCabin, highlights: treeSitterCabinHighlights },
-		bash: { wasm: treeSitterBash, highlights: treeSitterBashHighlights }
+		bash: { wasm: treeSitterBash, highlights: treeSitterBashHighlights },
+		ebnf: { wasm: treeSitterEbnf, highlights: treeSitterEbnfHighlights },
+		bnf: { wasm: treeSitterBnf, highlights: treeSitterBnfHighlights },
+		javascript: { wasm: treeSitterJs, highlights: treeSitterJsHighlights },
+		js: { wasm: treeSitterJs, highlights: treeSitterJsHighlights }
 	} as const satisfies { [key: string]: { wasm: string; highlights: string } };
 
 	type Language = keyof typeof languages;
@@ -45,7 +57,7 @@ code in `<pre>`.
 		code: string;
 	};
 
-	let props: (RawCode | HighlightedCode) & {
+	const props: (RawCode | HighlightedCode) & {
 		inline?: boolean;
 		lineNumbers?: boolean;
 		onclick?: (event: MouseEvent) => void;
@@ -53,39 +65,63 @@ code in `<pre>`.
 		cursor?: number;
 		input?: boolean;
 		copyable?: boolean;
+		output?: string;
 	} = $props();
-	let inline = props.inline;
-	let children = (props as any).children;
-	let code = $state((props as any).code);
-	let language = (props as any).language;
-	let height = (props as any).height;
-	let input = $derived((props as any).input);
-	let copyable = (props as any).copyable ?? !!code;
+
+	const children = (props as any).children;
+	const code = $state((props as any).code);
+	const language = $state((props as any).language);
+
+	const inline = props.inline;
+	const height = props.height;
+	const input = $derived(props.input);
+	const copyable = props.copyable ?? !!code;
+	const output = props.output ? unindent(props.output) : null;
+	const runnable = !!output;
 
 	async function highlight(text: string, language: Language): Promise<string> {
 		const highlightGroups: { [key: string]: { highlight: string; child?: number } } = {
+			variable: { highlight: '#cdd6f4' },
+
 			'keyword.return': { highlight: '#cba6f7', child: 0 },
 			'keyword.conditional': { highlight: '#cba6f7' },
 			'keyword.function': { highlight: '#cba6f7' },
 			keyword: { highlight: '#cba6f7' },
+			'string.grammar': { highlight: '#cba6f7' },
+
 			number: { highlight: '#fab387' },
+			boolean: { highlight: '#fab387' },
 			'lsp.type.enumMember': { highlight: '#fab387' },
-			string: { highlight: '#a6e3a1' },
-			variable: { highlight: '#cdd6f4' },
-			'variable.member': { highlight: '#b4befe' },
-			'variable.parameter': { highlight: '#eba0ac' },
+			'constant.builtin': { highlight: '#fab387' },
+
 			'function.call': { highlight: '#89b4fa' },
+			'function.method': { highlight: '#89b4fa' },
 			'function.call.lua': { highlight: '#89b4fa' },
 			function: { highlight: '#89b4fa' },
+
+			'variable.member': { highlight: '#b4befe' },
 			property: { highlight: '#b4befe' },
+
+			type: { highlight: '#f9e2af' },
+			'symbol.grammar': { highlight: '#f9e2af' },
+			'symbol.grammar.camel': { highlight: '#f9e2af' },
+			'symbol.grammar.lower': { highlight: '#f9e2af' },
+
+			string: { highlight: '#a6e3a1' },
+			'variable.parameter': { highlight: '#eba0ac' },
+			'variable.builtin': { highlight: '#f38ba8' },
+			'punctuation.special': { highlight: '#f5c2e7' },
+			'string.special': { highlight: '#f5c2e7' },
+			'string.special.grammar': { highlight: '#f5c2e7' },
+			label: { highlight: '#74c7ec' },
+
 			'punctuation.bracket': { highlight: '#9399b2' },
 			punctuation: { highlight: '#9399b2' },
 			'punctuation.delimiter': { highlight: '#9399b2' },
-			'punctuation.special': { highlight: '#f5c2e7' },
-			label: { highlight: '#74c7ec' },
 			operator: { highlight: '#9399b2' },
 			comment: { highlight: '#9399b2' },
-			type: { highlight: '#f9e2af' }
+			'keyword.operator': { highlight: '#9399b2' },
+			'comment.block': { highlight: '#9399b2' }
 		};
 
 		const parserLanguage = languages[language];
@@ -115,20 +151,20 @@ code in `<pre>`.
 				const parser = new Parser();
 				const language = await Language.load(parserLanguage.wasm);
 				parser.setLanguage(language);
-				let ast = parser.parse(text, null)!;
+				const ast = parser.parse(text, null)!;
 				console.log(ast.rootNode.toString());
 
-				let highlights: { name: string; start: number; end: number; child?: number }[] = [];
+				const highlights: { name: string; start: number; end: number; child?: number }[] = [];
 
-				let query = new Query(language, parserLanguage.highlights);
+				const query = new Query(language, parserLanguage.highlights);
 				query.matches(ast.rootNode).forEach((queryMatch) => {
 					queryMatch.captures.forEach((capture) => {
-						let start = capture.node.startIndex;
-						let name = capture.name;
-						let info = highlightGroups[name];
+						const start = capture.node.startIndex;
+						const name = capture.name;
+						const info = highlightGroups[name];
 						if (info) {
-							let { highlight, child } = info;
-							let end =
+							const { highlight, child } = info;
+							const end =
 								child !== undefined
 									? capture.node.children[child]!.endIndex - 1
 									: capture.node.endIndex - 1;
@@ -142,7 +178,7 @@ code in `<pre>`.
 				let result = '';
 				let end = null;
 				let line = 1;
-				let column = 1;
+				const column = 1;
 				for (let index = 0; index < text.length; index++) {
 					let highlight = highlights.find((highlight) => highlight.start == index);
 
@@ -152,7 +188,15 @@ code in `<pre>`.
 						end = highlight.end;
 					}
 
-					result += text.charAt(index);
+					const char = text.charAt(index);
+					if (char === '<') {
+						result += '&lt;';
+					} else if (char === '>') {
+						result += '&gt;';
+					} else {
+						result += char;
+					}
+
 					if (text.charAt(index) === '\n' && input) {
 						line++;
 					}
@@ -162,10 +206,14 @@ code in `<pre>`.
 					}
 				}
 
+				result = result.replaceAll(/^(    )+/gm, (match) =>
+					'<span style="color: #45475a;">│</span>   '.repeat(match.length / 4)
+				);
+
 				return result;
 			} catch (error) {
 				console.error(error);
-				return text;
+				return text.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 			}
 		}
 
@@ -177,12 +225,14 @@ code in `<pre>`.
 			.replace(/^[\r\n]+/g, '')
 			.replace(/[\r\n]+\s*$/g, '')
 			.replace(/\t/g, '    ');
-		let indent = Math.min(...[...(text.match(/^ +/gm) ?? [''])].map((match) => match.length));
+		const indent = /^[^ \n\r]/m.test(text)
+			? 0
+			: Math.min(...[...(text.match(/^ +/gm) ?? [])].map((match) => match.length));
 		return text.replace(new RegExp(`^ {${indent}}`, 'gm'), '');
 	}
 
-	let unindented = $derived(code ? unindent(code) : null);
-	let highlighted = $derived(language && unindented ? highlight(unindented, language) : null);
+	const unindented = $derived(code ? unindent(code) : null);
+	const highlighted = $derived(language && unindented ? highlight(unindented, language) : null);
 
 	function copy() {
 		if (!copyable) return;
@@ -192,31 +242,76 @@ code in `<pre>`.
 	}
 
 	let didCopy = $state(false);
+
+	let outputCode: string | null = $state(null);
+
+	function run() {
+		if (output) {
+			outputCode = output;
+		}
+	}
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-<code class:block={!inline} style:height>
-	{#if code}
-		<pre>{#if highlighted}{#await highlighted then highlighted}{@html highlighted}{/await}{:else}{unindented}{/if}</pre>
-	{:else}
-		{@render children!()}
-	{/if}
-	<button
-		style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;"
-		onclick={copy}
-	>
-		{#if copyable}
-			{#if didCopy}
-				<CheckIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
-			{:else}
-				<CopyIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
-			{/if}
+<div>
+	<code class:block={!inline} style:height>
+		<!-- Code -->
+		{#if code}
+			<pre>{#if highlighted}{#await highlighted then highlighted}{@html highlighted}{/await}{:else}{unindented}{/if}</pre>
+		{:else}
+			{@render children!()}
 		{/if}
-	</button>
-</code>
+
+		<!-- Run Button	 -->
+		{#if runnable}
+			<button
+				style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 1.5rem; padding: 0px;"
+				title="click to run"
+				onclick={run}
+			>
+				<PlayOutlineIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+			</button>
+		{/if}
+
+		<!-- Copy Button	 -->
+		{#if copyable}
+			<button
+				style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;"
+				title="click to copy"
+				onclick={copy}
+			>
+				{#if didCopy}
+					<CheckIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+				{:else}
+					<CopyIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+				{/if}
+			</button>
+		{/if}
+	</code>
+
+	{#if outputCode}
+		<p>Output:</p>
+		<code class="block">
+			<pre>{output}</pre>
+			<button
+				style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;"
+				title="hide output"
+				onclick={() => (outputCode = null)}
+			>
+				<CloseIcon stroke="#7f849c" style="width: 100%; height: 100%;" />
+			</button>
+		</code>
+	{/if}
+</div>
 
 <style>
+	div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
 	.block {
 		width: 100%;
 	}

@@ -13,7 +13,7 @@
 	import unknownIcon from '../../../assets/images/unknown.png';
 	import Preview from '../../../components/notes/Preview.svelte';
 	import ExternalLink from '../../../components/ExternalLink.svelte';
-	import ExternalLinkIcon from '../../../components/icons/ExternalLinkIcon.svelte';
+	import { onMount } from 'svelte';
 
 	let os = $state('windows');
 
@@ -22,6 +22,13 @@
 			os = newOs;
 		};
 	}
+
+	let desktop = $state(true);
+	onMount(() => {
+		let media = matchMedia('(min-width: 800px');
+		desktop = media.matches;
+		media.addEventListener('change', (event) => (desktop = event.matches));
+	});
 
 	function expandEditor(event: MouseEvent) {
 		let header = event.target as HTMLElement;
@@ -40,15 +47,21 @@
 	<div class="os-buttons">
 		<button style:background={os === 'windows' ? '#28283d' : '#181825'} onclick={setOs('windows')}>
 			<img src={windowsIcon} alt="Windows" />
-			Windows
+			{#if desktop}
+				Windows
+			{/if}
 		</button>
 		<button style:background={os === 'mac' ? '#28283d' : '#181825'} onclick={setOs('mac')}>
 			<img src={macIcon} alt="MacOS" />
-			Mac
+			{#if desktop}
+				Mac
+			{/if}
 		</button>
 		<button style:background={os === 'linux' ? '#28283d' : '#181825'} onclick={setOs('linux')}>
 			<img src={linuxIcon} alt="Linux" />
-			Linux
+			{#if desktop}
+				Linux
+			{/if}
 		</button>
 	</div>
 
@@ -475,13 +488,13 @@ Checks for diagnostics in a Cabin project.
 	.os-buttons {
 		display: flex;
 		border-radius: 1rem;
-		width: fit-content;
+		width: 100%;
 	}
 
 	.os-buttons > * {
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
-		width: 10rem;
+		width: min(33%, 10rem);
 		color: white;
 		display: flex;
 		align-items: center;
@@ -506,12 +519,6 @@ Checks for diagnostics in a Cabin project.
 
 	li {
 		display: flex;
-		gap: 0.25rem;
-	}
-
-	li a {
-		display: flex;
-		align-items: center;
 		gap: 0.25rem;
 	}
 

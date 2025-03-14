@@ -1,0 +1,118 @@
+program = { statement } ;
+
+(* -------------------------- Statements --------------------------- *)
+
+statement = (
+	declaration |
+	goto        |
+	expression  |
+) , ";" ;
+
+declaration = [ taglist ] , "let" , identifier , [ ":" , expression ] , "=" , expression ;
+
+goto = identifier , "is" , expression ;
+
+(* -------------------------- Expressions --------------------------- *)
+
+expression = 
+	binary                 |
+	"(" , expression , ")" |
+	postfix                |
+	literal
+;
+
+binary = expression , binop , expression ;
+binop = "." | "+" | "-" | "*" | "/" | "^" | "<" | "<=" | ">" | ">=" | "==" | "!=" | "=" | "and" | "or" ;
+
+postfix = functioncall | expression , ( "?" | "!" ) ;
+
+functioncall = 
+	expression , "<" , [ expression , { "," , expression } , [","] ] , ">" , [ "(" , [ expression , { "," , expression } , [","] ] , ")" ] |
+	expression , "(" , [ ["let"] , expression , { "," , expression } , [","] ] , ")"
+;
+
+(* -------------------------- Literals --------------------------- *)
+
+literal = 
+	match           | 
+	if              | 
+	foreach         | 
+	while           | 
+	extension       |  
+	either          | 
+	action          | 
+	run             | 
+	constructor     | 
+	block           | 
+	identifier      |
+	number          |
+	formattedstring |
+	rawstring       |
+	number
+;
+
+run = "run", "(", expression, ")" ;
+
+match = "match" , expression , "{" , [ matchbranch { "," , matchbranch } , [","] ] , "}" ;
+matchbranch = expression , "=>" , expression ;
+
+block = "{" , { statement } , "}" ;
+
+foreach = "foreach" , identifier , "in" , expression , block ;
+
+if = "if" , expression , block , { "otherwise" , "if" , expression , block } , [ "otherwise" , block ] ;
+
+while = "while" , expression , block ;
+
+constructor = "new" , [ identifier ] , "{" , [ objectvalue , { "," , objectvalue , [","] } ] , "}" ;
+objectvalue = identifier , "=" , expression ;
+
+extension = "extensionof" , expression , [ "tobe" , expression ] ,	
+	"{" , [ objectvalue , { "," , objectvalue } , [","] ] , "}"
+;
+
+group = "group" , 
+	[ "<" , [ expression , { "," , expression } , [","] ] , ">" ] ,       (* Compile-time parameters *)
+	"{" , [ groupfield , { "," , groupfield } , [","] ] , "}"             (* Fields *)
+;
+groupfield = [ taglist ] , identifier , [ ":" , expression ] , [ "=" , expression ] ;
+
+either = "either" , "{" , [ identifier , { "," , identifier } , [","] ]  , "}" ;
+
+action = "action" , 
+	[ "<", [ expression , { "," , expression }, [","] ] , ">" ] ,   (* Compile-time parameters *)
+	[ "(", [ expression , { "," , expression }, [","] ] , ")" ] ,   (* runtime parameters *)
+	[ ":" , expression ] ,                                          (* Return type *)
+	[ block ]                                                       (* Body *)
+;
+
+taglist = "#" , "[" , [ expression , { "," , expression } , [","] ] , "]" ;
+
+formattedstring = ? no-whitespace ? '"' , { "{" , expression , "}" | stringlit } , '"' ;
+stringlit = ? anychar ? - "{" - '"' - "}" ;
+
+rawstring = ? no-whitespace ? "`" , ( ? anychar ? - "`" ) , "`" ;
+
+(* -------------------------- Tokens --------------------------- *)
+
+identifier = ? no-whitespace ? , alphabetic , { alphabetic | digit } ;
+number = ? no-whitespace? , digit , { digit } , [ "." , digit , { digit } ] ;
+
+alphabetic = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" |
+             "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+(*
+
+Special Sequences
+-----------------
+
+In Extended Backus-Naur Form, the expression ? <text> ? is used to denote a special sequence that
+has no predefined meaning. This grammar uses the following special sequences:
+
+- ? anychar ? - Any character, including unicode and multi-byte characters.
+
+- ? no-whitespace? - When a rule starts with this sequence, it indicates that the top-level tokens
+in this rule cannot have whitespace between them.
+
+*)

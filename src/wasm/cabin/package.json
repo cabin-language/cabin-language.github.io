@@ -1,0 +1,15 @@
+{
+  "name": "cabin-web",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "cabin_web_bg.wasm",
+    "cabin_web.js",
+    "cabin_web.d.ts"
+  ],
+  "main": "cabin_web.js",
+  "types": "cabin_web.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

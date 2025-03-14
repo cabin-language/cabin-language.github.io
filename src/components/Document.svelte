@@ -101,6 +101,10 @@
 		overflow-y: auto;
 		height: 100%;
 
+		:global(ul ul) {
+			margin-left: 2rem;
+		}
+
 		:global(h1, h2, h3) {
 			display: flex;
 			gap: 0.5em;
@@ -144,6 +148,7 @@
 				padding-top: 0.5rem;
 				padding-bottom: 0.5rem;
 				border: 2px solid rgba(255, 255, 255, 40%);
+				text-align: center;
 
 				&:first-child {
 					background-image: linear-gradient(to bottom right, #f9e2af, #f38ba8);

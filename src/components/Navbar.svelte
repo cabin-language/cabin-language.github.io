@@ -6,13 +6,12 @@
 	import PeopleIcon from './icons/PeopleIcon.svelte';
 	import MenuIcon from './icons/MenuIcon.svelte';
 	import CloseIcon from './icons/CloseIcon.svelte';
-	import LearnIcon from './icons/LearnIcon.svelte';
 	import TestIcon from './icons/TestIcon.svelte';
-
-	let desktop = $state(true);
+	import PlayOutlineIcon from './icons/PlayOutlineIcon.svelte';
 
 	let { sidebar = null } = $props();
 
+	let desktop = $state(true);
 	onMount(() => {
 		let media = matchMedia('(min-width: 800px');
 		desktop = media.matches;
@@ -23,7 +22,7 @@
 </script>
 
 <nav>
-	<a href="/" style:margin-right={sidebar && !desktop ? undefined : 'auto'}>
+	<a href="/">
 		<img src={logo} alt="Cabin" />
 		{#if desktop}
 			Cabin
@@ -35,7 +34,6 @@
 				sidebar();
 				showingSidebar = !showingSidebar;
 			}}
-			style:margin-right="auto"
 			style:margin-left="-1rem"
 		>
 			{#if showingSidebar}
@@ -45,16 +43,9 @@
 			{/if}
 		</button>
 	{/if}
-	<a href="/learn">
+	<a href="/docs">
 		{#if desktop}
-			Learn
-		{:else}
-			<LearnIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
-		{/if}
-	</a>
-	<a href="/reference">
-		{#if desktop}
-			Reference
+			Documentation
 		{:else}
 			<DocumentIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
 		{/if}
@@ -63,7 +54,7 @@
 		{#if desktop}
 			Playground
 		{:else}
-			<TestIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
+			<PlayOutlineIcon stroke="#CDD6F4" style="width: 2rem; height: 2rem;" />
 		{/if}
 	</a>
 	<a href="/libraries">
@@ -83,10 +74,29 @@
 </nav>
 
 <style>
+	/* Mobile */
+	@media (max-width: 800px) {
+		nav {
+			gap: 0px;
+			justify-content: space-evenly;
+		}
+	}
+
+	/* Desktop */
+	@media (min-width: 800px) {
+		nav {
+			gap: 2rem;
+			justify-content: initial;
+
+			> *:first-child {
+				margin-right: auto;
+			}
+		}
+	}
+
 	nav {
 		display: flex;
 		color: #cdd6f4;
-		gap: min(1vw, 2rem);
 		background-color: #11111b;
 		padding-right: 1rem;
 

@@ -113,11 +113,12 @@
 			};
 
 			let surface_area = action(faces: List<Shape>) {
-				#[editable] let total = 0;
+				#[editable] 
+				let total = 0;
 				foreach shape in faces {
 					total = total + match shape {
-						rectangle: Rectangle { it is rectangle.area(); }
-						circle: Circle { it is circle.area(); }
+						Shape.Rectangle(let rectangle) => rectangle.area(),
+						Shape.Circle(let circle) => circle.area()
 					};
 				};
 				surface_area is total;

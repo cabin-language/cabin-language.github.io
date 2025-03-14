@@ -1,0 +1,23 @@
+<program> ::= <statement-list>
+
+<statement-list> ::= <statement> <statement-list> | ε
+
+<statement> ::= <statement-inner> ";"
+<statement-inner> ::= <declaration> | <goto> | <expression>
+
+<declaration> ::= "let" <identifier> <declaration-type> "=" <expression>
+<declaration-type> ::= ":" <expression> | ε
+
+<goto> ::= <identifier> is <expression>
+
+<expression> ::= <block> | <foreach> | <if> | <while>
+
+<block> ::= "{" <statement-list> "}"
+
+<foreach> ::= "foreach" <identifier> "in" <expression> <block>
+
+<while> ::= "while" <expression> <block>
+
+<if> ::= "if" <expression> <otherwise-ifs> <otherwise>
+<otherwise-ifs> ::= "otherwise" "if" <expression> <block> <otherwise-ifs> | ε
+<otherwise> ::= "otherwise" <block> | ε

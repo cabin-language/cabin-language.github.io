@@ -1,3 +1,8 @@
+<!--
+
+The error page. This is the page that appears when an invalid route is used, such as `cabin-languge.org/some-nonexistent-route/`.
+
+-->
 <script>
 	import Navbar from '../components/Navbar.svelte';
 </script>
@@ -9,7 +14,7 @@
 		<p>The page you're looking for doesn't exist TwT</p>
 		<p>This is awko taco 🌮...</p>
 	</div>
-	<a class="get-started" href="/">Go to homepage</a>
+	<a class="go-to-homepage" href="/">Go to homepage</a>
 </main>
 
 <style>
@@ -42,7 +47,7 @@
 		}
 	}
 
-	.get-started {
+	.go-to-homepage {
 		background-image: linear-gradient(to bottom right, #89dceb, #b4befe);
 		padding-left: 2rem;
 		padding-right: 2rem;

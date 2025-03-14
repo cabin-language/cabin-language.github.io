@@ -1,0 +1,32 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const runCode: (a: number, b: number, c: any, d: any, e: any) => void;
+export const __wbg_io_free: (a: number, b: number) => void;
+export const jsio_new: (a: number, b: number, c: number) => number;
+export const __wbg_runoptions_free: (a: number, b: number) => void;
+export const jsrunoptions_new: (a: number) => number;
+export const __wbg_ioreader_free: (a: number, b: number) => void;
+export const jsreader_new: (a: any) => number;
+export const __wbg_iowriter_free: (a: number, b: number) => void;
+export const jswriter_new: (a: any) => number;
+export const __wbg_color_free: (a: number, b: number) => void;
+export const __wbg_styledstring_free: (a: number, b: number) => void;
+export const __wbg_get_styledstring_color: (a: number) => number;
+export const __wbg_set_styledstring_color: (a: number, b: number) => void;
+export const __wbg_get_styledstring_bold: (a: number) => number;
+export const __wbg_set_styledstring_bold: (a: number, b: number) => void;
+export const __wbg_get_styledstring_italic: (a: number) => number;
+export const __wbg_set_styledstring_italic: (a: number, b: number) => void;
+export const __wbg_get_styledstring_underline: (a: number) => number;
+export const __wbg_set_styledstring_underline: (a: number, b: number) => void;
+export const __wbg_get_styledstring_undercurl: (a: number) => number;
+export const __wbg_set_styledstring_undercurl: (a: number, b: number) => void;
+export const styledstring_value: (a: number) => [number, number];
+export const __wbindgen_exn_store: (a: number) => void;
+export const __externref_table_alloc: () => number;
+export const __wbindgen_export_2: WebAssembly.Table;
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __wbindgen_start: () => void;
