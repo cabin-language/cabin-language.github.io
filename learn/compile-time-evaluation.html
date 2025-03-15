@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+				border: none;
+				outline: none;
+				font-family: sans-serif;
+				box-sizing: border-box;
+				background: transparent;
+	 		} 
+
+			code, code * {
+				font-family: monospace;
+				background-color: #28283d;
+				padding: 0.25em;
+				border-radius: 0.5em;
+				width: fit-content;
+				height: fit-content;
+				font-size: inherit;
+				padding-left: 0.5em;
+				padding-right: 0.5em;
+			}
+
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+
+			a, button, label {
+				cursor: pointer;
+			}
+
+			main {
+				overflow-y: auto;
+			}
+
+			html {
+				width: 100vw;
+				height: 100dvh;
+				overflow: hidden;
+			}
+
+			li:has(> input[type="checkbox"]:first-child)::marker {
+				display: none;
+				content: '';
+			}
+
+			body {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				background-color: #181825;
+			}
+		</style>
+		
+		<link href="../_app/immutable/assets/Snippet.lUSRCtTf.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Navbar.5hF27Pic.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Sidebar.bwmY7l3O.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.DKnIbkXx.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/ChQ8i3mT.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/i_ja0YJ5.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BpABP35b.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.CoG0H2E8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/C1FmrZbK.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/ZH7Bqwyt.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CwLvwI_u.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/3l18Sfkq.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CWj6FrbW.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DTE6UjiL.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/D5qvKZgf.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/5rUHwaZ0.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.DmzznJBA.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BajSixIv.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BBBwdkJ2.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/8.CrGfchVm.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/wPM4U2Nx.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DCmLAtqY.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/B9cGN4M3.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BuuoEnqP.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CJQ8bSi3.js"><!--[--><link rel="icon" href="/_app/immutable/assets/logo.zF9TyQMz.png"><!--]-->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[--><!----><!----><div class="wrapper svelte-1pbfawa"><nav class="svelte-9rmk7n"><a href="/" class="svelte-9rmk7n"><img src="/_app/immutable/assets/logo.zF9TyQMz.png" alt="Cabin" class="svelte-9rmk7n"> <!--[-->Cabin<!--]--></a> <!--[!--><!--]--> <a href="/docs" class="svelte-9rmk7n"><!--[-->Documentation<!--]--></a> <a href="/playground" class="svelte-9rmk7n"><!--[-->Playground<!--]--></a> <a href="/libraries" class="svelte-9rmk7n"><!--[-->Libraries<!--]--></a> <a href="/community" class="svelte-9rmk7n"><!--[-->Community<!--]--></a></nav><!----> <div class="inner svelte-1pbfawa"><!----><section class="sidebar svelte-1vidt9m"><h1 class="svelte-1vidt9m">Contents</h1> <ul><li><a href="/learn">Introduction</a> <ul><li><a href="/learn#what-is-cabin">What is Cabin?</a></li> <li><a href="/learn#navigating-these-docs">Navigating These Docs</a></li> <li><a href="/learn#additional-support">Additional Support</a></li> <li><a href="/learn#final-remarks">Final Remarks</a></li></ul></li> <li><a href="/learn/installation">Installation</a> <ul><li><a href="/learn/installation#testing">Testing</a></li> <li><a href="/learn/installation#editor-setup">Editor Setup</a></li> <li><a href="/learn/installation#troubleshooting">Troubleshooting</a></li></ul></li> <li><a href="/learn/declarations">Declarations</a> <ul><li><a href="/learn/declarations#mutability">Mutability</a></li> <li><a href="/learn/declarations#visibility">Visibility</a></li></ul></li> <li><a href="/learn/basic-types-and-operations">Basic Types &amp; Operations</a> <ul><li><a href="/learn/basic-types-and-operations#basic-types">Basic Types</a> <ul><li><a href="/learn/basic-types-and-operations#boolean-combinators">Text</a></li> <li><a href="/learn/basic-types-and-operations#numbers">Numeric Types</a></li> <li><a href="/learn/basic-types-and-operations#boolean">Boolean</a></li></ul></li> <li><a href="/learn/basic-types-and-operations#basic-operations">Basic Operations</a> <ul><li><a href="/learn/basic-types-and-operations#boolean-combinators">Boolean Combinators</a></li> <li><a href="/learn/basic-types-and-operations#double-colon">The Double-Colon Operator</a></li> <li><a href="/learn/basic-types-and-operations#dot">The Dot Operator</a></li></ul></li></ul></li> <li><a href="/learn/system-interaction">System Interaction</a> <ul><li><a href="/learn/system-interaction#terminal-input-output">Terminal Input &amp; Output</a></li> <li><a href="/learn/system-interaction#file-input-output">File Input &amp; Output</a></li> <li><a href="/learn/system-interaction#other-system-interactions">Other System Interactions</a></li></ul></li> <li><a href="/learn/compile-time-evaluation">Compile-Time Evaluation</a> <ul><li><a href="/learn/compile-time-evaluation#compile-time-vs-runtime">Compile-Time vs Run-Time</a></li> <li><a href="/learn/compile-time-evaluation#compile-time-as-the-default">Compile-Time as the Default</a></li> <li><a href="/learn/compile-time-evaluation#runtime-evaluation">Runtime Evaluation</a></li></ul></li> <li><a href="/learn/if-expressions">If Expressions</a> <ul><li><a href="/learn/if-expressions#otherwise"><code>otherwise</code> Blocks</a></li> <li><a href="/learn/if-expressions#expressions"><code>if</code> as Expressions</a></li></ul></li> <li><a href="/learn/loops">Loops</a> <ul><li><a href="/learn/loops#foreach"><code>foreach</code> Loops</a></li> <li><a href="/learn/loops#while"><code>while</code> Loops</a></li> <li><a href="/learn/loops#expressions">Loops as Expressions</a></li></ul></li> <li><a href="/learn/control-flow">Control Flow</a> <ul><li><a href="/learn/control-flow#labels">Labels &amp; <code>is</code> Statements</a></li> <li><a href="/learn/control-flow#reserved-labels">Reserved labels</a> <ul><li><a href="/learn/control-flow#it">The <code>it</code> Label</a></li> <li><a href="/learn/control-flow#return">The <code>return</code> Label</a></li> <li><a href="/learn/control-flow#loop">The <code>loop</code> Label</a></li> <li><a href="/learn/control-flow#done">The <code>done</code> Value</a></li> <li><a href="/learn/control-flow#iteration">The <code>iteration</code> Label</a></li></ul></li></ul></li> <li><a href="/learn/groups">Groups</a> <ul><li><a href="/learn/groups#introduction">Introduction</a></li> <li><a href="/learn/groups#nominality">Nominality</a></li> <li><a href="/learn/groups#mutability">Mutability</a></li> <li><a href="/learn/groups#visibility">Visibility</a></li> <li><a href="/learn/groups#compile-time-parameters">Compile-Time Parameters</a></li></ul></li> <li><a href="/learn/actions">Actions</a> <ul><li><a href="/learn/actions#return-values">Return Values</a></li> <li><a href="/learn/actions#parameters">Parameters</a></li> <li><a href="/learn/actions#compile-time-parameters">Compile-Time Parameters</a></li></ul></li> <li><a href="/learn/eithers">Eithers</a> <ul><li><a href="/learn/eithers#basic">Basic Eithers</a></li> <li><a href="/learn/eithers#subtypes">Subtypes</a></li></ul></li> <li><a href="/learn/pattern-matching">Pattern Matching</a> <ul><li><a href="/learn/pattern-matching#is-variant">The <code>is_variant</code> Action</a></li> <li><a href="/learn/pattern-matching#conditional-let-bindings">Conditonal <code>let</code> Bindings</a></li> <li><a href="/learn/pattern-matching#match-blocks"><code>match</code> Blocks</a></li></ul></li> <li><a href="/learn/runtime-evaluation">Runtime Evaluation</a> <ul><li><a href="/learn/runtime-evaluation#run-expressions"><code>run</code> expressions</a></li> <li><a href="/learn/runtime-evaluation#runtime-evaluation-tree">The Runtime-Evaluation Tree</a></li> <li><a href="/learn/runtime-evaluation#command-line-arguments">Command-Line Arguments</a></li></ul></li> <li><a href="/learn/extensions">Extensions</a> <ul><li><a href="/learn/extensions#basic-extensions">Basic extensions</a></li> <li><a href="/learn/extensions#polymorphic-extensions">Polymorphic extensions</a></li> <li><a href="/learn/extensions#operator-overloading">Operator Overloading</a></li> <li><a href="/learn/extensions#default-extensions">Default Extensions</a></li> <li><a href="/learn/extensions#getters">Extension Getters</a></li></ul></li> <li><a href="/learn/tags">Tags</a> <ul><li><a href="/learn/tags#introduction">Introduction</a></li> <li><a href="/learn/tags#mutation">Mutation</a></li></ul></li> <li><a href="/learn/optionals-and-errors">Optionals &amp; Errors</a> <ul><li>The <code>Optional</code> either</li> <li>The <code>Attempt</code> either</li> <li>The <code>?</code> and <code>!</code> operators</li></ul></li> <li><a href="/learn/external-libraries">External Libraries</a></li> <li><a href="/learn/conclusion">Conclusion</a></li><!----></ul></section><!----> <main class="svelte-1pbfawa"><h1>Compile-Time Evaluation</h1> <h2 id="compile-time-vs-runtime">Compile-Time vs Run-Time</h2> <p>So, what's meant by "compile-time" and "run-time" (or "runtime")? To understand what these terms
+		mean, we need to dive a little bit into how compilers work. Don't worry, it's less complicated
+		than it seems.</p> <p>Computers can only run what's called <b>machine language</b> . Machine language is raw binary data that's not readable by humans&amp;Think of a file full of just
+		1s and 0s. Computer's don't understand actual programming language like Cabin source code.</p> <p>So how is it possible for our computers to run Cabin code? That's where the Cabin compiler comes
+		in. When you run <code>cabin run</code> , the Cabin compiler converts your source code into machine code, and <i>then</i> your computer runs that machine code.</p> <p>This method breaks the process of running Cabin code into two distinct steps— <b>converting</b> the Cabin code into machine code, and <b>running</b> the actual machine code. We call these phases <b>"compile-time"</b> and <b>"run-time"</b> .</p> <p>In most programming languages, your code won't actually <i>do</i> anything during compile-time; It's simply getting translated into machine code. Then, at run-time,
+		your code will actually execute. An important difference here is what computer the code is running
+		on; Generally, you'll <i>compile</i> the code on <i>your</i> machine, and then distribute the compiled program to <i>run</i> on the <i>user's</i> machine.</p> <h2 id="compile-time-as-the-default">Compile-Time as the Default</h2> <p>Cabin is unique in that code is automatically run at compile-time <i>by default</i> . This means, for example, when you call <code>print</code> , it'll print to <i>you</i> during compilation, not the <i>user</i> at runtime. This is relatively unique to Cabin and might take some time to get used to, but it comes
+		with incredible benefits.</p> <p>Let's take a look at our earlier program from system interaction:</p> <div class="svelte-1tz0mg0"><code class="svelte-1tz0mg0 block"><!--[--><pre><!--[--><!----><!----><!--]--></pre><!--]--> <!--[--><button style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 1.5rem; padding: 0px;" title="click to run"><svg style="width: 100%; height: 100%;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#7f849c" stroke-width="2" stroke-linejoin="round"></path></g></svg><!----></button><!--]--> <!--[--><button style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;" title="click to copy"><!--[!--><svg style="width: 100%; height: 100%;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z" fill="#7f849c"></path><path d="M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z" fill="#7f849c"></path></g></svg><!--]--></button><!--]--></code> <!--[!--><!--]--></div><!----> <p>When you run this, it'll print <code>Hello world!</code> to the terminal. However, if you look at the compiler's debug messages, you can actually see that
+		this is being printed at <i>compile-time</i> , not runtime.</p> <p>An easier way to see this is by building and running as separate steps. Instead of running <code>cabin run</code> , run <code>cabin build</code> . You'll see <code>Hello world!</code> be printed. Then, run the built executable (In <code>builds/&lt;project-name></code> ), and you'll see that it doesn't print anything.</p> <p>In this case, you'll actually notice that you get a warning when you run this code— <i>because</i> it's being run at compile-time. <code>print</code> is really meant to be used at runtime to display information to the user. To print at compile-time,
+		we generally prefer to use <code>debug</code> , which does the same thing:</p> <div class="svelte-1tz0mg0"><code class="svelte-1tz0mg0 block"><!--[--><pre><!--[--><!----><!----><!--]--></pre><!--]--> <!--[--><button style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 1.5rem; padding: 0px;" title="click to run"><svg style="width: 100%; height: 100%;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#7f849c" stroke-width="2" stroke-linejoin="round"></path></g></svg><!----></button><!--]--> <!--[--><button style="width: 2rem; height: 2rem; z-index: 999; position: absolute; top: 0px; right: 0px; padding: 0px;" title="click to copy"><!--[!--><svg style="width: 100%; height: 100%;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z" fill="#7f849c"></path><path d="M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z" fill="#7f849c"></path></g></svg><!--]--></button><!--]--></code> <!--[!--><!--]--></div><!----> <h2 id="runtime-evaluation">Runtime Evaluation</h2> <p>As you might expect, there are often cases where you want to run code at runtime instead of
+		compile-time. There's an entire section in the book on this called runtime evaluation.</p><!----> <span class="navigation-buttons svelte-1pbfawa"><!--[!--><!--]--> <!--[!--><!--]--></span></main></div></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1vv677f = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.DKnIbkXx.js"),
+						import("../_app/immutable/entry/app.CoG0H2E8.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 8],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
