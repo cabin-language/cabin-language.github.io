@@ -242,7 +242,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="/learn/runtime-evalutaion#runtime-evaluation-tree">The Runtime-Evaluation Tree</a>
+				<a href="/learn/runtime-evaluation#runtime-evaluation-tree">The Runtime-Evaluation Tree</a>
 			</li>
 			<li><a href="/learn/runtime-evaluation#command-line-arguments">Command-Line Arguments</a></li>
 		</ul>

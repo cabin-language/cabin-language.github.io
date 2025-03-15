@@ -68,12 +68,14 @@
 		output="Cabin is so so so awesome!"
 	/>
 
+	<h3 id="numbers">Numberic Types</h3>
+
 	<h3 id="boolean">Boolean</h3>
 
 	<p>
 		<code>Boolean</code>
 		is an
-		<a href="/docs/learn/eithers">either</a>
+		<a href="/learn/eithers">either</a>
 		defined as a Cabin built-in simply as:
 	</p>
 
@@ -98,7 +100,9 @@
 
 	<h2 id="basic-operations">Basic Operations</h2>
 
-	<h3>The Double-Colon Operator</h3>
+	<h3 id="boolean-combinators">Boolean Combinators</h3>
+
+	<h3 id="double-colon">The Double-Colon Operator</h3>
 
 	<p>
 		The <b>double-colon</b>
@@ -130,7 +134,7 @@
 		.
 	</p>
 
-	<h3>The Dot Operator</h3>
+	<h3 id="dot">The Dot Operator</h3>
 
 	<p>
 		The <b>dot</b>
