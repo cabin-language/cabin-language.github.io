@@ -119,7 +119,7 @@
 	<p>
 		This might seem tedious, but you'll come to find that it's actually quite rare that you need to
 		nest <code>run</code>
-		expressions.
+		expressions like this.
 	</p>
 
 	<h2 id="runtime-evaluation-tree">The Runtime-Evaluation Tree</h2>
@@ -149,24 +149,26 @@
 	/>
 
 	<p>
-		In this code, the definitions for <code>y</code>
+		In this code, the definitions for <code>c</code>
 		and
-		<code>z</code>
+		<code>d</code>
 		don't use
 		<code>run</code>
 		expressions, yet, they are still evaluated at runtime. Why? Because they
 		<i>depend</i>
 		on the value of
-		<code>x</code>
-		, which isn't known until runtime. In this example, the RET looks something like this:
+		<code>a</code>
+		and
+		<code>b</code>
+		, which aren't known until runtime. In this example, the RET looks something like this:
 	</p>
 
 	<img src={ret_1} alt="runtime expression tree" />
 
 	<p>
-		In this diagram, an arrow from a parent node P to a child node C means "the result of C depends
-		on knowing the result of P, and P is only known at runtime, therefore C can only be known at
-		runtime". For example, looking at the bottom-left-most node <code>c</code>
+		In this diagram, each node must be evaluated at runtime, because its <b>parent</b>
+		must be evaluated at runtime. For example, looking at the bottom-left-most node
+		<code>c</code>
 		, the diagram is showing that the value of
 		<code>c</code>
 		depends on its parent node
@@ -271,6 +273,19 @@
 	<p>
 		This will pass the arguments as runtime arguments and pass no compile-time arguments, completely
 		equivalent to using <code>-- --</code>
+		.
+	</p>
+
+	<p>
+		Note that unlike many programming languages, the first value in
+		<code>command_line_arguments()</code>
+		isn't the location of the program; It's the first actual argument. You can get the location of the
+		program with
+		<code>program_location()</code>
+		. Note that calling
+		<code>program_location()</code>
+		at compile-time will return the path to the project's
+		<code>cabin.toml</code>
 		.
 	</p>
 </TutorialDocument>

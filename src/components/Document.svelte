@@ -91,7 +91,7 @@
 
 	main {
 		background-color: #1e1e2e;
-		color: #cdd6f4;
+		color: #a6adc8;
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
@@ -100,6 +100,7 @@
 		padding-bottom: 7rem;
 		overflow-y: auto;
 		height: 100%;
+		font-size: 0.9rem;
 
 		:global(ul ul) {
 			margin-left: 2rem;
@@ -108,6 +109,9 @@
 		:global(h1, h2, h3) {
 			display: flex;
 			gap: 0.5em;
+			font-weight: normal;
+			color: #cdd6f4;
+			align-items: center;
 		}
 
 		:global(ul:not(:has(> li:has(> input[type='checkbox']:first-child)::marker))) {
@@ -120,6 +124,13 @@
 
 		:global(h2) {
 			padding-top: 1rem;
+			font-weight: normal;
+			color: #cdd6f4;
+		}
+
+		:global(b) {
+			font-weight: normal;
+			color: #cdd6f4;
 		}
 
 		:global(hr) {
@@ -143,12 +154,17 @@
 				flex-direction: column;
 				align-items: center;
 				width: min(32vw, 10rem);
-				border-radius: 0.5rem;
-				box-shadow: 0px 0px 0.75rem black;
+				border-radius: 0.25rem;
+				box-shadow: 0px 0px 0.5rem black;
 				padding-top: 0.5rem;
 				padding-bottom: 0.5rem;
 				border: 2px solid rgba(255, 255, 255, 40%);
 				text-align: center;
+				transition: scale 0.1s;
+
+				&:hover {
+					scale: 103%;
+				}
 
 				&:first-child {
 					background-image: linear-gradient(to bottom right, #f9e2af, #f38ba8);

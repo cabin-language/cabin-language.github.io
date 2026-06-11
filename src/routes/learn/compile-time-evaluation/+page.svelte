@@ -124,6 +124,7 @@
 
 	<p>
 		As you might expect, there are often cases where you want to run code at runtime instead of
-		compile-time. There's an entire section in the book on this called runtime evaluation.
+		compile-time. There's an entire section in the book on this called runtime evaluation later
+		where we'll talk about it.
 	</p>
 </TutorialDocument>

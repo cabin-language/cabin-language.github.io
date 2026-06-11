@@ -145,8 +145,8 @@
 
 	<p>
 		We haven't talked about <code>run</code>
-		yet, but the point is just that if the argument to a compile-time parameter isn't known at compile-time,
-		an error is thrown.
+		yet, but it forces its inner expression to delay evaluation until runtime. In the above case, an
+		error will be thrown, because the value being passed isn't resolved at compile-time.
 	</p>
 
 	<p>
@@ -170,17 +170,17 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let log = action<Type: Anything>(argument: Type) {
+			let log = action<Type: Any>(argument: Type) {
 				print(argument);
 			};
 		`}
 	/>
 
 	<p>
-		As a shorthand, when using <code>Anything</code>
+		As a shorthand, when using <code>Any</code>
 		as the type for a compile-time parameter, the type can be ommitted and it will automatically be set
 		to
-		<code>Anything</code>
+		<code>Any</code>
 		. So, the above can be shortened to:
 	</p>
 
@@ -208,4 +208,56 @@
 			log("Hello"); # Type is inferred
 		`}
 	/>
+
+	<p>
+		Type inference in cabin is tricky. When a compile-time parameter's type is inferred, it gets
+		inferred to be the <b>most narrow group possible</b>
+		. For example, let's look at this signature:
+	</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+			let func = action<Type>(a: Type, b: Type) {};
+		`}
+	/>
+
+	<p>And, for example, this call:</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+			func("Hello", "world!");
+		`}
+	/>
+
+	<p>
+		Should this be allowed? You might intuitively think yes (and you'd be right), but it's more
+		subtle than you might think: The variables <code>"Hello"</code>
+		and
+		<code>"world!"</code>
+		<b>have different types</b>
+		. The type of
+		<code>"Hello"</code>
+		is the literal string
+		<code>"Hello"</code>
+		(as in, that's the only possible value it could take) and
+		<code>"world!"</code>
+		is the literal string
+		<code>"world!"</code>
+		. These are
+		<b>distinct</b>
+		.
+	</p>
+
+	<p>
+		However, Cabin still allows this call&mdash;even though these are of different types, when the
+		compiler has to infer a type parameter like this, it uses the most narrow
+		<b>group</b>
+		possible (or
+		<code>either</code>
+		, etc.). In this case, that's
+		<code>Text</code>
+		.
+	</p>
 </TutorialDocument>

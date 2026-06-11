@@ -4,7 +4,7 @@
 	let {
 		href,
 		children,
-		color = 'cornflowerblue'
+		color = '#89b4fa'
 	}: { href: string; children: () => any; color?: string } = $props();
 </script>
 
@@ -17,5 +17,10 @@
 		display: inline-flex;
 		gap: 0.25em;
 		align-items: center;
+		color: #89b4fa;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 </style>

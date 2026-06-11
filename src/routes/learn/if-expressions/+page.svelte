@@ -22,7 +22,7 @@
 
 			if name == "danny" {
 				print("hi danny");
-			}
+			};
 		`}
 	/>
 
@@ -150,6 +150,6 @@
 
 <style>
 	a {
-		color: dodgerblue;
+		color: #89b4fa;
 	}
 </style>

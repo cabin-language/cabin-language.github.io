@@ -48,7 +48,7 @@
 		gap: 1rem;
 
 		p a {
-			color: cornflowerblue;
+			color: #89b4fa;
 		}
 
 		h2 {

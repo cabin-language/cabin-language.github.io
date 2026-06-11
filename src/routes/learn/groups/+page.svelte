@@ -71,7 +71,7 @@
 		code={`
 			let Person = group {
 				first_name: Text,
-				middle_name: Optional<Text> = nothing,
+				middle_name: Optional<Text> = none,
 				last_name: Text,
 				age: Number
 			};
@@ -120,17 +120,17 @@
 	<h2 id="mutability">Mutability</h2>
 
 	<p>
-		Group properties are <b>immutable by default</b>
-		. To mark a property as mutable, use the
-		<code>#[editable]</code>
-		tag:
+		Group properties are <b>immutable and unassignable by default</b>
+		. To mark a property as assignable, use the
+		<code>editable</code>
+		keyword:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
 			let Person = group {
-				#[editable] first_name: Text,
+				editable first_name: Text,
 				last_name: Text,
 				age: Number
 			};
@@ -149,17 +149,17 @@
 
 	<p>
 		By default, group properties are only visible in the file that the group is declared. To make a
-		property visible elsewhere, use the <code>#[visible]</code>
-		tag:
+		property visible elsewhere, use the <code>visible</code>
+		keyword:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
 			let Person = group {
-				#[visible] first_name: Text,
+				visible first_name: Text,
 
-				middle_name: Optional<Text> = nothing,
+				middle_name: Optional<Text> = none,
 				last_name: Text,
 				age: Number
 			};
@@ -178,7 +178,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let Node = group<Data: Anything> {
+			let Node = group<Data: Any> {
 				data: Data,
 				children: List<Node<Data>>
 			};
@@ -203,7 +203,7 @@
 		. "Type" is a somewhat confusing term because it means something different in Cabin than it does
 		in most other languages; In Cabin, a "type" is just a value that is 1. fully known at compile-time
 		and 2. not marked
-		<code>#[editable]</code>
+		<code>editable</code>
 		. Typical examples of types are
 		<code>Text</code>
 		and
@@ -226,14 +226,14 @@
 		code={`
 			let Node = group<Data> {
 				data: Data,
-				children: List<Node<Data>>
+				children: Node<Data>[]
 			};
 		`}
 	/>
 
 	<p>
-		When ommitting the type of a compile-time parameter, it is automatically inferred as <code>
-			Anything
+		When ommitting the type of a compile-time parameter, it is automatically inferred to be <code>
+			Any
 		</code>
 		.
 	</p>

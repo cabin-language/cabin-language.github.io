@@ -2,6 +2,7 @@
 	import discordIcon from '../../assets/images/discord.png';
 	import githubIcon from '../../assets/images/github.jpg';
 	import ExternalLink from '../../components/ExternalLink.svelte';
+	import ExternalLinkIcon from '../../components/icons/ExternalLinkIcon.svelte';
 	import CommunityDocument from './CommunityDocument.svelte';
 </script>
 
@@ -12,36 +13,14 @@
 <CommunityDocument page="Community">
 	<h1>Community</h1>
 
-	<p>
-		Welcome to the Cabin community! By being here, you're already one of us! We're called campers,
-		and we're delighted to have you. Currently, the Cabin community is very small, but we hope to
-		grow into a large and diverse group.
-	</p>
-
-	<p>
-		Cabin has communities in a few places. Most general discussion and community building happens in
-		the Cabin Discord server.
-	</p>
-
-	<h2 id="discord">
-		<img src={discordIcon} alt="Discord" />
-		Discord
-	</h2>
-
-	<a href="https://discord.gg/ZcfC322pAb">https://discord.gg/ZcfC322pAb</a>
-
-	<p>
-		The Cabin Discord server is the best place for interacting with the community! Feel free to stop
-		by and chat! The Discord server has channels for help with the language, general discussion,
-		suggestions, updates, and more. It's a welcoming and friendly place for all campers!
-	</p>
-
 	<h2 id="github">
 		<img src={githubIcon} alt="GitHub" />
 		GitHub
 	</h2>
 
-	<a href="https://github.com/cabin-language">https://github.com/cabin-language</a>
+	<ExternalLink href="https://github.com/cabin-language">
+		https://github.com/cabin-language
+	</ExternalLink>
 
 	<p>
 		The Cabin GitHub organization holds all of the source code behind the Cabin as a project. Even
@@ -88,48 +67,24 @@
 
 	<ul>
 		<li>
-			<a href="https://github.com/cabin-language/cabin/issues">File an issue or bug report</a>
+			<ExternalLink href="https://github.com/cabin-language/cabin/issues">
+				File an issue or bug report
+			</ExternalLink>
 		</li>
 		<li>
-			<a href="https://github.com/cabin-language/cabin/discussions">
+			<ExternalLink href="https://github.com/cabin-language/cabin/discussions">
 				Discuss potential changes or new features to the language
-			</a>
+			</ExternalLink>
 		</li>
 		<li>
-			<a href="https://github.com/orgs/cabin-language/repositories">
+			<ExternalLink href="https://github.com/orgs/cabin-language/repositories">
 				View the source code for Cabin projects
-			</a>
+			</ExternalLink>
 		</li>
 	</ul>
-
-	<h2 id="help-wanted">Help Wanted!</h2>
-
-	<p>
-		Cabin is looking for contributors! There are a number of ways you can contribute to the project;
-		Specifically, we're looking for:
-	</p>
-
-	<ul>
-		<li>A logo</li>
-		<li>Bug reports</li>
-		<li>Documentation</li>
-		<li>Language Suggestions</li>
-	</ul>
-
-	<p>
-		...and anything else you have to offer! If you're interested in contributing, you can start
-		immediately, depending on how you want to contribute. Bug reports can be filed immediately on
-		the Cabin GitHub. Documentation contributions are welcome as pull requests in the Cabin GitHub
-		as well. For branding contributions, such as creating a logo for Cabin, get in touch with me,
-		Cabin's creator, Vi. You can find me in the Cabin Discord.
-	</p>
 </CommunityDocument>
 
 <style>
-	a {
-		color: dodgerblue;
-	}
-
 	h2 {
 		display: flex;
 		align-items: center;

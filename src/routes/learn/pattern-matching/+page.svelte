@@ -11,15 +11,15 @@
 	<h1>Pattern Matching</h1>
 
 	<h2 id="is-variant">
-		The <code>is_variant</code>
-		Action
+		<code>is</code>
+		Expressions
 	</h2>
 
 	<p>
 		When using <code>eithers</code>
-		, we need a way to check if a value is a certain variant. All either's come with an
-		<code>is_variant</code>
-		action that can check if a value is a certain variant.
+		, we need a way to check if a value is a certain variant. We can use the
+		<code>is</code>
+		keyword for this.
 	</p>
 
 	<p>
@@ -39,42 +39,42 @@
 	/>
 
 	<p>
-		Using <code>is_variant</code>
+		Using <code>is</code>
 		looks like this:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-			if shape.is_variant(Shape.circle) {
+			if shape is Shape.circle {
 				print("It's a circle!");
 			};
 		`}
 	/>
 
-	<h2 id="conditional-let-bindings">
-		Conditional <code>let</code>
-		Bindings
-	</h2>
-
 	<p>
-		<code>is_variant</code>
-		is lovely, but when checking if a value is a certain variant, sometimes we need to create a
-		<i>binding</i>
-		to the inner type. This fundamentally requires its own syntax.
+		Don't confuse this with using <code>is</code>
+		for control flow. Some expression
+		<code>a is b</code>
+		will be interpreted as a control flow statement if and only if it's being used as a top-level statement.
+		In any other case, this expression is interpreted as a pattern match.
 	</p>
 
+	<h2 id="conditional-let-bindings">Conditional Bindings</h2>
+
 	<p>
-		The syntax uses <code>let</code>
-		in an
-		<code>if</code>
-		expression to bind the inner variant to a name:
+		After the <code>is</code>
+		check, we can use
+		<code>as</code>
+		to
+		<b>bind</b>
+		to the subtype:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-			if shape == Shape.rectangle(let rectangle) {
+			if shape is Shape.rectangle as rectangle {
 				print("Area: {rectangle.area()}");
 			};
 		`}
@@ -107,11 +107,11 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let area = if shape == Shape.rectangle(let rectangle) {
+			let area = if shape == Shape.rectangle as rectangle {
 				it is rectangle.area();
-			} otherwise if shape == Shape.circle(let circle) {
+			} otherwise if shape == Shape.circle as circle {
 				it is circle.area();
-			} otherwise if shape == Shape.triangle(let triangle) {
+			} otherwise if shape == Shape.triangle as triangle {
 				it is triangle.area();
 			} otherwise {
 				# unreachable
@@ -131,9 +131,9 @@
 		language="cabin"
 		code={`
 			let area = match shape {
-				Shape.rectangle(let rectangle) => rectangle.area(),
-				Shape.circle(let circle) => circle.area(),
-				Shape.triangle(let triangle) => triangle.area(),
+				Shape.rectangle as rectangle => rectangle.area(),
+				Shape.circle as circle => circle.area(),
+				Shape.triangle as triangle => triangle.area(),
 			};
 		`}
 	/>
@@ -147,8 +147,8 @@
 		language="cabin"
 		code={`
 			let area = match shape {
-				Shape.rectangle(let rectangle) => rectangle.area(),
-				Shape.circle(let circle) => circle.area(),
+				Shape.rectangle as rectangle => rectangle.area(),
+				Shape.circle as circle => circle.area(),
 				otherwise => 0
 			};
 		`}
@@ -163,11 +163,11 @@
 		language="cabin"
 		code={`
 			let value = match attempt {
-				error(let err) => {
+				error as err => {
 					print("Error: {err}");
 					return is error(err);
 				},
-				success(let success_value) => success_value
+				success as success_value => success_value
 			};
 		`}
 	/>

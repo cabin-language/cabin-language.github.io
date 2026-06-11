@@ -428,7 +428,7 @@ Checks for diagnostics in a Cabin project.
 		Rust installed. Check if Rust is installed by running
 		<code>cargo</code>
 		, and if it's not, install it with the instructions
-		<a href="https://www.rust-lang.org/tools/install" style:color="cornflowerblue">here</a>
+		<a href="https://www.rust-lang.org/tools/install" style:color="#89b4fa">here</a>
 		.
 	</p>
 
@@ -508,7 +508,7 @@ Checks for diagnostics in a Cabin project.
 	}
 
 	a {
-		color: cornflowerblue;
+		color: #89b4fa;
 	}
 
 	.note {

@@ -33,6 +33,6 @@
 
 <style>
 	a {
-		color: cornflowerblue;
+		color: #89b4fa;
 	}
 </style>

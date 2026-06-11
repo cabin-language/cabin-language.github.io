@@ -105,33 +105,25 @@
 	<h3 id="double-colon">The Double-Colon Operator</h3>
 
 	<p>
-		The <b>double-colon</b>
+		The <b>double colon</b>
 		(
 		<code>::</code>
 		) operator (or "direct property access operator") returns the property on an object with the name
-		of the right operand. For example, all
-		<code>Text</code>
-		objects have a
-		<code>repeat</code>
-		field on them, so this is one way to bind and call it:
+		of the right operand.
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-			let repeat = "some text"::repeat;
-			debug("Cabin is {repeat("so ", 3)}awesome!");
+			let length = "some text".length;
 		`}
-		output="Cabin is so so so awesome!"
 	/>
 
 	<p>
-		Note that in this case, the left operand to <code>::</code>
-		ends up unused. That's because the value of
-		<code>repeat</code>
-		is the same for all instances of
-		<code>Text</code>
-		.
+		The <code>::</code>
+		operator always gives the
+		<b>direct property value</b>
+		. This isn't necessarily what you always want. More often than not you'll use the dot operator instead.
 	</p>
 
 	<h3 id="dot">The Dot Operator</h3>
@@ -139,21 +131,19 @@
 	<p>
 		The <b>dot</b>
 		(
-		<code>.</code>
-		) operator (or "indirect property access operator") is one of the most subtly complex operations
-		in Cabin. It operates differently depending on the type of it's left operand. Below is a thorough
-		explanation of the dot operator. Note that a lot of the material here hasn't been discussed yet;
-		It might be a good idea to come back to this after understanding these topics.
+		<code>::</code>
+		) operator is a little bit more nuanced. It operates differently depending on the type of it's left
+		operand. Below is a thorough explanation of the double colon operator. Note that a lot of the material
+		here hasn't been discussed yet; It might be a good idea to come back to this after understanding
+		these topics.
 	</p>
 
 	<p>
-		If the left operand to <b>dot</b>
-		is an
+		If the left operand is an
 		<b>either</b>
-		, the either variant with the name of the dot's right operand is returned. In terms of the direct
-		property access operator (
+		, the either variant with the name of the right operand is returned. In terms of the
 		<code>::</code>
-		), the following expressions are equivalent:
+		operator, the following expressions are equivalent:
 	</p>
 
 	<Snippet
@@ -165,17 +155,16 @@
 			};
 
 			# these are equivalent 
-			let left = either.left;
+			let left = Direction.left;
 			let left = Direction::variants.find(action(variant: Direction) { it is variant.name == "left"; }));
 		`}
 	/>
 
 	<p>
-		If the left operand to dot is a <b>group</b>
-		, the group field with the name of the dot's right operand is returned. In terms of the direct property
-		access operator (
+		If the left operand is a <b>group</b>
+		, the group field with the name of the right operand is returned. In terms of the
 		<code>::</code>
-		), the following expressions are equivalent:
+		operator, the following expressions are equivalent:
 	</p>
 
 	<Snippet
@@ -188,41 +177,18 @@
 
 			# these are equivalent 
 			let age = Person.age;
-			let age = Person::fields.find(action(field: Field) { it is field.name == "age"; })).default_value;
+			let age = Person::properties.find(action(field: Field) { it is field.name == "age"; })).default_value;
 		`}
 	/>
 
 	<p>
-		In any other case, the property with the name of the dot's right operand is returned, completely
-		equivalent to the <code>::</code>
-		operator:
-	</p>
-
-	<Snippet
-		language="cabin"
-		code={`
-			let Person = group {
-				name: Text,
-				age: Number,
-			};
-
-			let jazz = new Person {
-				name = "jazz fenton",
-				age = 16
-			};
-
-			# these are equivalent 
-			let name = jazz.name;
-			let age = jazz::name;
-		`}
-	/>
-
-	<p>
-		The one exception to this is that if the value of the property is an action and the first
-		parameter to the action is <code>this: This</code>
-		, a
-		<b>bound action</b>
-		is returned where the left operand to the dot is passed as the first argument to the action:
+		Otherwise, if the left operand has a property with the name of the right operand and that
+		property is an <code>action</code>
+		with the first argument being
+		<code>this: This</code>
+		, then a
+		<b>partial action</b>
+		is returned with the first argument set to the left operand:
 	</p>
 
 	<Snippet
@@ -232,25 +198,24 @@
 				name: Text,
 				age: Number,
 
-				is_same_age_as = action(this: This, other: Person): Boolean {
-					return is this.age == other.age;
+				is_teen = action(this: This): Boolean {
+					return is this.age.is_in(13.to(20));
 				}
 			};
 
-			let jazz = new Person {
-				name = "jazz fenton",
-				age = 16
+			let jack = new Person {
+				name = "Jack",
+				age = 22
 			};
 
 			# these are equivalent 
-			let is_same_age_as = jazz.is_same_age_as;
-			let is_same_age_as = action(other: Person) { it is jazz::is_same_age_as(jazz, other); };
+			let teen = jack.is_teen;
+			let teen = action: Boolean { return is jack::is_teen(jack); };
 		`}
 	/>
 
 	<p>
-		Overall, the <b>dot</b>
-		operator is complex, but often more-or-less "does what you expect it to". It ends up being used more
-		commonly than the double colon.
+		Overall, the <code>.</code>
+		operator is complex, but often more-or-less "does what you expect it to".
 	</p>
 </TutorialDocument>

@@ -62,6 +62,6 @@
 
 <style>
 	a {
-		color: dodgerblue;
+		color: #89b4fa;
 	}
 </style>

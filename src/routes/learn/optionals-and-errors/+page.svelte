@@ -7,7 +7,7 @@
 	<h1>Optionals &amp; Errors</h1>
 
 	<p>
-		Optionals and erorrs are an important part of writing safe Cabin code. Conveniently, they are
+		Optionals and errors are an important part of writing safe Cabin code. Conveniently, they are
 		mostly just implemented as bindings in the standard library, with very little of their own
 		special syntax to learn.
 	</p>
@@ -26,7 +26,7 @@
 		code={`
 			let Optional = either<Data> {
 				some: Data,
-				nothing
+				none
 			};
 		`}
 	/>
@@ -34,13 +34,13 @@
 	<p>
 		As we can see here, <code>Optional</code>
 		is a simple either that can be either some data, or
-		<code>nothing</code>
+		<code>none</code>
 		. For conenience,
-		<code>Optional.nothing</code>
+		<code>Optional.none</code>
 		and
 		<code>Optional.some</code>
 		are automatically defined in the global scope as
-		<code>nothing</code>
+		<code>none</code>
 		and
 		<code>some</code>
 		.
@@ -68,7 +68,7 @@
 			let john = new Person {
 				first_name = "john",
 				last_name = "doe",
-				middle_name = nothing
+				middle_name = none
 			};
 
 			let jane = new Person {
@@ -122,16 +122,14 @@
 					it is error("Attempted to divide by 0");
 				};
 
-				it is a / b;
+				it is some(a / b);
 			};
 		`}
 	/>
 
 	<h2>
-		The <code>?</code>
-		and
-		<code>!</code>
-		Operators
+		The <code>!</code>
+		Operator
 	</h2>
 
 	<p>
@@ -194,7 +192,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let parse_declaration = action(#[editable] tokens: TokenList): Attempt<Declaration, Text> {
+			let parse_declaration = action(editable tokens: TokenList): Attempt<Declaration, Text> {
 				tokens.pop("let")!;
 				let name = tokens.pop("identifier")!;
 				tokens.pop("=")!;
@@ -208,5 +206,22 @@
 	<p>
 		Much better! The <code>!</code>
 		operator helps reduce boilerplate code for error handling.
+	</p>
+
+	<p>
+		The <code>!</code>
+		operator can be used on both
+		<code>Attempts</code>
+		and
+		<code>Optionals</code>
+		in actions that return both
+		<code>Attempts</code>
+		and
+		<code>Optionals</code>
+		without discrimination. That is, it can also be used to on an
+		<code>Attempt</code>
+		in an action that returns a
+		<code>Optional</code>
+		, and vice versa.
 	</p>
 </TutorialDocument>

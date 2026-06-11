@@ -71,7 +71,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let danny = foreach person in people {
+			let danny = for person in people {
 				if person.first_name == "danny" {
 					it is danny;
 				};
@@ -86,9 +86,9 @@
 		expression. Since the result of the
 		<code>if</code>
 		expression isn't being bound to anything, it goes up one more level to the
-		<code>foreach</code>
+		<code>for</code>
 		loop. The
-		<code>foreach</code>
+		<code>for</code>
 		loop
 		<i>is</i>
 		being bound to a name (
@@ -105,7 +105,7 @@
 
 	<p>
 		The next reserved label is <code>return</code>
-		. That's right, in Cabin,
+		. In Cabin,
 		<code>return</code>
 		isn't a keyword with it's own syntax; It's just a built-in identifier.
 		<code>return</code>
@@ -166,7 +166,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let danny = foreach person in people {
+			let danny = for person in people {
 				if person.first_name == "danny" {
 					loop is danny;
 				};
@@ -190,10 +190,11 @@
 	<Snippet
 		language="cabin"
 		code={`
-			foreach person in people {
+			for person in people {
 				print(person.first_name);
+
 				if person.first_name == "danny" {
-					loop is nothing;
+					loop is none;
 				};
 			};
 		`}
@@ -215,12 +216,12 @@
 	<p>
 		This is <i>almost</i>
 		idiomatic, except we don't like to use
-		<code>nothing</code>
-		for this use case, because it's a little confusing that we are just trying to break out of the loop,
-		and using
-		<code>nothing</code>
+		<code>none</code>
+		for this use case, because it's a little unclear that we are just trying to break out of the loop,
+		and so using
+		<code>none</code>
 		for this will also give a warning. Instead, we have a built-in alias for
-		<code>nothing</code>
+		<code>none</code>
 		called
 		<code>done</code>
 		that's designed for this exact use case:
@@ -229,7 +230,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			foreach person in people {
+			for person in people {
 				print(person.first_name);
 				if person.first_name == "danny" {
 					loop is done;
@@ -242,7 +243,7 @@
 		This provides much more clear intent, and finally we have no warnings; This is the idiomatic way
 		to break out of a loop that isn't binding a value. By the way, using <code>done</code>
 		instead of
-		<code>nothing</code>
+		<code>none</code>
 		in any other situation will result in a warning.
 	</p>
 
@@ -263,7 +264,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			foreach person in people {
+			for person in people {
 
 				# skip danny and continue
 				if person.first_name == "danny" {

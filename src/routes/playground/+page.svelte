@@ -70,8 +70,13 @@
 </main>
 
 <style>
+	h1 {
+		font-weight: normal;
+	}
+
 	main {
 		color: #cdd6f4;
+		background-color: #1e1e2e;
 
 		section {
 			display: flex;
@@ -100,6 +105,11 @@
 			align-items: center;
 			justify-content: center;
 			margin-left: auto;
+			transition: scale 0.1s;
+
+			&:hover {
+				scale: 103%;
+			}
 		}
 	}
 </style>

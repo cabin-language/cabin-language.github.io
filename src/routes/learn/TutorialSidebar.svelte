@@ -24,8 +24,6 @@
 		<ul>
 			<li><a href="/learn#what-is-cabin">What is Cabin?</a></li>
 			<li><a href="/learn#navigating-these-docs">Navigating These Docs</a></li>
-			<li><a href="/learn#additional-support">Additional Support</a></li>
-			<li><a href="/learn#final-remarks">Final Remarks</a></li>
 		</ul>
 	</li>
 	<li>
@@ -125,7 +123,7 @@
 		<ul>
 			<li>
 				<a href="/learn/loops#foreach">
-					<code>foreach</code>
+					<code>for</code>
 					Loops
 				</a>
 			</li>
@@ -214,15 +212,12 @@
 		<ul>
 			<li>
 				<a href="/learn/pattern-matching#is-variant">
-					The <code>is_variant</code>
-					Action
+					<code>is</code>
+					expressions
 				</a>
 			</li>
 			<li>
-				<a href="/learn/pattern-matching#conditional-let-bindings">
-					Conditonal <code>let</code>
-					Bindings
-				</a>
+				<a href="/learn/pattern-matching#conditional-let-bindings">Conditional Bindings</a>
 			</li>
 			<li>
 				<a href="/learn/pattern-matching#match-blocks">
@@ -254,14 +249,12 @@
 			<li><a href="/learn/extensions#polymorphic-extensions">Polymorphic extensions</a></li>
 			<li><a href="/learn/extensions#operator-overloading">Operator Overloading</a></li>
 			<li><a href="/learn/extensions#default-extensions">Default Extensions</a></li>
-			<li><a href="/learn/extensions#getters">Extension Getters</a></li>
 		</ul>
 	</li>
 	<li>
 		<a href="/learn/tags">Tags</a>
 		<ul>
 			<li><a href="/learn/tags#introduction">Introduction</a></li>
-			<li><a href="/learn/tags#mutation">Mutation</a></li>
 		</ul>
 	</li>
 	<li>
@@ -276,10 +269,8 @@
 				either
 			</li>
 			<li>
-				The <code>?</code>
-				and
-				<code>!</code>
-				operators
+				The <code>!</code>
+				operator
 			</li>
 		</ul>
 	</li>

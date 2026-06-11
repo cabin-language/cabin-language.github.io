@@ -57,12 +57,16 @@
 		background-image: linear-gradient(to bottom right, #89dceb, #b4befe);
 		padding-left: 2rem;
 		padding-right: 2rem;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		border-radius: 0.5rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-radius: 0.25rem;
 		border: 2px solid rgba(255, 255, 255, 40%);
-		box-shadow: 0px 0px 1rem black;
+		box-shadow: 0px 0px 0.5rem black;
 		color: #11111b;
-		font-weight: bold;
+		transition: scale 0.1s;
+
+		&:hover {
+			scale: 105%;
+		}
 	}
 </style>

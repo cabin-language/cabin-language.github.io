@@ -318,7 +318,7 @@ code in `<pre>`.
 
 	code {
 		position: relative;
-		background-color: #28283d;
+		background-color: #181825;
 		color: #cdd6f4;
 		border-radius: 0.5rem;
 		padding: 1rem;

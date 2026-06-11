@@ -92,8 +92,6 @@
 </script>
 
 <section class="sidebar" bind:this={sidebar}>
-	<h1>Contents</h1>
-
 	<ul bind:this={list}>
 		{@render children()}
 	</ul>
@@ -130,15 +128,19 @@
 			font-size: 0.75rem;
 		}
 
-		h1 {
-			padding-left: 1rem;
-			padding-bottom: 1rem;
-		}
-
 		:global(li) {
 			margin-left: 1.2rem;
 			padding-top: 0.25rem;
 			padding-bottom: 0.25rem;
+
+			:global(a) {
+				transition: scale 0.1s;
+				font-size: 0.9rem;
+
+				&:hover {
+					scale: 103%;
+				}
+			}
 		}
 
 		:global(*::marker) {

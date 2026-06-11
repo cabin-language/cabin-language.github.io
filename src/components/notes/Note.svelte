@@ -33,6 +33,11 @@
 			top: -2px;
 		}
 
+		b {
+			color: #11111b;
+			font-weight: bold;
+		}
+
 		.content :global(svg) {
 			width: 1rem;
 			height: 1rem;

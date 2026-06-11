@@ -46,22 +46,5 @@
 		entire language in a day.
 	</p>
 
-	<h2 id="additional-support">Additional Support</h2>
-
-	<p>
-		For additional support on using Cabin and specfic errors you're getting in your Cabin code,
-		check out <a href="/community">the community</a>
-		. We're a friendly and accepting bunch, and are happy to help out beginners with their struggles
-		learning the language.
-	</p>
-
 	<h2 id="final-remarks">Final Remarks</h2>
-
-	<p>Good luck, have fun, and stay cozy!</p>
 </TutorialDocument>
-
-<style>
-	a {
-		color: dodgerblue;
-	}
-</style>

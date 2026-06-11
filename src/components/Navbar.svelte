@@ -110,6 +110,11 @@
 			justify-content: center;
 			text-align: center;
 			gap: 0.5rem;
+			transition: scale 0.1s;
+
+			&:hover {
+				scale: 103%;
+			}
 
 			img {
 				width: 2rem;

@@ -30,42 +30,74 @@
 
 	<p>
 		By default, declarations create an&nbsp;
-		<b>immutable binding</b>
-		. This means the value cannot be changed. To declare a value as mutable, use the&nbsp;
-		<code>#[editable]</code>
-		tag:
+		<b>immutable unassignable binding</b>
+		. This means the value cannot be changed. To declare a value as assignable, use the&nbsp;
+		<code>editable</code>
+		keyword:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-		#[editable]
-		let x = 10;
+		let editable circle = some_circle;
+		circle = other_circle;
 	`}
 	/>
 
-	<p>We'll talk more about tags later. For now, just note the syntax.</p>
+	<p>
+		To declare a value as mutable, specify that the <b>type itself</b>
+		must be
+		<code>editable</code>
+		:
+	</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+		let circle: editable Circle = some_circle;
+		circle.radius = 10;
+	`}
+	/>
+
+	<p>In this case, if the type can be inferred, it may be omitted:</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+		let circle: editable = some_circle;
+		circle.radius = 10;
+	`}
+	/>
+
+	<p>To create a value which is both assignable and mutable, use both:</p>
+
+	<Snippet
+		language="cabin"
+		code={`
+		let editable circle: editable = some_circle;
+		circle = other_circle;
+		circle.radius = 10;
+	`}
+	/>
 
 	<p>
-		Values marked as <code>#[editable]</code>
-		cannot be used as types.
+		Values marked as <code>editable</code>
+		cannot be used as types. We'll talk more about types later.
 	</p>
 
 	<h2 id="visibility">Visibility</h2>
 
 	<p>
-		By default, declarations are hidden from other files. Similarly to
-		<code>editable</code>
-		, we do this with tags. In this case, the
-		<code>#[visible]</code>
-		tag is used:
+		By default, declarations are hidden from other files. To expose them, use the <code>
+			visible
+		</code>
+		 keyword:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-		#[visible]
-		let x = 10;
+		let visible x = 10;
 	`}
 	/>
 

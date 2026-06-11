@@ -139,7 +139,7 @@
 		input {
 			color: #cdd4f6;
 			background-color: #28283d;
-			font-size: 1.5rem;
+			font-size: 1rem;
 			padding-left: 2rem;
 			padding-right: 2rem;
 			padding-top: 0.5rem;

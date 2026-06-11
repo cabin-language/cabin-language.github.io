@@ -10,19 +10,19 @@
 <TutorialDocument page="Loops">
 	<h1>Loops</h1>
 
-	<h2 id="foreach">For-Each Loops</h2>
+	<h2 id="foreach">ForLoops</h2>
 
 	<p>
-		The first and most common type of loop is the <code>foreach</code>
+		The first and most common type of loop is the <code>for</code>
 		loop. The
-		<code>foreach</code>
+		<code>for</code>
 		loop allows looping over a list:
 	</p>
 
 	<Snippet
 		language="cabin"
 		code={`
-			foreach ghost in ["skulker", "johnny", "ember"] {
+			for ghost in ["skulker", "johnny", "ember"] {
 				print(ghost);
 			};
 		`}
@@ -49,7 +49,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			foreach number in 1.to(10) {
+			for number in 1.to(10) {
 				print(number);
 			}
 		`}
@@ -67,14 +67,6 @@
 		`}
 	/>
 
-	<p>
-		Cabin doesn't have a dedicated syntax for ranges; It simply reuses existing syntax with the <code
-		>
-			.to()
-		</code>
-		action.
-	</p>
-
 	<h2 id="while">While Loops</h2>
 
 	<p>
@@ -85,7 +77,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			#[editable] let confirm = "";
+			let editable confirm = "";
 
 			while confirm != "yes" and confirm != "no" {
 				confirm = input("Enter yes or no: ");
@@ -105,9 +97,9 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let danny = foreach person in people {
+			let danny = for person in people {
 				if person.first_name == "danny" {
-					it is danny;
+					it is person;
 				};
 			};
 		`}
@@ -127,6 +119,6 @@
 
 <style>
 	a {
-		color: dodgerblue;
+		color: #89b4fa;
 	}
 </style>
