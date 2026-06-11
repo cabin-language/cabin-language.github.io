@@ -115,7 +115,7 @@
 	<Snippet
 		language="cabin"
 		code={`
-			let length = "some text".length;
+			let length = "some text"::length;
 		`}
 	/>
 
@@ -131,7 +131,7 @@
 	<p>
 		The <b>dot</b>
 		(
-		<code>::</code>
+		<code>.</code>
 		) operator is a little bit more nuanced. It operates differently depending on the type of it's left
 		operand. Below is a thorough explanation of the double colon operator. Note that a lot of the material
 		here hasn't been discussed yet; It might be a good idea to come back to this after understanding
